@@ -11,20 +11,20 @@
 import { mapActions } from "vuex";
 import router from "@/router/index";
 export default {
-  data() {
+  data () {
     return {
       role: []
     };
   },
   methods: {
     ...mapActions(["set_roleRouterRules"]),
-    async toLogin(val) {
+    async toLogin (val) {
       await this.initRouter(val);
     },
-    async initRouter(val) {
-      let res = await this.$api.login.getRouterPromise();
+    async initRouter (val) {
+      let res = await this.$api.router.getRouterPromise();
       return init(res.data[val], []);
-      function init(data, arr) {
+      function init (data, arr) {
         data.forEach((datas, index) => {
           arr.push({
             path: datas.path,

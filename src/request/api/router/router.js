@@ -2,7 +2,7 @@
 import axios from "../../http"; // 导入http中创建的axios实例
 // import qs from "qs"; // 根据需求是否导入qs模块
 
-const login = {
+const router = {
   // 获取router
   getRouter() {
     return axios.get("/simulation/router.json");
@@ -21,4 +21,4 @@ const login = {
   }
 };
 
-export default login;
+export default router;
