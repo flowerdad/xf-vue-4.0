@@ -1,0 +1,38 @@
+{
+  "role1": [
+    {
+      "path": "/test1",
+      "name": "test1",
+      "component": "test/test1"
+    },
+    {
+      "path": "/test2",
+      "name": "test2",
+      "component": "test/test2"
+    }
+  ],
+  "role2": [
+    {
+      "path": "/test2",
+      "name": "test2",
+      "component": "test/test2"
+    },
+    {
+      "path": "/test3",
+      "name": "test3",
+      "component": "test/test3"
+    }
+  ],
+  "role3": [
+    {
+      "path": "/test1",
+      "name": "test1",
+      "component": "test/test1"
+    },
+    {
+      "path": "/test3",
+      "name": "test3",
+      "component": "test/test3"
+    }
+  ]
+}
