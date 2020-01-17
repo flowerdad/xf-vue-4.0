@@ -16,11 +16,9 @@ const store = new Vuex.Store({
     LOGIN_IN(state, token) {
       state.isLogin = true;
       localStorage.token = token;
-      state.UserToken = token;
     },
     LOGIN_OUT(state) {
       state.isLogin = false;
-      state.UserToken = "";
       localStorage.removeItem("token");
     }
   },

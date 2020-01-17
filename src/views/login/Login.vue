@@ -4,6 +4,7 @@
     <el-button @click="toLogin('role1')">权限1登录</el-button>
     <el-button type="primary" @click="toLogin('role2')">权限2登录</el-button>
     <el-button type="success" @click="toLogin('role3')">权限3登录</el-button>
+    <el-button type="danger" @click="loginOut('role3')">退出登录</el-button>
   </div>
 </template>
 
@@ -11,20 +12,28 @@
 import { mapActions } from "vuex";
 import router from "@/router/index";
 export default {
-  data () {
+  data() {
     return {
-      role: []
+      // role: []
     };
   },
   methods: {
     ...mapActions(["set_roleRouterRules"]),
-    async toLogin (val) {
-      await this.initRouter(val);
+    toLogin(val) {
+      this.$api.login.login().then(res => {
+        if (res.status == 200) {
+          this.$store.commit("LOGIN_IN", res.data.token);
+          this.initRouter(val);
+        }
+      });
     },
-    async initRouter (val) {
+    loginOut() {
+      this.$store.commit("LOGIN_OUT");
+    },
+    async initRouter(val) {
       let res = await this.$api.router.getRouterPromise();
       return init(res.data[val], []);
-      function init (data, arr) {
+      function init(data, arr) {
         data.forEach((datas, index) => {
           arr.push({
             path: datas.path,

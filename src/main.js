@@ -6,7 +6,6 @@ import axios from "axios";
 import api from "./request/api";
 // import vueRouter from "vue-router";
 // Vue.use(vueRouter);
-
 // element
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";

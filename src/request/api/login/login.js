@@ -3,14 +3,13 @@ import axios from "../../http"; // 导入http中创建的axios实例
 // import qs from "qs"; // 根据需求是否导入qs模块
 
 const login = {
-  // 获取router
-  getRouter() {
-    return axios.get("/simulation/router.json");
+  login() {
+    return axios.get("/simulation/login.json");
   },
-  getRouterPromise(data) {
+  loginPromise(data) {
     return new Promise((resolve, reject) => {
       axios
-        .get("/simulation/router.json", { params: data })
+        .get("/simulation/login.json", { params: data })
         .then(res => {
           resolve(res);
         })
