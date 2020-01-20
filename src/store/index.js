@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 // import { getMenu } from "../api/api";
-// import router from "../router/index";
-
+import routerApp from "../router/index";
+import api from "../request/api";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -23,6 +23,20 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    async initRouter({ state }) {
+      let noeFound = [
+        {
+          path: "*",
+          name: "404",
+          component: () => import("@/views/error/404.vue")
+        }
+      ];
+      console.log(api);
+      let arr = await api.router.getRouter();
+      console.log(arr);
+      state.menuList = arr.concat(noeFound);
+      routerApp.addRoutes(state.menuList);
+    }
     // async setMenuList({ commit, state }) {
     //   let noeFound = [
     //     {

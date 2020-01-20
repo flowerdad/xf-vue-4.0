@@ -4,7 +4,7 @@ import axios from "../../http"; // 导入http中创建的axios实例
 
 const router = {
   // 获取router
-  getRouter() {
+  getRouterGet() {
     return axios.get("/simulation/router.json");
   },
   getRouterPromise(data) {
@@ -18,6 +18,27 @@ const router = {
           reject(err);
         });
     });
+  },
+  async getRouter(val) {
+    let res = await router.getRouterPromise();
+    console.log(res);
+    console.log(val);
+    return init(res.data[val], []);
+    function init(data, arr) {
+      data.forEach((datas, index) => {
+        arr.push({
+          path: datas.path,
+          name: datas.name,
+          component: () => import("../" + datas.component + ".vue"),
+          children: []
+        });
+        if (datas.children && datas.children.length > 0) {
+          let childArr = init(datas.children, []);
+          arr[index].children = childArr;
+        }
+      });
+      return arr;
+    }
   }
 };
 
