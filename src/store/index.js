@@ -23,34 +23,20 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    async initRouter({ state }) {
+    async initRouter({ state }, val) {
       let noeFound = [
         {
           path: "*",
           name: "404",
-          component: () => import("@/views/error/404.vue")
+          component: () => import("@/views/error/404.vue"),
+          hidden: false
         }
       ];
-      console.log(api);
-      let arr = await api.router.getRouter();
-      console.log(arr);
+      let arr = await api.router.getRouter(val);
       state.menuList = arr.concat(noeFound);
+      console.log(state.menuList);
       routerApp.addRoutes(state.menuList);
     }
-    // async setMenuList({ commit, state }) {
-    //   let noeFound = [
-    //     {
-    //       path: "*",
-    //       name: "404",
-    //       component: resolve => require(["../views/error/404.vue"], resolve),
-    //       hidden: true
-    //     }
-    //   ];
-    //   // let arr = await getMenu();
-    //   let arr = {};
-    //   state.menuList = arr.concat(noeFound);
-    //   router.addRoutes(state.menuList);
-    // }
   }
 });
 

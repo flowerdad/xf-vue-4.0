@@ -3,36 +3,42 @@
     {
       "path": "/test1",
       "name": "test1",
-      "component": "test/test1"
+      "component": "test/test1",
+      "hidden": true
     },
     {
       "path": "/test2",
       "name": "test2",
-      "component": "test/test2"
+      "component": "test/test2",
+      "hidden": true
     }
   ],
   "role2": [
     {
       "path": "/test2",
       "name": "test2",
-      "component": "test/test2"
+      "component": "test/test2",
+      "hidden": true
     },
     {
       "path": "/test3",
       "name": "test3",
-      "component": "test/test3"
+      "component": "test/test3",
+      "hidden": true
     }
   ],
   "role3": [
     {
       "path": "/test1",
       "name": "test1",
-      "component": "test/test1"
+      "component": "test/test1",
+      "hidden": true
     },
     {
       "path": "/test3",
       "name": "test3",
-      "component": "test/test3"
+      "component": "test/test3",
+      "hidden": true
     }
   ]
 }

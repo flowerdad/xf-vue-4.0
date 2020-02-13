@@ -24,39 +24,13 @@ export default {
         if (res.status == 200) {
           this.$store.commit("LOGIN_IN", res.data.token);
           this.initRouter(val);
+          this.$router.push("/home");
         }
       });
     },
     loginOut() {
       this.$store.commit("LOGIN_OUT");
     }
-    // async initRouter(val) {
-    //   let res = await this.$api.router.getRouterPromise();
-    //   return init(res.data[val], []);
-    //   function init(data, arr) {
-    //     data.forEach((datas, index) => {
-    //       arr.push({
-    //         path: datas.path,
-    //         name: datas.name,
-    //         component: () => import("../" + datas.component + ".vue"),
-    //         children: []
-    //       });
-    //       if (datas.children && datas.children.length > 0) {
-    //         let childArr = init(datas.children, []);
-    //         arr[index].children = childArr;
-    //       }
-    //     });
-    //     let noeFound = [
-    //       {
-    //         path: "*",
-    //         name: "404",
-    //         component: () => import("@/views/error/404.vue")
-    //       }
-    //     ];
-    //     router.addRoutes(arr.concat(noeFound));
-    //     return arr.concat(noeFound);
-    //   }
-    // }
   }
 };
 </script>

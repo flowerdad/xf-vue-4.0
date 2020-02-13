@@ -7,22 +7,37 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: () => import("../views/login/Login.vue")
+    // redirect: {
+    //   name: "index"
+    // },
+    component: () => import("../views/login/Login.vue"),
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/login/Login.vue")
+    component: () => import("../views/login/Login.vue"),
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: "/register",
     name: "register",
-    component: () => import("../views/register/Register.vue")
+    component: () => import("../views/register/Register.vue"),
+    meta: {
+      keepAlive: false
+    }
   },
   {
     path: "/home",
     name: "home",
-    component: () => import("../views/home/Home.vue")
+    component: () => import("../views/home/Home.vue"),
+    meta: {
+      keepAlive: true
+    }
   }
 ];
 

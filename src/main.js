@@ -13,6 +13,26 @@ Vue.use(ElementUI);
 Vue.prototype.$api = api;
 Vue.config.productionTip = false;
 
+// 判断是否有token，是否重组路由
+if (localStorage.getItem("token")) {
+  store.commit("LOGIN_IN", localStorage.getItem("token"));
+  store.dispatch("initRouter", "role1");
+}
+
+// 路由守卫，是否登录
+// router.beforeEach((to, from, next) => {
+//   if (store.state.isLogin && store.state.token) {
+//     next();
+//   } else {
+//     // store.state.menuList = [];
+//     if (to.path != "/") {
+//       next({ path: "/" });
+//     } else {
+//       // next({ path: "/" });
+//     }
+//   }
+// });
+
 new Vue({
   router,
   store,
