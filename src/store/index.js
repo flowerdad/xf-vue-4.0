@@ -9,6 +9,7 @@ const store = new Vuex.Store({
   state: {
     username: window.localStorage.getItem("username"),
     token: window.localStorage.getItem("token"),
+    modules: window.localStorage.getItem("modules"),
     isLogin: false,
     menuList: []
   },
@@ -16,6 +17,9 @@ const store = new Vuex.Store({
     LOGIN_IN(state, token) {
       state.isLogin = true;
       localStorage.token = token;
+    },
+    MODULES_IN(state, modules) {
+      localStorage.modules = modules;
     },
     LOGIN_OUT(state) {
       state.isLogin = false;

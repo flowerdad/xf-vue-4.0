@@ -3,7 +3,7 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>卡片名称</span>
-        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+        <p style="float: right; padding: 3px 0" type="text">操作按钮</p>
       </div>
       <slot name="body"></slot>
     </el-card>
@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 .cardBlock {
-  padding: 10px 0px;
-  width: 100%;
+  position: relative;
+  margin: 10px 0px;
 }
 </style>

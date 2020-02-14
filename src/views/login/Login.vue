@@ -24,7 +24,12 @@ export default {
         if (res.status == 200) {
           this.$store.commit("LOGIN_IN", res.data.token);
           this.initRouter(val);
-          this.$router.push("/home");
+          this.$api.card.card().then(data => {
+            if (data.status == 200) {
+              this.$store.commit("MODULES_IN", JSON.stringify(data.data));
+              this.$router.push("/home");
+            }
+          });
         }
       });
     },

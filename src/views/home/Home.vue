@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <cardPack />
+    <cardPack type="left" />
+    <cardPack type="right" key="right" class="cardRight" />
   </div>
 </template>
 
@@ -16,3 +17,14 @@ export default {
   }
 };
 </script>
+
+<style>
+.home {
+  width: 100%;
+}
+.cardRight {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+</style>
