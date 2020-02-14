@@ -29,10 +29,6 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0px;
-  padding: 0px;
-}
 .map {
   width: 100%;
   height: 100vh;

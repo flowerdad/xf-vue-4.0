@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <common v-if="$route.meta.keepAlive" />
-    <router-view />
+    <common class="common" v-if="$route.meta.keepAlive" />
+    <router-view class="router" />
   </div>
 </template>
 <script>
@@ -16,4 +16,17 @@ export default {
   }
 };
 </script>
-<style lang="scss"></style>
+<style>
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.router {
+  position: absolute;
+}
+.common {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+</style>

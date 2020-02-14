@@ -1,21 +1,15 @@
 <template>
   <div class="home">
-    <slider />
-    <indexNav />
-    <card1 />
+    <cardPack />
   </div>
 </template>
 
 <script>
-import slider from "@/components/slider/slider.vue";
-import indexNav from "@/components/navMenu/indexNav";
-import card1 from "@/components/card/card1";
+import cardPack from "@/components/card/cardCarrier/cardPack.vue";
 export default {
   name: "home",
   components: {
-    slider,
-    indexNav,
-    card1
+    cardPack
   },
   data() {
     return {};
