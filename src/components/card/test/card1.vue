@@ -2,9 +2,7 @@
   <div>
     <cardBlock>
       <div slot="body">
-        <div v-for="o in 4" :key="o" class="text item">
-          {{ "列表内容1 " + o }}
-        </div>
+        <themePicker />
       </div>
     </cardBlock>
   </div>
@@ -12,9 +10,11 @@
 
 <script>
 import cardBlock from "@/components/card/cardCarrier/cardBlock.vue";
+import themePicker from "@/components/settings/themePicker.vue";
 export default {
   components: {
-    cardBlock
+    cardBlock,
+    themePicker
   },
   data() {
     return {};

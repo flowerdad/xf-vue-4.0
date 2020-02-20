@@ -18,13 +18,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .home {
   width: 100%;
 }
 .cardRight {
   position: absolute;
   right: 0px;
-  top: 0px;
 }
 </style>

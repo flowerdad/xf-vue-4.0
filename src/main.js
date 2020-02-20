@@ -9,12 +9,14 @@ import api from "./request/api";
 // element
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+// import "./assets/styles/elementui-variables.scss";
+
 Vue.use(ElementUI);
 Vue.prototype.$api = api;
 Vue.config.productionTip = false;
 
 // js全局公用方法
-import jurisdiction from "@/common/js/jurisdiction";
+import jurisdiction from "@/assets/js/jurisdiction";
 Vue.prototype.jurisdiction = jurisdiction;
 // 判断是否有token，是否重组路由
 if (localStorage.getItem("token")) {
