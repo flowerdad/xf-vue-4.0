@@ -18,7 +18,8 @@ export default {
         viewMode: "3D", //开启3D视图,默认为关闭
         expandZoomRange: true,
         zooms: [3, 20],
-        center: [116.353897, 40.072519]
+        center: [116.353897, 40.072519],
+        mapStyle: "amap://styles/c29a8664d6d2a663dcab6f0c2cae3fc6" //设置地图的显示样式
       });
     }
   },
