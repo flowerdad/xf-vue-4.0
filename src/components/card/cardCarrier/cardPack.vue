@@ -39,6 +39,7 @@ export default {
   height: calc(100vh - 64px);
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
+  /* overflow: scroll; */
 }
 </style>
 

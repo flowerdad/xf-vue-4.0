@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/theme";
 .cardBlock {
   position: relative;
   margin: 10px 0px;
@@ -33,6 +34,12 @@ export default {
   font-size: 12px;
   .card-tool {
     float: right;
+  }
+}
+.card-body {
+  padding: 17px;
+  @include themify($themes) {
+    background: themed("back-level1");
   }
 }
 </style>
