@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock>
+    <cardBlock tittle="测试模块3">
       <div slot="body">
         <div v-for="o in 4" :key="o" class="text item">
           {{ "列表内容3 " + o }}

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app theme-defalut">
     <common class="common" v-if="$route.meta.keepAlive" />
     <router-view class="router" />
   </div>
@@ -28,5 +28,14 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+</style>
+
+<style lang="scss" scoped>
+@import "./assets/styles/theme";
+* {
+  @include themify($themes) {
+    color: themed("font-color");
+  }
 }
 </style>

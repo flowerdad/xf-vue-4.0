@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <cardPack type="left" />
+    <cardPack type="left" class="cardLeft" />
     <cardPack type="right" key="right" class="cardRight" />
   </div>
 </template>
@@ -22,8 +22,12 @@ export default {
 .home {
   width: 100%;
 }
+.cardLeft {
+  position: absolute;
+  left: 64px;
+}
 .cardRight {
   position: absolute;
-  right: 0px;
+  right: 64px;
 }
 </style>

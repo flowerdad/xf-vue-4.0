@@ -8,8 +8,8 @@ import api from "./request/api";
 // Vue.use(vueRouter);
 // element
 import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-// import "./assets/styles/elementui-variables.scss";
+// import "element-ui/lib/theme-chalk/index.css";
+import "./assets/styles/elementui-variables.scss";
 
 Vue.use(ElementUI);
 Vue.prototype.$api = api;

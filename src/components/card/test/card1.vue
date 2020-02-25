@@ -1,8 +1,10 @@
 <template>
   <div>
-    <cardBlock>
+    <cardBlock tittle="测试模块1">
       <div slot="body">
         <themePicker />
+        <p class="test-p">12312312312312</p>
+        1231231
       </div>
     </cardBlock>
   </div>

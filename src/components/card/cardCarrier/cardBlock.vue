@@ -1,12 +1,12 @@
 <template>
   <div class="cardBlock">
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>卡片名称</span>
-        <p style="float: right; padding: 3px 0" type="text">操作按钮</p>
-      </div>
+    <div class="card-tittle">
+      <span>{{ tittle }}</span>
+      <span class="card-tool"><i class="el-icon-more"></i></span>
+    </div>
+    <div class="card-body">
       <slot name="body"></slot>
-    </el-card>
+    </div>
   </div>
 </template>
 
@@ -15,13 +15,24 @@ export default {
   data() {
     return {};
   },
+  props: {
+    tittle: String
+  },
   methods: {}
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cardBlock {
   position: relative;
   margin: 10px 0px;
+}
+.card-tittle {
+  padding: 17px;
+  color: rgb(236, 236, 236);
+  font-size: 12px;
+  .card-tool {
+    float: right;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock>
+    <cardBlock tittle="测试模块2">
       <div slot="body">
         <div class="block">
           <span class="demonstration">默认</span>
@@ -16,10 +16,7 @@
         </div>
         <div class="block">
           <span class="demonstration">格式化 Tooltip</span>
-          <el-slider
-            v-model="value4"
-            :format-tooltip="formatTooltip"
-          ></el-slider>
+          <el-slider v-model="value4" :format-tooltip="formatTooltip"></el-slider>
         </div>
         <div class="block">
           <span class="demonstration">禁用</span>

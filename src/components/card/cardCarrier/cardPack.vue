@@ -36,8 +36,17 @@ export default {
 .cardPack {
   /* padding: 10px 0px; */
   width: 320px;
-  height: 100vh;
+  height: calc(100vh - 64px);
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
+}
+</style>
+
+<style lang="scss" scoped>
+@import "@/assets/styles/theme";
+.cardPack {
+  @include themify($themes) {
+    background: themed("cardPack-back");
+  }
 }
 </style>
