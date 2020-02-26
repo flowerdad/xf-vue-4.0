@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app theme-defalut">
+  <div id="app" class="app theme-green">
     <common class="common" v-if="$route.meta.keepAlive" />
     <router-view class="router" />
   </div>
@@ -17,10 +17,6 @@ export default {
 };
 </script>
 <style>
-* {
-  margin: 0px;
-  padding: 0px;
-}
 .router {
   position: absolute;
 }

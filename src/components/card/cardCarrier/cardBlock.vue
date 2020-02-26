@@ -1,7 +1,7 @@
 <template>
   <div class="cardBlock">
     <div class="card-tittle">
-      <span>{{ tittle }}</span>
+      <span class="size-12">{{ tittle }}</span>
       <span class="card-tool"><i class="el-icon-more"></i></span>
     </div>
     <div class="card-body">
@@ -30,10 +30,11 @@ export default {
 }
 .card-tittle {
   padding: 17px;
-  color: rgb(236, 236, 236);
-  font-size: 12px;
   .card-tool {
     float: right;
+  }
+  @include themify($themes) {
+    color: themed("color");
   }
 }
 .card-body {

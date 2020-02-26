@@ -2,9 +2,8 @@
   <div>
     <cardBlock tittle="测试模块1">
       <div slot="body">
-        <themePicker />
-        <p class="test-p">12312312312312</p>
-        1231231
+        <p class="font-color size-12">12312312312312</p>
+        <p class="font-color size-12">12312312312312</p>
       </div>
     </cardBlock>
   </div>
@@ -12,11 +11,9 @@
 
 <script>
 import cardBlock from "@/components/card/cardCarrier/cardBlock.vue";
-import themePicker from "@/components/settings/themePicker.vue";
 export default {
   components: {
-    cardBlock,
-    themePicker
+    cardBlock
   },
   data() {
     return {};

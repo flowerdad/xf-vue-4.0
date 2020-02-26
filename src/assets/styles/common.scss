@@ -1,7 +1,38 @@
-// @import "@/assets/styles/theme";
-// .card-body {
-//   padding: 17px;
-//   @include themify($themes) {
-//     background: themed("back-level1");
-//   }
-// }
+@import "@/assets/styles/theme";
+@import "@/assets/styles/tools/tools.scss";
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+body{
+  overflow: hidden;
+}
+
+/**
+字体颜色
+*/
+
+// 字体主色系
+.font-color{
+  @include themify($themes) {
+    color: themed("color");
+  }
+}
+// 字体主色系下级别颜色
+.font-color-level1{
+  @include themify($themes) {
+    color: themed("color-level1");
+  }
+}
+
+/** 
+字体大小 12~100
+*/
+@for $i from 12 through 100
+  {
+   .size-#{$i}
+      {
+        font-size:(0px + $i);
+      }
+  }

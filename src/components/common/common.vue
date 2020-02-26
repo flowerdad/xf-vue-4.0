@@ -39,7 +39,7 @@ export default {
 }
 .toolBottom {
   position: absolute;
-  right: 0px;
+  left: 0px;
   bottom: 0px;
 }
 </style>

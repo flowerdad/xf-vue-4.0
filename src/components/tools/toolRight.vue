@@ -1,11 +1,84 @@
 <template>
-  <div class="tool-left"></div>
+  <div class="tools">
+    <div class="tool-block tool-top">
+      <ul>
+        <li v-for="(item, index) in blockTop" :key="index">
+          <span class="size-22 font-color"><i :class="item.icon"></i></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tool-block tool-bottom">
+      <ul>
+        <li v-for="(item, index) in blockBottom" :key="index">
+          <span class="size-22 font-color"><i :class="item.icon"></i></span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      blockTop: [
+        {
+          icon: "el-icon-eleme",
+          id: 1
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 1
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        }
+      ],
+      blockBottom: [
+        {
+          icon: "el-icon-eleme",
+          id: 1
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        },
+        {
+          icon: "el-icon-eleme",
+          id: 2
+        }
+      ]
+    };
   },
   methods: {}
 };
@@ -13,11 +86,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/styles/theme";
-.tool-left {
+.tools {
   width: 64px;
-  height: 100vh;
+  height: calc(100vh - 64px);
   @include themify($themes) {
     background: themed("tools-back");
   }
+}
+
+.tool-bottom {
+  bottom: 0px;
 }
 </style>

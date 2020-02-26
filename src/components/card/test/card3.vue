@@ -2,7 +2,7 @@
   <div>
     <cardBlock tittle="测试模块3">
       <div slot="body">
-        <div v-for="o in 4" :key="o" class="text item">
+        <div v-for="o in 4" :key="o" class="font-color size-12">
           {{ "列表内容3 " + o }}
         </div>
       </div>

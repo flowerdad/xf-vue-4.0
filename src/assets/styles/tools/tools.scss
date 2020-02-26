@@ -1,0 +1,16 @@
+.tool-block {
+  position: absolute;
+  ul{
+    width: 100%;
+    li {
+      height: 64px;
+      width: 64px;
+      text-align: center;
+      display: table;
+      span {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+}
