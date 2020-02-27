@@ -7,9 +7,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    username: window.localStorage.getItem("username"),
     token: window.localStorage.getItem("token"),
     modules: window.localStorage.getItem("modules"),
+    // 主题
+    theme: window.localStorage.getItem("modules"),
     isLogin: false,
     menuList: []
   },
@@ -24,6 +25,10 @@ const store = new Vuex.Store({
     LOGIN_OUT(state) {
       state.isLogin = false;
       localStorage.removeItem("token");
+    },
+    theme(state, theme) {
+      state.theme = theme;
+      localStorage.theme = theme;
     }
   },
   actions: {

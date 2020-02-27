@@ -1,18 +1,35 @@
 <template>
-  <div id="app" class="app theme-green">
+  <div id="app" class="app" :class="'theme-' + themeType">
     <common class="common" v-if="$route.meta.keepAlive" />
     <router-view class="router" />
   </div>
 </template>
 <script>
 import common from "@/components/common/common.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "home",
   components: {
     common
   },
   data() {
-    return {};
+    return {
+      themeType: localStorage.theme ? localStorage.theme : "defalut"
+    };
+  },
+  methods() {
+    console.log();
+  },
+  computed: {
+    ...mapGetters(["theme"]),
+    theme() {
+      return this.$store.state.theme;
+    }
+  },
+  watch: {
+    theme() {
+      this.themeType = this.theme;
+    }
   }
 };
 </script>

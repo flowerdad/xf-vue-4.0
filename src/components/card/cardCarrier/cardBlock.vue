@@ -26,7 +26,7 @@ export default {
 @import "@/assets/styles/theme";
 .cardBlock {
   position: relative;
-  margin: 10px 0px;
+  // margin: 10px 0px;
 }
 .card-tittle {
   padding: 17px;

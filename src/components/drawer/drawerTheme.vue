@@ -16,7 +16,7 @@ export default {
       styles: [
         {
           class: "style-default",
-          type: "default"
+          type: "defalut"
         },
         {
           class: "style-red",
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     styleSwitch(type) {
-      alert(type);
+      this.$store.commit("theme", type);
     }
   }
 };
