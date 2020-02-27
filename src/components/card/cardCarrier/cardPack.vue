@@ -25,10 +25,7 @@ export default {
   props: {
     type: String
   },
-  methods: {},
-  mounted() {
-    console.log(this.jurisdiction.cardIsDisplayed(this.type, "card1"));
-  }
+  methods: {}
 };
 </script>
 

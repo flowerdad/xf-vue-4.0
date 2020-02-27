@@ -8,7 +8,6 @@
 import common from "@/components/common/common.vue";
 import { mapGetters } from "vuex";
 export default {
-  name: "home",
   components: {
     common
   },

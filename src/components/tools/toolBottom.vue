@@ -2,9 +2,11 @@
   <div class="tools">
     <div class="tool-nav">
       <ul>
-        <li v-for="(item, index) in nav" :key="index">
-          <span class="size-22 font-color"><i :class="item.icon"></i></span>
-        </li>
+        <template v-for="(item, index) in nav">
+          <li :key="index" v-if="item.hidden" @click="toPath(item)">
+            <span class="size-22 font-color"><i :class="item.icon"></i></span>
+          </li>
+        </template>
       </ul>
     </div>
   </div>
@@ -14,43 +16,17 @@
 export default {
   data() {
     return {
-      nav: [
-        {
-          icon: "el-icon-eleme",
-          id: 1
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        }
-      ]
+      nav: this.$store.state.menuList
     };
   },
-  methods: {}
+  methods: {
+    toPath(item) {
+      this.$router.push(item.path);
+    }
+  },
+  mounted() {
+    console.log(this.nav);
+  }
 };
 </script>
 

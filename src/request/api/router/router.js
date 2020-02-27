@@ -29,7 +29,9 @@ const router = {
           name: datas.name,
           component: () => import("../../../views/" + datas.component + ".vue"),
           children: [],
-          hidden: datas.hidden
+          hidden: datas.hidden,
+          icon: datas.icon,
+          meta: datas.meta
         });
         if (datas.children && datas.children.length > 0) {
           let childArr = init(datas.children, []);

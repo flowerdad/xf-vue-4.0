@@ -30,14 +30,6 @@ const routes = [
     meta: {
       keepAlive: false
     }
-  },
-  {
-    path: "/home",
-    name: "home",
-    component: () => import("../views/home/Home.vue"),
-    meta: {
-      keepAlive: true
-    }
   }
 ];
 
