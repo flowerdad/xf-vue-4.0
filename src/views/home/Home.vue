@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="view-body">
     <cardPack type="left" class="cardLeft" />
     <cardPack type="right" key="right" class="cardRight" />
   </div>
@@ -17,17 +17,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.home {
-  width: 100%;
-}
-.cardLeft {
-  position: absolute;
-  left: 64px;
-}
-.cardRight {
-  position: absolute;
-  right: 64px;
-}
-</style>
