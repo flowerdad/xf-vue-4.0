@@ -1,19 +1,13 @@
 <template>
-  <div class="view-body">
-    <cardPack type="left" class="cardLeft" />
-    <cardPack type="right" key="right" class="cardRight" />
-  </div>
+  <cardCommon />
 </template>
 
 <script>
-import cardPack from "@/components/card/cardCarrier/cardPack.vue";
+import cardCommon from "@/components/common/cardCommon.vue";
 export default {
   name: "home",
   components: {
-    cardPack
-  },
-  data() {
-    return {};
+    cardCommon
   }
 };
 </script>

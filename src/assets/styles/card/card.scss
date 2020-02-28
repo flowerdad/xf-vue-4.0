@@ -4,8 +4,16 @@
 .cardLeft {
   position: absolute;
   left: 64px;
+  transition: all 0.5s;
 }
 .cardRight {
   position: absolute;
   right: 64px;
+  transition: all 0.5s;
+}
+.cardLeftZoom {
+  left: -320px;
+}
+.cardRightZoom {
+  right: -320px;
 }

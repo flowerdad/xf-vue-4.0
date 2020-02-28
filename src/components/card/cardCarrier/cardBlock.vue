@@ -21,7 +21,6 @@ export default {
   methods: {}
 };
 </script>
-
 <style lang="scss" scoped>
 @import "@/assets/styles/theme";
 .cardBlock {

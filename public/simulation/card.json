@@ -40,5 +40,21 @@
         "card4"
       ]
     }
+  ],
+  "/test3": [
+    {
+      "left": [
+        "card3",
+        "card2",
+        "card1"
+      ]
+    },
+    {
+      "right": [
+        "card4",
+        "card2",
+        "card3"
+      ]
+    }
   ]
 }

@@ -20,9 +20,6 @@
         </template>
       </ul>
     </div>
-    <!-- <el-drawer title="我是标题" :visible.sync="theme" :with-header="false">
-      <span>我来啦!</span>
-    </el-drawer> -->
     <drawerTheme :show.sync="theme" />
   </div>
 </template>

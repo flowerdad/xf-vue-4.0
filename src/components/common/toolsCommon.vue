@@ -4,24 +4,34 @@
     <toolLeft class="toolLeft" />
     <toolRight class="toolRight" />
     <toolBottom class="toolBottom" />
+    <toolMap class="toolMap" :class="cardPackZoom ? 'toolMapZoom' : ''" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import mainMap from "@/components/map/map";
 import toolLeft from "@/components/tools/toolLeft";
 import toolRight from "@/components/tools/toolRight";
 import toolBottom from "@/components/tools/toolBottom";
+import toolMap from "@/components/tools/toolMap";
 export default {
   name: "home",
   components: {
     mainMap,
     toolLeft,
     toolRight,
-    toolBottom
+    toolBottom,
+    toolMap
   },
   data() {
     return {};
+  },
+  computed: {
+    ...mapGetters(["cardPackZoom"]),
+    cardPackZoom() {
+      return this.$store.state.cardPackZoom;
+    }
   }
 };
 </script>
@@ -41,5 +51,14 @@ export default {
   position: absolute;
   left: 0px;
   bottom: 0px;
+}
+.toolMap {
+  position: absolute;
+  right: 416px;
+  bottom: 80px;
+  transition: all 0.5s;
+}
+.toolMapZoom {
+  right: 96px;
 }
 </style>

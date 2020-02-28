@@ -11,6 +11,8 @@ const store = new Vuex.Store({
     modules: window.localStorage.getItem("modules"),
     // 主题
     theme: window.localStorage.getItem("modules"),
+    // cardPack显示隐藏
+    cardPackZoom: false,
     isLogin: false,
     menuList: []
   },
@@ -29,6 +31,9 @@ const store = new Vuex.Store({
     theme(state, theme) {
       state.theme = theme;
       localStorage.theme = theme;
+    },
+    cardPackZoom(state, cardPackZoom) {
+      state.cardPackZoom = cardPackZoom;
     }
   },
   actions: {

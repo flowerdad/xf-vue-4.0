@@ -1,15 +1,15 @@
 <template>
   <div id="app" class="app" :class="'theme-' + themeType">
-    <common class="common" v-if="$route.meta.keepAlive" />
+    <toolsCommon class="toolsCommon" v-if="$route.meta.keepAlive" />
     <router-view class="router" />
   </div>
 </template>
 <script>
-import common from "@/components/common/common.vue";
+import toolsCommon from "@/components/common/toolsCommon.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    common
+    toolsCommon
   },
   data() {
     return {
@@ -36,7 +36,7 @@ export default {
 .router {
   position: absolute;
 }
-.common {
+.toolsCommon {
   position: absolute;
   width: 100%;
   height: 100%;

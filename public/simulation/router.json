@@ -33,6 +33,16 @@
   ],
   "role2": [
     {
+      "path": "/home",
+      "name": "home",
+      "component": "home/Home",
+      "hidden": true,
+      "icon": "el-icon-eleme",
+      "meta": {
+        "keepAlive": true
+      }
+    },
+    {
       "path": "/test2",
       "name": "test2",
       "component": "test/test2",
@@ -54,6 +64,16 @@
     }
   ],
   "role3": [
+    {
+      "path": "/home",
+      "name": "home",
+      "component": "home/Home",
+      "hidden": true,
+      "icon": "el-icon-eleme",
+      "meta": {
+        "keepAlive": true
+      }
+    },
     {
       "path": "/test1",
       "name": "test1",
