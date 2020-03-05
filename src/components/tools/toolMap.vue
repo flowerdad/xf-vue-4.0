@@ -56,6 +56,7 @@ export default {
 
 .tools {
   width: 16px;
+  transition: all 0.5s;
 }
 
 .tool-map {

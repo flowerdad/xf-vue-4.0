@@ -36,6 +36,7 @@ export default {
   width: 100%;
   height: 64px;
   text-align: center;
+  transition: all 0.5s;
   @include themify($themes) {
     background: themed("tools-back");
   }

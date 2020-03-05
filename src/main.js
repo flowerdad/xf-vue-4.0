@@ -18,6 +18,9 @@ Vue.config.productionTip = false;
 // js全局公用方法
 import jurisdiction from "@/assets/js/jurisdiction";
 Vue.prototype.jurisdiction = jurisdiction;
+import vMap from "@/assets/js/vMap";
+Vue.prototype.vMap = vMap;
+
 // 判断是否有token，是否重组路由
 if (localStorage.getItem("token")) {
   store.commit("LOGIN_IN", localStorage.getItem("token"));

@@ -88,6 +88,7 @@ export default {
 .tools {
   width: 64px;
   height: calc(100vh - 64px);
+  transition: all 0.5s;
   @include themify($themes) {
     background: themed("tools-back");
   }

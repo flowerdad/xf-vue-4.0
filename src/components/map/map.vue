@@ -5,9 +5,14 @@
 <script>
 import AMap from "AMap";
 export default {
+  data() {
+    return {
+      map: Object
+    };
+  },
   methods: {
     mapInit() {
-      new AMap.Map("map", {
+      this.map = new AMap.Map("map", {
         resizeEnable: true,
         rotateEnable: false,
         pitchEnable: false,
@@ -25,6 +30,8 @@ export default {
   },
   mounted() {
     this.mapInit();
+    // console.log(vMap);
+    this.map.add(this.vMap.addMarker(116.353897, 40.072519));
   }
 };
 </script>
