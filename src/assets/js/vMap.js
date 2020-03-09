@@ -1,8 +1,11 @@
 // import router from "../../router";
 import AMap from "AMap";
+var icon = "el-icon-star-on";
 var content =
   '<div class="custom-content-marker">' +
-  '   <i class="el-icon-star-on"></i>' +
+  '   <i class="' +
+  icon +
+  '"></i>' +
   "</div>";
 const vMap = {
   addMarker(x, y) {

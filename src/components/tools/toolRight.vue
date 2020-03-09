@@ -50,19 +50,19 @@ export default {
         {
           icon: "el-icon-eleme",
           id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
         }
+        // {
+        //   icon: "el-icon-eleme",
+        //   id: 2
+        // },
+        // {
+        //   icon: "el-icon-eleme",
+        //   id: 2
+        // },
+        // {
+        //   icon: "el-icon-eleme",
+        //   id: 2
+        // }
       ],
       blockBottom: [
         {
