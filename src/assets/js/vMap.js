@@ -1,18 +1,20 @@
 // import router from "../../router";
 import AMap from "AMap";
-var icon = "el-icon-star-on";
-var content =
-  '<div class="custom-content-marker">' +
-  '   <i class="' +
-  icon +
-  '"></i>' +
-  "</div>";
+// var icon = "icon-shuidi-";
+var con = `
+  <div class="custom-content-marker">
+    <i class="iconfont map-marker-shuidi font-color-level1 icon-shuidi-">
+      <i class="el-icon-user-solid"></i>
+    </i>
+  </div>
+  `;
 const vMap = {
   addMarker(x, y) {
     var marker = new AMap.Marker({
-      position: new AMap.LngLat(x, y), // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
-      title: "北京",
-      content: content
+      position: new AMap.LngLat(x, y),
+      content: con,
+      anchor: "bottom-center",
+      offset: new AMap.Pixel(0, 0)
     });
     return marker;
   }

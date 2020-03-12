@@ -19,8 +19,8 @@ export default {
         showLabel: false,
         zoom: 18,
         pitch: 65,
-        rotation: 45,
-        viewMode: "3D", //开启3D视图,默认为关闭
+        // rotation: 45,
+        // viewMode: "3D", //开启3D视图,默认为关闭
         expandZoomRange: true,
         zooms: [3, 20],
         center: [116.353897, 40.072519],
