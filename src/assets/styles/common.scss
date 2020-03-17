@@ -13,6 +13,17 @@ body{
 }
 
 /**
+背景颜色
+*/
+
+// 背景主色系
+.back-color{
+  @include themify($themes) {
+    color: themed("back");
+  }
+}
+
+/**
 字体颜色
 */
 

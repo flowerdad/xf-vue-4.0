@@ -19,8 +19,8 @@ export default {
         showLabel: false,
         zoom: 18,
         pitch: 65,
-        // rotation: 45,
-        // viewMode: "3D", //开启3D视图,默认为关闭
+        rotation: 45,
+        viewMode: "3D", //开启3D视图,默认为关闭
         expandZoomRange: true,
         zooms: [3, 20],
         center: [116.353897, 40.072519],
@@ -31,7 +31,12 @@ export default {
   mounted() {
     this.mapInit();
     // console.log(vMap);
-    this.map.add(this.vMap.addMarker(116.353897, 40.072519));
+    var obj = {
+      x: 116.353897,
+      y: 40.072519,
+      icon: "el-icon-user-solid"
+    };
+    this.map.add(this.vMap.addMarker(obj));
   }
 };
 </script>
