@@ -20,3 +20,14 @@ html, body, #map {
   top: 2px;
   font-size: 16px;
 }
+
+
+// tooptip类
+.markerTooltips{
+  // display: none;
+  position: absolute;
+}
+
+.map-marker-shuidi:hover +.markerTooltips{
+  display: inline-block;
+}

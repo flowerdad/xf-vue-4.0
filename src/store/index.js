@@ -14,7 +14,9 @@ const store = new Vuex.Store({
     // cardPack显示隐藏
     cardPackZoom: false,
     isLogin: false,
-    menuList: []
+    menuList: [],
+    map: Object,
+    markers: {}
   },
   mutations: {
     LOGIN_IN(state, token) {
@@ -34,6 +36,12 @@ const store = new Vuex.Store({
     },
     cardPackZoom(state, cardPackZoom) {
       state.cardPackZoom = cardPackZoom;
+    },
+    map(state, map) {
+      state.map = map;
+    },
+    markers(state, markers) {
+      state.markers = markers;
     }
   },
   actions: {
@@ -50,6 +58,13 @@ const store = new Vuex.Store({
       state.menuList = arr.concat(noeFound);
       console.log(state.menuList);
       routerApp.addRoutes(state.menuList);
+    },
+    async addMarkers({ state }, val) {
+      for (let key in val) {
+        console.log(key);
+        state.markers[key] = val[key];
+      }
+      console.log(state.markers);
     }
   }
 });

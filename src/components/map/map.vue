@@ -3,40 +3,16 @@
 </template>
 
 <script>
-import AMap from "AMap";
 export default {
   data() {
     return {
       map: Object
     };
   },
-  methods: {
-    mapInit() {
-      this.map = new AMap.Map("map", {
-        resizeEnable: true,
-        rotateEnable: false,
-        pitchEnable: false,
-        showLabel: false,
-        zoom: 18,
-        pitch: 65,
-        rotation: 45,
-        viewMode: "3D", //开启3D视图,默认为关闭
-        expandZoomRange: true,
-        zooms: [3, 20],
-        center: [116.353897, 40.072519],
-        mapStyle: "amap://styles/c29a8664d6d2a663dcab6f0c2cae3fc6" //设置地图的显示样式
-      });
-    }
-  },
+  methods: {},
   mounted() {
-    this.mapInit();
-    // console.log(vMap);
-    var obj = {
-      x: 116.353897,
-      y: 40.072519,
-      icon: "el-icon-user-solid"
-    };
-    this.map.add(this.vMap.addMarker(obj));
+    this.map = this.vMap.initMap();
+    this.$store.commit("map", this.map);
   }
 };
 </script>

@@ -14,6 +14,7 @@
 
 <script>
 import cardBlock from "@/components/card/cardCarrier/cardBlock.vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     cardBlock
@@ -21,12 +22,29 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters(["map"]),
+    map() {
+      return this.$store.state.map;
+    }
+  },
   methods: {
+    ...mapActions(["addMarkers"]),
     addMarker() {
-      alert(1);
+      var obj = {
+        id: 1,
+        x: 116.353897,
+        y: 40.072519,
+        icon: "el-icon-user-solid"
+      };
+      let marker = this.vMap.addMarker(obj);
+      let mar = {};
+      mar[obj.id] = marker;
+      this.addMarkers(mar);
+      this.map.add(marker);
     },
     delMarker() {
-      alert(2);
+      // this.map.remove(this.marker);
     }
   }
 };
