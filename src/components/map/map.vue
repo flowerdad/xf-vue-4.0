@@ -11,7 +11,7 @@ export default {
   },
   methods: {},
   mounted() {
-    this.map = this.vMap.initMap();
+    this.map = this.vMap.map.initMap();
     this.$store.commit("map", this.map);
   }
 };

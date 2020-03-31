@@ -1,6 +1,6 @@
 let markerType = {
-  default: '"default"',
+  default: "default",
   fire: "fire"
 };
 
-export default markerType;
+export default { markerType };
