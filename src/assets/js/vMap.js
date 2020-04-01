@@ -5,11 +5,11 @@ import store from "@/store/index.js";
 /**
  * markerType 用于区分maker点类型，以便实现增删改查操作
  * default：默认类型
- * fire：策略圈
+ * device:设备
  */
 let markerType = {
   default: "default",
-  fire: "fire"
+  device: "device"
 };
 
 // 公共参数
@@ -35,6 +35,14 @@ function initMarkerIcon(icon) {
   return con;
 }
 
+// 判断是否是函数
+// function isFunction(obj) {
+//   if (Object.prototype.toString.call(obj) === "[object Function]") {
+//     return true;
+//   }
+//   return false;
+// }
+
 // 全局map函数
 let map = {
   // 初始化map地图
@@ -57,7 +65,7 @@ let map = {
   },
 
   /**
-   * addMarker
+   * addMarker 添加marker点
    * @param {*} obj
    * obj:参数集合
    * 必传字段如下：
@@ -92,12 +100,11 @@ let map = {
     });
 
     // 添加前先过滤掉重复点，若有重复点则直接删除。
-    this.deleteMarker(markerType.default, obj.id);
+    this.deleteMarker(obj.type, obj.id);
 
-    // console.log(this.deleteMarker);
     // 当marker生成完毕后，添加进vuex供全局增删改查。
     let thisMarker = {};
-    thisMarker[markerType.default + "_" + obj.id] = marker;
+    thisMarker[obj.type + "_" + obj.id] = marker;
     store.dispatch("addMarkers", thisMarker);
 
     //将marker添加至map。
@@ -106,14 +113,15 @@ let map = {
   },
 
   /**
-   * deleteMarker
-   * @param {*} type 删除的点类型
-   * @param {*} id 删除的点id
+   * deleteMarker 删除单个marker点
+   * @param {*} type 点类型
+   * @param {*} id 点id
    */
   deleteMarker(type, id) {
-    // 删除地图上的marker
+    // vuex里拿到marker
     let marker = store.state.markers[type + "_" + id];
     if (marker) {
+      // 删除地图上的marker
       store.state.map.remove(marker);
       // 删除vuex里的marker点记录
       delete store.state.markers[type + "_" + id];
@@ -122,17 +130,151 @@ let map = {
   },
 
   /**
-   * selectMarker
+   * deleteMarkerBytype 删除一个类型的全部marker点
+   * @param {*} type 删除的点类型
+   */
+  deleteMarkerBytype(type) {
+    for (let key in store.state.markers) {
+      var markerKey = key.split("_");
+      console.log(markerKey);
+      if (type == markerKey[0]) {
+        this.deleteMarker(markerKey[0], markerKey[1]);
+      }
+    }
+  },
+
+  /**
+   * deleteMarkerByAll 删除全部marker点
+   */
+  deleteMarkerByAll() {
+    for (let key in store.state.markers) {
+      var markerKey = key.split("_");
+      this.deleteMarker(markerKey[0], markerKey[1]);
+    }
+  },
+
+  /**
+   * hideMarker 隐藏marker
+   * @param {*} type 类型
+   * @param {*} id id
+   */
+  hideMarker(type, id) {
+    // vuex里拿到marker
+    let marker = store.state.markers[type + "_" + id];
+    if (marker) {
+      marker.hide();
+    }
+  },
+
+  /**
+   * showMarker 隐藏marker
+   * @param {*} type 类型
+   * @param {*} id id
+   */
+  showMarker(type, id) {
+    // vuex里拿到marker
+    let marker = store.state.markers[type + "_" + id];
+    if (marker) {
+      marker.show();
+    }
+  },
+
+  /**
+   * hideMarkerByType 隐藏marker同类
+   * @param {*} type 类型
+   */
+  hideMarkerByType(type) {
+    for (let key in store.state.markers) {
+      var markerKey = key.split("_");
+      console.log(markerKey);
+      if (type == markerKey[0]) {
+        store.state.markers[key].hide();
+      }
+    }
+  },
+
+  /**
+   * showMarkerByType 显示marker同类
+   * @param {*} type 类型
+   */
+  showMarkerByType(type) {
+    for (let key in store.state.markers) {
+      var markerKey = key.split("_");
+      console.log(markerKey);
+      if (type == markerKey[0]) {
+        store.state.markers[key].show();
+      }
+    }
+  },
+
+  /**
+   * selectMarker 定位单个marker点
    * @param {*} type 查找的类型
    * @param {*} id 查找的id
+   * @param {*} obj ={ 若不传obj对象，则默认状态。若自定义，则每一个属性都要赋值，否则会报错
+   *         animation: 是否开启动画
+   *         position: map是否跟随
+   *        }
    */
-  selectMarker(type, id) {
-    // 删除地图上的marker
+  selectMarker(type, id, obj = { animation: true, position: true }) {
+    // vuex里拿到marker
     let marker = store.state.markers[type + "_" + id];
-    console.log(marker);
     if (marker) {
-      marker.setAnimation("AMAP_ANIMATION_BOUNCE");
+      // 是否开启动画
+      if (obj.animation) marker.setAnimation("AMAP_ANIMATION_BOUNCE");
+      let pos = marker.getPosition();
+      // map是否跟随
+      if (obj.position) store.state.map.panTo([pos.lng, pos.lat]);
     }
+  },
+
+  /**
+   * selectMarkerOtherCancel 定位当前marker点，其他marker取消定位
+   * @param {*} type 查找的类型
+   * @param {*} id 查找的id
+   * @param {*} obj ={ 若不传obj对象，则默认状态。若自定义，则每一个属性都要赋值，否则会报错
+   *         animation: 是否开启动画
+   *         position: map是否跟随
+   *        }
+   */
+  selectMarkerOtherCancel(type, id, obj = { animation: true, position: true }) {
+    for (let key in store.state.markers) {
+      store.state.markers[key].setAnimation("AMAP_ANIMATION_NONE");
+    }
+    this.selectMarker(type, id, obj);
+  },
+
+  /**
+   * createUnitArea编辑单位区块
+   * @param {*} position
+   */
+  createUnitArea(position) {
+    let lng = position[0],
+      lat = position[1],
+      base = 0.0009,
+      newPostion = [
+        [
+          [lng - base, lat + base],
+          [lng - base, lat - base],
+          [lng + base, lat - base],
+          [lng + base, lat + base]
+        ]
+      ],
+      polygon = new AMap.Polygon({
+        path: newPostion,
+        strokeColor: "#000000",
+        strokeWeight: 2,
+        strokeOpacity: 0.2,
+        fillOpacity: 0.4,
+        fillColor: "#000000",
+        zIndex: 50
+      });
+    store.state.map.add(polygon);
+    // 缩放地图到合适的视野级别
+    store.state.map.setFitView([polygon]);
+
+    var polyEditor = new AMap.PolyEditor(store.state.map, polygon);
+    return polyEditor;
   }
 };
 
