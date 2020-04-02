@@ -12,6 +12,14 @@ let markerType = {
   device: "device"
 };
 
+let mapConfig = {
+  zoom: 18,
+  pitch: 65,
+  rotation: 45,
+  zooms: [3, 20],
+  center: [116.353897, 40.072519]
+};
+
 // 公共参数
 let markerBackColor = "font-color-level1";
 let markerIconColor = "back-color";
@@ -49,18 +57,18 @@ let map = {
   initMap() {
     var map = new AMap.Map("map", {
       resizeEnable: true,
-      rotateEnable: false,
-      pitchEnable: false,
       showLabel: false,
-      zoom: 18,
-      pitch: 65,
-      rotation: 45,
+      zoom: mapConfig.zoom,
+      pitch: mapConfig.pitch,
+      rotation: mapConfig.rotation,
       viewMode: "3D", //开启3D视图,默认为关闭
       expandZoomRange: true,
-      zooms: [3, 20],
-      center: [116.353897, 40.072519],
+      zooms: mapConfig.zooms,
+      center: mapConfig.center,
       mapStyle: "amap://styles/c29a8664d6d2a663dcab6f0c2cae3fc6" //设置地图的显示样式
     });
+    // 将地图对象存入vuex
+    store.commit("map", map);
     return map;
   },
 
@@ -245,20 +253,21 @@ let map = {
   },
 
   /**
-   * createUnitArea编辑单位区块
+   * polyEditor 编辑单位函数
    * @param {*} position
    */
-  createUnitArea(position) {
-    let lng = position[0],
-      lat = position[1],
+  polyEditor(obj) {
+    store.state.map.setRotation(0);
+    store.state.map.setPitch(0);
+    let position = obj.position.split(","),
+      lng = parseFloat(position[0]),
+      lat = parseFloat(position[1]),
       base = 0.0009,
       newPostion = [
-        [
-          [lng - base, lat + base],
-          [lng - base, lat - base],
-          [lng + base, lat - base],
-          [lng + base, lat + base]
-        ]
+        [lng - base, lat + base],
+        [lng - base, lat - base],
+        [lng + base, lat - base],
+        [lng + base, lat + base]
       ],
       polygon = new AMap.Polygon({
         path: newPostion,
@@ -269,16 +278,43 @@ let map = {
         fillColor: "#000000",
         zIndex: 50
       });
+    console.log(position);
     store.state.map.add(polygon);
     // 缩放地图到合适的视野级别
     store.state.map.setFitView([polygon]);
 
     var polyEditor = new AMap.PolyEditor(store.state.map, polygon);
+    polyEditor.open();
     return polyEditor;
+  },
+
+  createUnitArea(obj) {
+    let buildingLayer = new AMap.Buildings({
+      zIndex: 130,
+      merge: false,
+      sort: false,
+      zooms: [0, 20]
+    });
+    console.log(obj);
+    let options = {
+      hideWithoutStyle: false,
+      areas: [
+        {
+          path: obj.path,
+          color1: obj.color1,
+          color2: obj.color2
+        }
+      ]
+    };
+    console.log(options);
+    //此配色优先级高于自定义mapStyle
+    buildingLayer.setStyle(options);
+    store.state.map.setLayers([new AMap.TileLayer(), buildingLayer]);
   }
 };
 
 export default {
   markerType,
+  mapConfig,
   map
 };

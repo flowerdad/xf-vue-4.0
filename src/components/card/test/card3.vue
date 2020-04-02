@@ -2,13 +2,11 @@
   <div>
     <cardBlock tittle="测试模块3">
       <div slot="body">
-        <el-button type="primary" @click="addMarker(vMap.markerType.default)" size="mini">marker类型1</el-button>
+        <p class="font-color size-12">基础marker点</p>
+        <el-button style="margin-top:10px" type="primary" @click="addMarker(vMap.markerType.default)" size="mini">marker类型1</el-button>
         <el-button type="primary" @click="addMarker(vMap.markerType.device)" size="mini">marker类型2</el-button>
         <el-button type="danger" @click="delMarkerByAll" size="mini">删除</el-button>
-        <el-divider></el-divider>
-        <el-button type="primary" @click="createUnitArea([116.353897, 40.072519])" size="mini">单位编辑开始</el-button>
-        <el-button type="primary" @click="endUnitArea" size="mini">单位编辑结束</el-button>
-        <el-divider></el-divider>
+
         <div class="font-color size-12">
           <p v-for="marker in markerList" :key="marker.id" class="markerItem">
             marker{{ marker.id }}
@@ -22,6 +20,24 @@
             <el-tag size="mini" class="tag" @click="seltMarkerOtherCancel(marker.type, marker.id)">定位当前其他取消</el-tag>
           </p>
         </div>
+        <el-divider></el-divider>
+        <p class="font-color size-12">单位编辑</p>
+        <el-row :gutter="5" style="margin:10px 0px">
+          <el-col :span="9">
+            <div class="grid-content bg-purple"></div>
+            <el-input v-model="unitAreaObj.position" placeholder="坐标:[lng,lat]" size="mini"></el-input>
+          </el-col>
+          <el-col :span="3">
+            <el-color-picker v-model="unitAreaObj.areaColor" size="mini"></el-color-picker>
+          </el-col>
+          <el-col :span="6">
+            <el-button type="primary" @click="polyEditor(unitAreaObj)" size="mini">绘制</el-button>
+          </el-col>
+          <el-col :span="6">
+            <el-button type="primary" @click="endUnitArea()" size="mini">结束</el-button>
+          </el-col>
+        </el-row>
+        <el-divider></el-divider>
       </div>
     </cardBlock>
   </div>
@@ -37,7 +53,12 @@ export default {
     return {
       markerList: [],
       markerIndex: 1,
-      unitArea: Object
+      unitArea: Object,
+      unitAreaObj: {
+        position: "116.353897,40.072519",
+        areaColor: "#409EFF"
+      },
+      unitAreaPath: []
     };
   },
   methods: {
@@ -87,15 +108,30 @@ export default {
     seltMarkerOtherCancel(type, id) {
       this.vMap.map.selectMarkerOtherCancel(type, id);
     },
-    createUnitArea(position) {
-      this.unitArea = this.vMap.map.createUnitArea(position);
+    polyEditor(obj) {
+      this.unitArea = this.vMap.map.polyEditor(obj);
       this.unitArea.on("end", event => {
-        console.log(event);
+        event.target.w.path.forEach(element => {
+          this.unitAreaPath.push([element.lng, element.lat]);
+        });
+        let colorScale = this.vTools.tools.gradientColor(
+          obj.areaColor,
+          "#ffffff",
+          10,
+          "16"
+        );
+        let createObj = {
+          path: this.unitAreaPath,
+          color1: obj.areaColor,
+          color2: colorScale[5]
+        };
+        this.vMap.map.createUnitArea(createObj);
       });
-      this.unitArea.open();
     },
     endUnitArea() {
       this.unitArea.close();
+      this.$store.state.map.setRotation(this.vMap.mapConfig.rotation);
+      this.$store.state.map.setPitch(this.vMap.mapConfig.pitch);
     }
   }
 };

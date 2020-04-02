@@ -22,6 +22,8 @@ import vMap from "@/assets/js/vMap";
 Vue.prototype.vMap = vMap;
 import config from "@/assets/js/config";
 Vue.prototype.config = config;
+import vTools from "@/assets/js/tools";
+Vue.prototype.vTools = vTools;
 
 // 判断是否有token，是否重组路由
 if (localStorage.getItem("token")) {

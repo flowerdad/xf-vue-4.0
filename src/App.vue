@@ -16,9 +16,6 @@ export default {
       themeType: localStorage.theme ? localStorage.theme : "defalut"
     };
   },
-  methods() {
-    console.log();
-  },
   computed: {
     ...mapGetters(["theme"]),
     theme() {
