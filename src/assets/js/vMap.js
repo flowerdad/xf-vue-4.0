@@ -43,6 +43,12 @@ function initMarkerIcon(icon) {
   return con;
 }
 
+// 将颜色转换为createUnitArea Buildings支持的颜色
+function createUnitAreaInitColor(str) {
+  let newStr = str.slice(0, 1) + "E5" + str.slice(1);
+  return newStr.split("#")[1];
+}
+
 // 判断是否是函数
 // function isFunction(obj) {
 //   if (Object.prototype.toString.call(obj) === "[object Function]") {
@@ -254,7 +260,11 @@ let map = {
 
   /**
    * polyEditor 编辑单位函数
-   * @param {*} position
+   * @param {*} position 初始坐标
+   *
+   * @returns [polygon, polyEditor]
+   * polygon:矢量图
+   * polyEditor：编辑工具obj
    */
   polyEditor(obj) {
     store.state.map.setRotation(0);
@@ -278,14 +288,14 @@ let map = {
         fillColor: "#000000",
         zIndex: 50
       });
-    console.log(position);
     store.state.map.add(polygon);
     // 缩放地图到合适的视野级别
     store.state.map.setFitView([polygon]);
-
+    // 创建多边形编辑工具，并启动编辑。
     var polyEditor = new AMap.PolyEditor(store.state.map, polygon);
     polyEditor.open();
-    return polyEditor;
+    // 返回矢量图形，及编辑工具obj。
+    return [polygon, polyEditor];
   },
 
   createUnitArea(obj) {
@@ -295,14 +305,17 @@ let map = {
       sort: false,
       zooms: [0, 20]
     });
-    console.log(obj);
+    let newColor1 = createUnitAreaInitColor(obj.color1);
+    let newColor2 = createUnitAreaInitColor(obj.color2);
+    console.log(newColor1);
+    console.log(newColor2);
     let options = {
       hideWithoutStyle: false,
       areas: [
         {
           path: obj.path,
-          color1: obj.color1,
-          color2: obj.color2
+          color1: newColor1,
+          color2: newColor2
         }
       ]
     };

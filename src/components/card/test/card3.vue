@@ -109,7 +109,9 @@ export default {
       this.vMap.map.selectMarkerOtherCancel(type, id);
     },
     polyEditor(obj) {
-      this.unitArea = this.vMap.map.polyEditor(obj);
+      // unitArea详细信息，请看polyEditor注释。
+      let unitArea = this.vMap.map.polyEditor(obj);
+      this.unitArea = unitArea[1];
       this.unitArea.on("end", event => {
         event.target.w.path.forEach(element => {
           this.unitAreaPath.push([element.lng, element.lat]);
@@ -123,9 +125,13 @@ export default {
         let createObj = {
           path: this.unitAreaPath,
           color1: obj.areaColor,
-          color2: colorScale[5]
+          color2: colorScale[3]
         };
         this.vMap.map.createUnitArea(createObj);
+        unitArea[0].setOptions({
+          fillColor: obj.areaColor,
+          fillOpacity: 0.5
+        });
       });
     },
     endUnitArea() {
