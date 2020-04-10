@@ -47,7 +47,7 @@ function colorHex(rgb) {
     } else if (aNum.length === 3) {
       var numHex = "#";
       for (var t = 0; t < aNum.length; t += 1) {
-        numHex += (aNum[t] + aNum[t]);
+        numHex += aNum[t] + aNum[t];
       }
       return numHex;
     }
@@ -88,12 +88,29 @@ let tools = {
     var colorArr = [];
     for (var i = 0; i < step; i++) {
       //计算每一步的hex值
-      var hex = colorHex("rgb(" + parseInt((sR * i + startR)) + "," + parseInt((sG * i + startG)) + "," + parseInt((sB * i + startB)) + ")");
+      var hex = colorHex(
+        "rgb(" +
+        parseInt(sR * i + startR) +
+        "," +
+        parseInt(sG * i + startG) +
+        "," +
+        parseInt(sB * i + startB) +
+        ")"
+      );
       let color = hex;
       if (type == "16") color = colorRGBtoHex(hex);
       colorArr.push(color);
     }
     return colorArr;
+  },
+
+  /**
+   * 16进制颜色转不透明16进制颜色
+   * @param {*} str 颜色
+   */
+  color16ToOpacity16(str) {
+    let newStr = str.slice(0, 1) + "E5" + str.slice(1);
+    return newStr.split("#")[1];
   }
 };
 

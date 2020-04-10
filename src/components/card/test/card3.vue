@@ -58,7 +58,8 @@ export default {
         position: "116.353897,40.072519",
         areaColor: "#409EFF"
       },
-      unitAreaPath: []
+      unitAreaPath: [],
+      areas: []
     };
   },
   methods: {
@@ -113,21 +114,25 @@ export default {
       let unitArea = this.vMap.map.polyEditor(obj);
       this.unitArea = unitArea[1];
       this.unitArea.on("end", event => {
+        // 组装path
         event.target.w.path.forEach(element => {
           this.unitAreaPath.push([element.lng, element.lat]);
         });
+        // 组装颜色
         let colorScale = this.vTools.tools.gradientColor(
           obj.areaColor,
           "#ffffff",
           10,
           "16"
         );
-        let createObj = {
-          path: this.unitAreaPath,
-          color1: obj.areaColor,
-          color2: colorScale[3]
-        };
-        this.vMap.map.createUnitArea(createObj);
+        this.areas.push({
+          color1: this.vTools.tools.color16ToOpacity16(obj.areaColor),
+          color2: this.vTools.tools.color16ToOpacity16(colorScale[3]),
+          path: this.unitAreaPath
+        });
+        // 画区块
+        this.vMap.map.createUnitArea(this.areas);
+        // 画单位范围
         unitArea[0].setOptions({
           fillColor: obj.areaColor,
           fillOpacity: 0.5

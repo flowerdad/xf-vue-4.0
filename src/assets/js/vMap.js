@@ -43,12 +43,6 @@ function initMarkerIcon(icon) {
   return con;
 }
 
-// 将颜色转换为createUnitArea Buildings支持的颜色
-function createUnitAreaInitColor(str) {
-  let newStr = str.slice(0, 1) + "E5" + str.slice(1);
-  return newStr.split("#")[1];
-}
-
 // 判断是否是函数
 // function isFunction(obj) {
 //   if (Object.prototype.toString.call(obj) === "[object Function]") {
@@ -298,26 +292,18 @@ let map = {
     return [polygon, polyEditor];
   },
 
-  createUnitArea(obj) {
+  createUnitArea(areas) {
     let buildingLayer = new AMap.Buildings({
       zIndex: 130,
       merge: false,
       sort: false,
       zooms: [0, 20]
     });
-    let newColor1 = createUnitAreaInitColor(obj.color1);
-    let newColor2 = createUnitAreaInitColor(obj.color2);
-    console.log(newColor1);
-    console.log(newColor2);
     let options = {
+      // 是否隐藏设定区域外的楼块
       hideWithoutStyle: false,
-      areas: [
-        {
-          path: obj.path,
-          color1: newColor1,
-          color2: newColor2
-        }
-      ]
+      // 围栏
+      areas: areas
     };
     console.log(options);
     //此配色优先级高于自定义mapStyle
