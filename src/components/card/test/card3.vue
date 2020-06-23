@@ -10,14 +10,14 @@
         <div class="font-color size-12">
           <p v-for="marker in markerList" :key="marker.id" class="markerItem">
             marker{{ marker.id }}
-            <el-tag size="mini" type="danger" class="tag" @click="delMarker(marker.type, marker.id)">删除</el-tag>
+            <el-tag size="mini" type="danger" class="tag" @click="delMarker(marker.id)">删除</el-tag>
             <el-tag size="mini" type="danger" class="tag" @click="delMarkerByType(marker.type)">删除同类</el-tag>
-            <el-tag size="mini" type="warning" class="tag" @click="hideMarker(marker.type, marker.id)">隐藏</el-tag>
-            <el-tag size="mini" type="warning" class="tag" @click="showMarker(marker.type, marker.id)">显示</el-tag>
+            <el-tag size="mini" type="warning" class="tag" @click="hideMarker(marker.id)">隐藏</el-tag>
+            <el-tag size="mini" type="warning" class="tag" @click="showMarker(marker.id)">显示</el-tag>
             <el-tag size="mini" type="warning" class="tag" @click="hideMarkerByType(marker.type)">隐藏同类</el-tag>
             <el-tag size="mini" type="warning" class="tag" @click="showMarkerByType(marker.type)">显示同类</el-tag>
-            <el-tag size="mini" class="tag" @click="selMarker(marker.type, marker.id)">定位</el-tag>
-            <el-tag size="mini" class="tag" @click="seltMarkerOtherCancel(marker.type, marker.id)">定位当前其他取消</el-tag>
+            <el-tag size="mini" class="tag" @click="selMarker(marker.id)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="seltMarkerOtherCancel(marker.id)">定位当前其他取消</el-tag>
           </p>
         </div>
         <el-divider></el-divider>
@@ -156,23 +156,28 @@ export default {
       ]
     };
   },
+  computed: {
+    map() {
+      return this.$store.state.maps["main"];
+    }
+  },
   methods: {
     addMarker(type) {
       var icon = "el-icon-user-solid";
       if (type == "device") icon = "el-icon-user";
       var obj = {
         type: type,
-        id: 0 + this.markerIndex,
+        id: type + "_" + 0 + this.markerIndex,
         x: 116.353897 + this.markerIndex / 1000,
         y: 40.072519,
         icon: icon
       };
       this.markerList.push(obj);
       this.markerIndex++;
-      this.vMap.map.addMarker(obj);
+      this.vMap.map.addMarker(this.map, obj);
     },
-    delMarker(type, id) {
-      this.vMap.map.deleteMarker(type, id);
+    delMarker(id) {
+      this.vMap.map.deleteMarker(this.map, id);
       for (var i = 0; i < this.markerList.length; i++) {
         if (this.markerList[i].id == id) {
           this.markerList.splice(i, 1);
@@ -180,28 +185,28 @@ export default {
       }
     },
     delMarkerByType(type) {
-      this.vMap.map.deleteMarkerBytype(type);
+      this.vMap.map.deleteMarkerBytype(this.map, type);
     },
     delMarkerByAll() {
-      this.vMap.map.deleteMarkerByAll();
+      this.vMap.map.deleteMarkerByAll(this.map);
     },
-    hideMarker(type, id) {
-      this.vMap.map.hideMarker(type, id);
+    hideMarker(id) {
+      this.vMap.map.hideMarker(this.map, id);
     },
-    showMarker(type, id) {
-      this.vMap.map.showMarker(type, id);
+    showMarker(id) {
+      this.vMap.map.showMarker(this.map, id);
     },
     hideMarkerByType(type) {
-      this.vMap.map.hideMarkerByType(type);
+      this.vMap.map.hideMarkerByType(this.map, type);
     },
     showMarkerByType(type) {
-      this.vMap.map.showMarkerByType(type);
+      this.vMap.map.showMarkerByType(this.map, type);
     },
-    selMarker(type, id) {
-      this.vMap.map.selectMarker(type, id);
+    selMarker(id) {
+      this.vMap.map.selectMarker(this.map, id);
     },
-    seltMarkerOtherCancel(type, id) {
-      this.vMap.map.selectMarkerOtherCancel(type, id);
+    seltMarkerOtherCancel(id) {
+      this.vMap.map.selectMarkerOtherCancel(this.map, id);
     },
     polyEditor(obj) {
       // unitArea详细信息，请看polyEditor注释。
@@ -270,6 +275,9 @@ export default {
       ]);
       trajectory.moveAlong(unit.paths, 200);
     }
+  },
+  mounted() {
+    console.log(this.map);
   }
 };
 </script>

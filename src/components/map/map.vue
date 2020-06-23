@@ -4,11 +4,11 @@
 
 <script>
 export default {
-  data() {
-    return {};
+  props: {
+    type: String
   },
   mounted() {
-    this.vMap.map.initMap();
+    this.vMap.map.initMap(this.type);
   }
 };
 </script>

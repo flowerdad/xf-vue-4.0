@@ -22,11 +22,14 @@ export default {
     toLogin(val) {
       this.$api.login.login().then(res => {
         if (res.status == 200) {
-          this.$store.commit("LOGIN_IN", res.data.token);
-          this.initRouter(val);
           this.$api.card.card().then(data => {
             if (data.status == 200) {
-              this.$store.commit("MODULES_IN", JSON.stringify(data.data));
+              this.initRouter(val);
+              this.$store.commit("LOGIN_IN", {
+                token: res.data.token,
+                modules: JSON.stringify(data.data),
+                role: val
+              });
               this.$router.push("/home");
             }
           });

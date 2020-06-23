@@ -26,9 +26,14 @@ import vTools from "@/assets/js/tools";
 Vue.prototype.vTools = vTools;
 
 // 判断是否有token，是否重组路由
-if (localStorage.getItem("token")) {
-  store.commit("LOGIN_IN", localStorage.getItem("token"));
-  store.dispatch("initRouter", "role1");
+if (localStorage.getItem("token") != undefined) {
+  // alert(localStorage.getItem("token"));
+  store.commit("LOGIN_IN", {
+    token: localStorage.getItem("token"),
+    modules: localStorage.getItem("modules"),
+    role: localStorage.getItem("role")
+  });
+  store.dispatch("initRouter", localStorage.getItem("role"));
 }
 
 // 路由守卫，是否登录

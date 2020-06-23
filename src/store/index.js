@@ -7,28 +7,38 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+    // token
     token: window.localStorage.getItem("token"),
+    // 全局权限控制
     modules: window.localStorage.getItem("modules"),
     // 主题
-    theme: window.localStorage.getItem("modules"),
+    theme: window.localStorage.getItem("theme"),
+    // 角色
+    role: window.localStorage.getItem("role"),
     // cardPack显示隐藏
     cardPackZoom: false,
+    // 是否是登录状态
     isLogin: false,
+    // 动态渲染的按钮
     menuList: [],
-    map: Object,
-    markers: {}
+    // 所有地图对象
+    maps: {}
   },
   mutations: {
-    LOGIN_IN(state, token) {
+    LOGIN_IN(state, login) {
       state.isLogin = true;
-      localStorage.token = token;
-    },
-    MODULES_IN(state, modules) {
-      localStorage.modules = modules;
+      state.token = login.token;
+      state.modules = login.modules;
+      state.role = login.role;
+      localStorage.token = login.token;
+      localStorage.modules = login.modules;
+      localStorage.role = login.role;
     },
     LOGIN_OUT(state) {
       state.isLogin = false;
       localStorage.removeItem("token");
+      localStorage.removeItem("modules");
+      localStorage.removeItem("role");
     },
     theme(state, theme) {
       state.theme = theme;
@@ -37,11 +47,8 @@ const store = new Vuex.Store({
     cardPackZoom(state, cardPackZoom) {
       state.cardPackZoom = cardPackZoom;
     },
-    map(state, map) {
-      state.map = map;
-    },
-    markers(state, markers) {
-      state.markers = markers;
+    maps(state, maps) {
+      state.maps = maps;
     }
   },
   actions: {
@@ -56,14 +63,13 @@ const store = new Vuex.Store({
       ];
       let arr = await api.router.getRouter(val);
       state.menuList = arr.concat(noeFound);
+      console.log(routerApp);
       routerApp.addRoutes(state.menuList);
     },
-    async addMarkers({ state }, val) {
+    async addMaps({ state }, val) {
       for (let key in val) {
-        console.log(key);
-        state.markers[key] = val[key];
+        state.maps[key] = val[key];
       }
-      console.log(state.markers);
     }
   }
 });

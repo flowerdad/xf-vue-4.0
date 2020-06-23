@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <mainMap />
+    <mainMap type="main" />
     <toolLeft class="toolLeft" />
     <toolRight class="toolRight" />
     <toolBottom class="toolBottom" />
