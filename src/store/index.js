@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 // import { getMenu } from "../api/api";
-import routerApp from "../router/index";
+import router from "../router/index";
 import api from "../request/api";
 Vue.use(Vuex);
 
@@ -39,6 +39,9 @@ const store = new Vuex.Store({
       localStorage.removeItem("token");
       localStorage.removeItem("modules");
       localStorage.removeItem("role");
+      state.menuList = [];
+      // 刷新，清空动态添加的路由
+      location.reload();
     },
     theme(state, theme) {
       state.theme = theme;
@@ -58,13 +61,14 @@ const store = new Vuex.Store({
           path: "*",
           name: "404",
           component: () => import("@/views/error/404.vue"),
-          hidden: false
+          nav: false
         }
       ];
       let arr = await api.router.getRouter(val);
       state.menuList = arr.concat(noeFound);
-      console.log(routerApp);
-      routerApp.addRoutes(state.menuList);
+      console.log(state.menuList);
+      router.addRoutes(state.menuList);
+      console.log(router);
     },
     async addMaps({ state }, val) {
       for (let key in val) {

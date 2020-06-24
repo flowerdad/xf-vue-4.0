@@ -36,20 +36,6 @@ if (localStorage.getItem("token") != undefined) {
   store.dispatch("initRouter", localStorage.getItem("role"));
 }
 
-// 路由守卫，是否登录
-// router.beforeEach((to, from, next) => {
-//   if (store.state.isLogin && store.state.token) {
-//     next();
-//   } else {
-//     // store.state.menuList = [];
-//     if (to.path != "/") {
-//       next({ path: "/" });
-//     } else {
-//       // next({ path: "/" });
-//     }
-//   }
-// });
-
 new Vue({
   router,
   store,

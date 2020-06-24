@@ -29,7 +29,7 @@ const router = {
           name: datas.name,
           component: () => import("../../../views/" + datas.component + ".vue"),
           children: [],
-          hidden: datas.hidden,
+          nav: datas.nav,
           icon: datas.icon,
           meta: datas.meta
         });

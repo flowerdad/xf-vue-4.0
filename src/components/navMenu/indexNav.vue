@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="item in mune">
-      <el-button :key="item.name" v-if="item.hidden" @click="toPath(item)">{{
+      <el-button :key="item.name" v-if="item.nav" @click="toPath(item)">{{
         item.name
       }}</el-button>
     </template>

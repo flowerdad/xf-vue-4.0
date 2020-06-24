@@ -4,7 +4,7 @@
       "path": "/home",
       "name": "home",
       "component": "home/Home",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -14,7 +14,7 @@
       "path": "/test1",
       "name": "test1",
       "component": "test/test1",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -24,7 +24,7 @@
       "path": "/test2",
       "name": "test2",
       "component": "test/test2",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -36,7 +36,7 @@
       "path": "/home",
       "name": "home",
       "component": "home/Home",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -46,7 +46,7 @@
       "path": "/test2",
       "name": "test2",
       "component": "test/test2",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -56,7 +56,7 @@
       "path": "/test3",
       "name": "test3",
       "component": "test/test3",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -68,7 +68,7 @@
       "path": "/home",
       "name": "home",
       "component": "home/Home",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -78,7 +78,17 @@
       "path": "/test1",
       "name": "test1",
       "component": "test/test1",
-      "hidden": true,
+      "nav": true,
+      "icon": "el-icon-eleme",
+      "meta": {
+        "keepAlive": true
+      }
+    },
+    {
+      "path": "/test2",
+      "name": "test2",
+      "component": "test/test2",
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
@@ -88,7 +98,7 @@
       "path": "/test3",
       "name": "test3",
       "component": "test/test3",
-      "hidden": true,
+      "nav": true,
       "icon": "el-icon-eleme",
       "meta": {
         "keepAlive": true
