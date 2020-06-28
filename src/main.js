@@ -16,8 +16,8 @@ Vue.prototype.$api = api;
 Vue.config.productionTip = false;
 
 // 全局组件
-import commonModule from "@/assets/js/commonModule";
-Vue.use(commonModule);
+import modules from "@/assets/js/modules";
+Vue.use(modules);
 
 // js全局公用方法
 import vMap from "@/assets/js/vMap";

@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     initModules() {
+      // 取modulees动态加载配置模块
       let obj = JSON.parse(localStorage.getItem("modules"));
       obj[this.$route.path].forEach(element => {
         if (element[this.type]) {
