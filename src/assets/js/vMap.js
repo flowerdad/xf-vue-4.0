@@ -326,7 +326,7 @@ let map = {
         if (obj.animation) marker.setAnimation("AMAP_ANIMATION_BOUNCE");
         let pos = marker.getPosition();
         // map是否跟随
-        if (obj.position) store.state.map.panTo([pos.lng, pos.lat]);
+        if (obj.position) map.panTo([pos.lng, pos.lat]);
         break;
       }
     }
