@@ -66,9 +66,7 @@ const store = new Vuex.Store({
       ];
       let arr = await api.router.getRouter(val);
       state.menuList = arr.concat(noeFound);
-      console.log(state.menuList);
       router.addRoutes(state.menuList);
-      console.log(router);
     },
     async addMaps({ state }, val) {
       for (let key in val) {

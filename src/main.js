@@ -15,9 +15,11 @@ Vue.use(ElementUI);
 Vue.prototype.$api = api;
 Vue.config.productionTip = false;
 
+// 全局组件
+import commonModule from "@/assets/js/commonModule";
+Vue.use(commonModule);
+
 // js全局公用方法
-import jurisdiction from "@/assets/js/jurisdiction";
-Vue.prototype.jurisdiction = jurisdiction;
 import vMap from "@/assets/js/vMap";
 Vue.prototype.vMap = vMap;
 import config from "@/assets/js/config";
