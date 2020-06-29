@@ -1,11 +1,20 @@
 <template>
   <div class="cardPack">
-    <component v-bind:is="item" v-for="item in modules" :key="item"></component>
+    <draggable v-bind="dragOptions" :list="modules">
+      <transition-group>
+        <!-- <p>13154165561</p> -->
+        <component v-bind:is="item" v-for="item in modules" :key="item"></component>
+      </transition-group>
+    </draggable>
   </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 export default {
+  components: {
+    draggable
+  },
   data() {
     return {
       modules: []
@@ -13,6 +22,15 @@ export default {
   },
   props: {
     type: String
+  },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 300,
+        group: "description"
+        // ghostClass: "ghost"
+      };
+    }
   },
   methods: {
     initModules() {

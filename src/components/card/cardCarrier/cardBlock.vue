@@ -12,9 +12,6 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
   props: {
     tittle: String
   },
