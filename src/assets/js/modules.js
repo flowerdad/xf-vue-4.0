@@ -139,7 +139,7 @@ let modules = [
         id: 12,
         icon: "el-icon-eleme",
         type: "card12",
-        title: "测试模块7",
+        title: "测试模块12",
         describe: "我是一个优秀的模块，哦也，奥利给。"
       },
       {

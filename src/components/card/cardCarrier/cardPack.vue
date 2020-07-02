@@ -44,8 +44,7 @@ export default {
         }
       });
     },
-    updateModules(evt) {
-      console.log(evt)
+    updateModules() {
       let obj = JSON.parse(localStorage.getItem("modules"));
       obj[this.$route.path].forEach(element => {
         if (element[this.type]) {
@@ -66,7 +65,6 @@ export default {
       this.$store.commit("isdraggableEnd", false);
     },
     draggableAdd(evt) {
-      console.log(this.type)
       this.$store.commit("isdraggableEnd", true);
       this.modules.unshift(evt.item.getAttribute('type'));
       this.updateModules(evt);

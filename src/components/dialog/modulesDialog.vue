@@ -7,9 +7,9 @@
         </el-tabs>
       </template>
       <el-row :gutter="10">
-        <draggable v-bind="dragOptions" :list="modules" class="draggable">
+        <draggable v-bind="dragOptions" @end="draggableEnd" :list="modules" class="draggable">
           <transition-group>
-            <el-col :type='item.type' :xs="24" :sm="24" :md="12" :lg="12" :xl="6" v-for="item in modules" :key="item.id">
+            <el-col :class="item.undraggable?'undraggable':''" :type='item.type' :xs="24" :sm="24" :md="12" :lg="12" :xl="6" v-for="item in modules" :key="item.id">
               <el-card class="box-card modules-card" :id="item.type">
                 <div>
                   <i class="size-32 font-color" :class="item.icon"></i>
@@ -40,7 +40,8 @@ export default {
         sort: false,
         group: { name: "description", pull: "clone", put: false },
         ghostClass: "ghost",
-        disabled: false
+        disabled: false,
+        filter: '.undraggable'
       },
       modules: []
     };
@@ -54,20 +55,44 @@ export default {
   watch: {
     show() {
       this.visible = this.show;
-    }
+    },
+    $route: {
+      handler: function () {
+        this.initModules(this.activeName);
+        this.checkingModules();
+      },
+      deep: true
+    },
   },
   methods: {
     handleClick() {
       this.initModules(this.activeName);
     },
-    draggableEnd(evt) {
-      console.log(evt.item.attr('type'));
-      // evt.item.style.width = '100%'
+    draggableEnd() {
+      this.initModules(this.activeName);
+      this.checkingModules();
     },
     initModules(id) {
+      this.modules = []
       this.vModules.forEach(element => {
         if (id == element.id) {
           this.modules = element.module;
+        }
+      });
+      this.checkingModules();
+    },
+    checkingModules() {
+      let obj = JSON.parse(localStorage.getItem("modules"));
+      let left = obj[this.$route.path][0].left
+      let right = obj[this.$route.path][1].right
+      left.push.apply(left, right);
+      this.modules.forEach(element => {
+        element.undraggable = false;
+        for (let i = 0; i < left.length; i++) {
+          if (element.type == left[i]) {
+            element.undraggable = true;
+            break;
+          }
         }
       });
     }
@@ -101,5 +126,8 @@ export default {
       border: none !important;
     }
   }
+}
+.undraggable .el-card {
+  background: #bfbfbf;
 }
 </style>
