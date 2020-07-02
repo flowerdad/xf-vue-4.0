@@ -3,6 +3,7 @@
   "editor.detectIndentation": false,
   // 重新设定tabsize
   "editor.tabSize": 2,
+  "eslint.enable": false,
   // #每次保存的时候自动格式化
   "editor.formatOnSave": true,
   //  #去掉代码结尾的分号
@@ -26,5 +27,15 @@
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "editor.semanticTokenColorCustomizations": null,
-  "git.autofetch": true // 两个选择器中是否换行
+  "git.autofetch": true,
+  "gitlens.advanced.blame.customArguments": [
+    "git.autofetch"
+  ],
+  "files.associations": {} // 两个选择器中是否换行
 }
+
+
+eslint
+vetur
+chinese
+git

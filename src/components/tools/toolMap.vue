@@ -9,18 +9,22 @@
         </template>
       </ul>
     </div>
+    <modulesDialog :show.sync="settingModulesShow" />
   </div>
 </template>
 
 <script>
+import modulesDialog from "@/components/dialog/modulesDialog.vue/";
 export default {
   data() {
     return {
       cardPackZoom: false,
+      settingModulesShow: false,
       packMap: [
         {
-          icon: "el-icon-eleme",
-          id: 1
+          icon: "el-icon-s-tools",
+          id: 1,
+          methods: "settingModules"
         },
         {
           icon: "el-icon-eleme",
@@ -28,17 +32,19 @@ export default {
         },
         {
           icon: "el-icon-eleme",
-          id: 2
+          id: 3
         },
         {
           icon: "el-icon-full-screen",
-          id: 2,
+          id: 4,
           methods: "cardPackZoomMethod"
         }
       ]
     };
   },
-  components: {},
+  components: {
+    modulesDialog
+  },
   methods: {
     toolsClick(methodsWords) {
       this[methodsWords]();
@@ -46,6 +52,9 @@ export default {
     cardPackZoomMethod() {
       this.cardPackZoom = !this.cardPackZoom;
       this.$store.commit("cardPackZoom", this.cardPackZoom);
+    },
+    settingModules() {
+      this.settingModulesShow = true;
     }
   }
 };

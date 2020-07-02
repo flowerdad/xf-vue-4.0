@@ -17,7 +17,9 @@ Vue.config.productionTip = false;
 
 // 全局组件
 import modules from "@/assets/js/modules";
-Vue.use(modules);
+console.log(modules)
+Vue.use(modules.plugin);
+Vue.prototype.vModules = modules.modules;
 
 // js全局公用方法
 import vMap from "@/assets/js/vMap";

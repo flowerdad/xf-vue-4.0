@@ -22,7 +22,9 @@ const store = new Vuex.Store({
     // 动态渲染的按钮
     menuList: [],
     // 所有地图对象
-    maps: {}
+    maps: {},
+    // 处理拖拽模块丢失的bug
+    isdraggableEnd: false
   },
   mutations: {
     LOGIN_IN(state, login) {
@@ -52,6 +54,9 @@ const store = new Vuex.Store({
     },
     maps(state, maps) {
       state.maps = maps;
+    },
+    isdraggableEnd(state, data) {
+      state.isdraggableEnd = data;
     }
   },
   actions: {
