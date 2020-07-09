@@ -42,7 +42,7 @@
         <div class="font-color size-12" v-if="unitShow">
           <p v-for="unit in unitList" :key="unit.id" class="markerItem">
             unit{{ unit.id }}
-            <el-tag size="mini" class="tag" @click="selMarker(unit.type, unit.id)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="selMarker(unit.id)">定位</el-tag>
             <el-tag size="mini" class="tag" @click="drivingPolicy(unit)">路线规划</el-tag>
             <el-tag size="mini" class="tag" @click="drivTrajectory(unit)">轨迹</el-tag>
           </p>
@@ -210,7 +210,7 @@ export default {
     },
     polyEditor(obj) {
       // unitArea详细信息，请看polyEditor注释。
-      this.unitArea = this.vMap.map.polyEditor(obj);
+      this.unitArea = this.vMap.map.polyEditor(this.map, obj);
       this.unitArea.on("end", event => {
         // 组装path
         event.target.w.path.forEach(element => {
@@ -235,21 +235,21 @@ export default {
           path: this.unitAreaPath
         });
         // 画区块
-        this.vMap.map.createUnitArea(this.areas);
+        this.vMap.map.createUnitArea(this.map, this.areas);
       });
     },
     getUnit() {
       this.unitShow = true;
-      this.vMap.map.createUnitArea(this.unitList);
+      this.vMap.map.createUnitArea(this.map, this.unitList);
     },
     endUnitArea() {
       this.unitArea.close();
-      this.$store.state.map.setRotation(this.vMap.mapConfig.rotation);
-      this.$store.state.map.setPitch(this.vMap.mapConfig.pitch);
+      this.map.setRotation(this.vMap.mapConfig.rotation);
+      this.map.setPitch(this.vMap.mapConfig.pitch);
     },
     drivingPolicy(unit) {
       this.vMap.map.drivingPolicy(
-        this.$store.state.map,
+        this.map,
         {
           star: unit.center,
           end: {
@@ -269,7 +269,7 @@ export default {
     },
     drivTrajectory(unit) {
       console.log(this.unitList);
-      let trajectory = this.vMap.map.drivTrajectory(this.$store.state.map, [
+      let trajectory = this.vMap.map.drivTrajectory(this.map, [
         unit.center.lng,
         unit.center.lat
       ]);

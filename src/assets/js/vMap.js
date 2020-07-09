@@ -136,7 +136,6 @@ let map = {
     let thisMap = {};
     thisMap[type] = map;
     store.dispatch("addMaps", thisMap);
-    store.commit("map", map);
     return map;
   },
 
@@ -354,9 +353,9 @@ let map = {
    * @returns polyEditor
    * polyEditor：编辑工具obj
    */
-  polyEditor(obj) {
-    store.state.map.setRotation(0);
-    store.state.map.setPitch(0);
+  polyEditor(map, obj) {
+    map.setRotation(0);
+    map.setPitch(0);
     let position = obj.position.split(","),
       lng = parseFloat(position[0]),
       lat = parseFloat(position[1]),
@@ -377,11 +376,11 @@ let map = {
         fillColor: "#000000",
         zIndex: 50
       });
-    store.state.map.add(polygon);
+    map.add(polygon);
     // 缩放地图到合适的视野级别
-    store.state.map.setFitView([polygon]);
+    map.setFitView([polygon]);
     // 创建多边形编辑工具，并启动编辑。
-    var polyEditor = new AMap.PolyEditor(store.state.map, polygon);
+    var polyEditor = new AMap.PolyEditor(map, polygon);
     polyEditor.open();
     // 返回矢量图形，及编辑工具obj。
     return polyEditor;
@@ -391,7 +390,7 @@ let map = {
    * 加载楼块
    * @param {*} areas 楼块对象
    */
-  createUnitArea(areas) {
+  createUnitArea(map, areas) {
     buildingLayer = new AMap.Buildings({
       zIndex: 130,
       merge: false,
@@ -407,7 +406,7 @@ let map = {
     console.log(options);
     //此配色优先级高于自定义mapStyle
     buildingLayer.setStyle(options);
-    store.state.map.setLayers([new AMap.TileLayer(), buildingLayer]);
+    map.setLayers([new AMap.TileLayer(), buildingLayer]);
 
     // 画范围及标识
     areas.forEach(element => {
@@ -420,7 +419,7 @@ let map = {
         fillColor: element.color,
         zIndex: 50
       });
-      store.state.map.add(polygon);
+      map.add(polygon);
       var obj = {
         type: element.type,
         id: element.id,
@@ -428,7 +427,7 @@ let map = {
         y: element.center.lat,
         icon: "el-icon-star-on"
       };
-      this.addMarker(obj);
+      this.addMarker(map, obj);
     });
   },
 

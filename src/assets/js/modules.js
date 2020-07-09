@@ -2,7 +2,6 @@ import card1 from "@/components/card/test/card1.vue";
 import card2 from "@/components/card/test/card2.vue";
 import card3 from "@/components/card/test/card3.vue";
 import card4 from "@/components/card/test/card4.vue";
-
 import card5 from "@/components/card/test/card5.vue";
 import card6 from "@/components/card/test/card6.vue";
 import card7 from "@/components/card/test/card7.vue";
