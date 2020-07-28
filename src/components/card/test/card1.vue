@@ -2,8 +2,9 @@
   <div>
     <cardBlock tittle="测试模块1">
       <div slot="body">
-        <p class="font-color size-12">12312312312312</p>
-        <p class="font-color size-12">12312312312312</p>
+        <div>
+          <div class="v-echart" ref="chart"></div>
+        </div>
       </div>
     </cardBlock>
   </div>
@@ -16,8 +17,27 @@ export default {
     cardBlock
   },
   data() {
-    return {};
+    return {
+    };
   },
-  methods: {}
+  watch: {
+    moduleKey() {
+
+    }
+  },
+  methods: {
+  },
+  created() {
+  },
+  mounted() {
+    this.vEcharts.echarts.scalePie(this.$refs.chart)
+  }
 };
 </script>
+
+<style lang="scss" scoped>
+.v-echart {
+  width: 100%;
+  height: 200px;
+}
+</style>

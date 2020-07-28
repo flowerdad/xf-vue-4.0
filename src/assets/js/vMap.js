@@ -14,11 +14,11 @@ let markerType = {
 
 // map对象参数
 let mapConfig = {
-  zoom: 18,
+  zoom: 17,
   pitch: 65,
   rotation: 45,
   zooms: [3, 20],
-  center: [116.353897, 40.072519]
+  center: [112.939363, 28.128974]
 };
 
 // 单位图层
@@ -218,6 +218,67 @@ let map = {
     return marker;
   },
 
+  // .custom-content-marker {
+  //   position: relative;
+  //   color:#ffffff;
+  //   font-size: 12px;
+  // }
+
+  // .custom-content-marker span{
+  //   display: inline-block;
+  //   border-top-right-radius: 5px;
+  //   border-bottom-right-radius: 5px;
+  //   position: absolute;
+  //   z-index: 1;
+  // }
+
+  // .content-marker-name{
+  //   background: rgba(0,0,0,.6);
+  //   padding: 3px 10px;
+  // }
+
+  // .content-marker-tips{
+  //   margin-top: 10px;
+  //   padding: 1px 10px;
+  //   opacity: 0.7;
+  // }
+
+  // .content-marker-line{
+  //   top: 15px;
+  //   z-index: 0 !important;
+  //   height: 80px;
+  //   width: 4px;
+  //   border-radius: 4px !important;
+  //   background: rgba(255,255,255,.5) ;
+  // }
+
+  addCustomMarker(map, obj) {
+    // 点标记显示内容，HTML要素字符串
+    var markerContent = `
+    <div class="custom-content-marker">
+      <span class="content-marker-name">`+ obj.name + `</span>
+      <span class="content-marker-tips" style="background: `+ obj.tipBase + `">` + obj.tip + `</span>
+      <span class="content-marker-line"></span>
+    </div>
+    `
+
+    var marker = new AMap.Marker({
+      position: new AMap.LngLat(obj.x, obj.y),
+      // title: "我是一点marker",
+      content: markerContent,
+      anchor: "bottom-center",
+      // animation: "AMAP_ANIMATION_BOUNCE",
+      offset: new AMap.Pixel(0, 0),
+      extData: {
+        type: obj.type,
+        id: obj.id
+      }
+    });
+
+    // 将 markers 添加到地图
+    map.add(marker);
+  },
+
   /**
    * deleteMarker 删除单个marker点
    * @param {*} type 点类型
@@ -415,19 +476,22 @@ let map = {
         strokeColor: "#000000",
         strokeWeight: 2,
         strokeOpacity: 0.2,
-        fillOpacity: 0.5,
+        fillOpacity: element.hasOwnProperty('style') && element.style.hasOwnProperty('fillOpacity') ? element.style.fillOpacity : '0.5',
         fillColor: element.color,
         zIndex: 50
       });
       map.add(polygon);
+
       var obj = {
         type: element.type,
         id: element.id,
         x: element.center.lng,
         y: element.center.lat,
-        icon: "el-icon-star-on"
+        name: element.name,
+        tip: element.tip,
+        tipBase: element.color
       };
-      this.addMarker(map, obj);
+      this.addCustomMarker(map, obj);
     });
   },
 
