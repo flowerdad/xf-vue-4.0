@@ -421,7 +421,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.map);
+    // console.log(this.map);
   }
 };
 </script>
