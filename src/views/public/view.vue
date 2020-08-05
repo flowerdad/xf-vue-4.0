@@ -1,5 +1,5 @@
 <template>
-  <cardCommon />
+  <cardCommon :key="$route.fullPath" />
 </template>
 
 <script>

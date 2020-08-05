@@ -10,7 +10,7 @@ const store = new Vuex.Store({
     // token
     token: window.localStorage.getItem("token"),
     // 全局权限控制
-    modules: window.localStorage.getItem("modules"),
+    config: window.localStorage.getItem("config"),
     // 主题
     theme: window.localStorage.getItem("theme"),
     // 角色
@@ -30,17 +30,14 @@ const store = new Vuex.Store({
     LOGIN_IN(state, login) {
       state.isLogin = true;
       state.token = login.token;
-      state.modules = login.modules;
-      state.role = login.role;
+      state.config = login.config;
       localStorage.token = login.token;
-      localStorage.modules = login.modules;
-      localStorage.role = login.role;
+      localStorage.config = login.config;
     },
     LOGIN_OUT(state) {
       state.isLogin = false;
       localStorage.removeItem("token");
-      localStorage.removeItem("modules");
-      localStorage.removeItem("role");
+      localStorage.removeItem("config");
       state.menuList = [];
       // 刷新，清空动态添加的路由
       location.reload();
@@ -60,7 +57,7 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    async initRouter({ state }, val) {
+    initRouter({ state }, val) {
       let noeFound = [
         {
           path: "*",
@@ -69,7 +66,7 @@ const store = new Vuex.Store({
           nav: false
         }
       ];
-      let arr = await api.router.getRouter(val);
+      let arr = api.router.getRouter(val);
       state.menuList = arr.concat(noeFound);
       router.addRoutes(state.menuList);
     },

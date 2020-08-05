@@ -37,21 +37,33 @@ export default {
   methods: {
     initModules() {
       // 取modulees动态加载配置模块
-      let obj = JSON.parse(localStorage.getItem("modules"));
-      obj[this.$route.path].forEach(element => {
-        if (element[this.type]) {
-          this.modules = element[this.type];
+      let config = JSON.parse(localStorage.getItem("config"));
+      for (let i = 0; i < config.projectConfig.length; i++) {
+        const modules = config.projectConfig[i];
+        if (modules.path == this.$route.path) {
+          modules.modules.forEach(element => {
+            if (element[this.type]) {
+              this.modules = element[this.type];
+            }
+          });
+          break;
         }
-      });
+      }
     },
     updateModules() {
-      let obj = JSON.parse(localStorage.getItem("modules"));
-      obj[this.$route.path].forEach(element => {
-        if (element[this.type]) {
-          element[this.type] = this.modules;
+      let config = JSON.parse(localStorage.getItem("config"));
+      for (let i = 0; i < config.projectConfig.length; i++) {
+        const modules = config.projectConfig[i];
+        if (modules.path == this.$route.path) {
+          modules.modules.forEach(element => {
+            if (element[this.type]) {
+              element[this.type] = this.modules;
+            }
+          });
+          break;
         }
-      });
-      localStorage.modules = JSON.stringify(obj);
+      }
+      localStorage.config = JSON.stringify(config);
     },
     draggableEnd(evt) {
       if (this.isdraggableEnd) {

@@ -82,9 +82,17 @@ export default {
       this.checkingModules();
     },
     checkingModules() {
-      let obj = JSON.parse(localStorage.getItem("modules"));
-      let left = obj[this.$route.path][0].left
-      let right = obj[this.$route.path][1].right
+      let config = JSON.parse(localStorage.getItem("config"));
+      let left = []
+      let right = []
+      for (let i = 0; i < config.projectConfig.length; i++) {
+        const modules = config.projectConfig[i];
+        if (modules.path == this.$route.path) {
+          left = modules.modules[0].left;
+          right = modules.modules[1].right;
+          break;
+        }
+      }
       left.push.apply(left, right);
       this.modules.forEach(element => {
         element.undraggable = false;
