@@ -218,40 +218,6 @@ let map = {
     return marker;
   },
 
-  // .custom-content-marker {
-  //   position: relative;
-  //   color:#ffffff;
-  //   font-size: 12px;
-  // }
-
-  // .custom-content-marker span{
-  //   display: inline-block;
-  //   border-top-right-radius: 5px;
-  //   border-bottom-right-radius: 5px;
-  //   position: absolute;
-  //   z-index: 1;
-  // }
-
-  // .content-marker-name{
-  //   background: rgba(0,0,0,.6);
-  //   padding: 3px 10px;
-  // }
-
-  // .content-marker-tips{
-  //   margin-top: 10px;
-  //   padding: 1px 10px;
-  //   opacity: 0.7;
-  // }
-
-  // .content-marker-line{
-  //   top: 15px;
-  //   z-index: 0 !important;
-  //   height: 80px;
-  //   width: 4px;
-  //   border-radius: 4px !important;
-  //   background: rgba(255,255,255,.5) ;
-  // }
-
   addCustomMarker(map, obj) {
     // 点标记显示内容，HTML要素字符串
     var markerContent = `
@@ -470,6 +436,7 @@ let map = {
     map.setLayers([new AMap.TileLayer(), buildingLayer]);
 
     // 画范围及标识
+    let polygons = [];
     areas.forEach(element => {
       let polygon = new AMap.Polygon({
         path: element.path,
@@ -481,7 +448,9 @@ let map = {
         zIndex: 50
       });
       map.add(polygon);
+      polygons.push(polygon)
 
+      console.log(element)
       var obj = {
         type: element.type,
         id: element.id,
@@ -493,6 +462,7 @@ let map = {
       };
       this.addCustomMarker(map, obj);
     });
+    map.setFitView(polygons);
   },
 
   /**

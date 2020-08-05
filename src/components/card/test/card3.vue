@@ -304,14 +304,15 @@ export default {
     }
   },
   methods: {
+
     addMarker(type) {
       var icon = "el-icon-user-solid";
       if (type == "device") icon = "el-icon-user";
       var obj = {
         type: type,
         id: type + "_" + 0 + this.markerIndex,
-        x: 116.353897 + this.markerIndex / 1000,
-        y: 40.072519,
+        x: 112.939363 + this.markerIndex / 1000,
+        y: 28.128974,
         icon: icon
       };
       this.markerList.push(obj);
@@ -397,8 +398,8 @@ export default {
         {
           star: unit.center,
           end: {
-            lng: 116.347187,
-            lat: 40.067107
+            lng: 112.938129,
+            lat: 28.152182
           },
           color: unit.color
         },
