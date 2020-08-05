@@ -13,8 +13,6 @@ const store = new Vuex.Store({
     config: window.localStorage.getItem("config"),
     // 主题
     theme: window.localStorage.getItem("theme"),
-    // 角色
-    role: window.localStorage.getItem("role"),
     // cardPack显示隐藏
     cardPackZoom: false,
     // 是否是登录状态
