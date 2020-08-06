@@ -22,7 +22,11 @@ export default {
 @import "@/assets/styles/theme";
 .cardBlock {
   position: relative;
-  // margin: 10px 0px;
+  margin: 12px;
+  @include themify($themes) {
+    background: themed("back-level1");
+  }
+  border-radius: 12px;
 }
 .card-tittle {
   padding: 17px;
@@ -34,9 +38,6 @@ export default {
   }
 }
 .card-body {
-  padding: 17px;
-  @include themify($themes) {
-    background: themed("back-level1");
-  }
+  padding: 0px 17px 17px 17px;
 }
 </style>

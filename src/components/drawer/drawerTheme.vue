@@ -29,6 +29,10 @@ export default {
         {
           class: "style-green",
           type: "green"
+        },
+        {
+          class: "style-324467",
+          type: "324467"
         }
       ]
     };

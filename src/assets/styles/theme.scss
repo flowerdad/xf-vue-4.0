@@ -2,12 +2,14 @@
 @import "@/assets/styles/red";
 @import "@/assets/styles/blue";
 @import "@/assets/styles/green";
+@import "@/assets/styles/324467";
 
 $themes: (
   red: $theme-red,
   green: $theme-green,
   blue: $theme-blue,
-  defalut: $theme-defalut
+  defalut: $theme-defalut,
+  324467: $theme-324467
 );
 
 @mixin themify($themes: $themes) {
