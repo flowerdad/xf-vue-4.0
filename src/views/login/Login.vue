@@ -28,7 +28,8 @@ export default {
           // 初始全局配置
           this.$store.commit("LOGIN_IN", {
             token: res.data.token,
-            config: JSON.stringify(res.data)
+            config: JSON.stringify(res.data),
+            theme: res.data.theme
           });
           this.$router.push("/home");
         }

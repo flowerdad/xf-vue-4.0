@@ -38,7 +38,8 @@ Vue.prototype.vEcharts = vEcharts;
 if (localStorage.getItem("token") != undefined) {
   store.commit("LOGIN_IN", {
     token: localStorage.getItem("token"),
-    config: localStorage.getItem("config")
+    config: localStorage.getItem("config"),
+    theme: localStorage.getItem("theme")
   });
   store.dispatch("initRouter", JSON.parse(localStorage.getItem("config")).projectConfig);
 }

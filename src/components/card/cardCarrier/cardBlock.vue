@@ -27,6 +27,12 @@ export default {
     background: themed("back-level1");
   }
   border-radius: 12px;
+  transition: background 0.3s;
+}
+.cardBlock:hover {
+  @include themify($themes) {
+    background: themed("cardPack-back-highlight");
+  }
 }
 .card-tittle {
   padding: 17px;

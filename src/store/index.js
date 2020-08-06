@@ -29,8 +29,10 @@ const store = new Vuex.Store({
       state.isLogin = true;
       state.token = login.token;
       state.config = login.config;
+      state.theme = login.theme;
       localStorage.token = login.token;
       localStorage.config = login.config;
+      localStorage.theme = login.theme;
     },
     LOGIN_OUT(state) {
       state.isLogin = false;
