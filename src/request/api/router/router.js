@@ -1,6 +1,5 @@
 const router = {
   getRouter(res) {
-    console.log(res);
     return init(res, []);
     function init(data, arr) {
       data.forEach((datas, index) => {

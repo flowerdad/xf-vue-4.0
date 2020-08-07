@@ -3,7 +3,7 @@
     <div>
       <template>
         <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-          <el-tab-pane :label="item.type" :name="item.id" v-for="item in vModules" :key="item.id"></el-tab-pane>
+          <el-tab-pane :label="item.type" :name="item.id" v-for="item in vConfig.modules" :key="item.id"></el-tab-pane>
         </el-tabs>
       </template>
       <el-row :gutter="10">
@@ -74,7 +74,7 @@ export default {
     },
     initModules(id) {
       this.modules = []
-      this.vModules.forEach(element => {
+      this.vConfig.modules.forEach(element => {
         if (id == element.id) {
           this.modules = element.module;
         }

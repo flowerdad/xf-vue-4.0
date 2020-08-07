@@ -18,19 +18,23 @@ Vue.config.productionTip = false;
 import echarts from 'echarts';
 Vue.prototype.$echarts = echarts;
 
-// 全局组件
-import modules from "@/assets/js/modules";
-console.log(modules)
-Vue.use(modules.plugin);
-Vue.prototype.vModules = modules.modules;
+// 全局配置
+import vConfig from "@/assets/js/vConfig";
+Vue.prototype.vConfig = vConfig;
 
-// js全局公用方法
+// 全局组件
+import vModules from "@/assets/js/vModules";
+Vue.use(vModules.plugin);
+
+// 地图
 import vMap from "@/assets/js/vMap";
 Vue.prototype.vMap = vMap;
-import config from "@/assets/js/config";
-Vue.prototype.config = config;
-import vTools from "@/assets/js/tools";
+
+// 全局工具类
+import vTools from "@/assets/js/vTools";
 Vue.prototype.vTools = vTools;
+
+// 自封装echarts
 import vEcharts from "@/assets/js/vEcharts";
 Vue.prototype.vEcharts = vEcharts;
 

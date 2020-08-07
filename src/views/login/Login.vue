@@ -22,7 +22,6 @@ export default {
     toLogin() {
       this.$api.login.login().then(res => {
         if (res.status == 200) {
-          console.log(res);
           // 初始化路由
           this.initRouter(res.data.projectConfig);
           // 初始全局配置

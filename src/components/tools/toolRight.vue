@@ -2,7 +2,7 @@
   <div class="tools">
     <div class="tool-block tool-top">
       <ul>
-        <li v-for="(item, index) in blockTop" :key="index">
+        <li v-for="(item, index) in vConfig.tools[1].tool" :key="index" @click="toTool(item.module)">
           <span class="size-22 font-color"><i :class="item.icon"></i></span>
         </li>
       </ul>
@@ -22,48 +22,6 @@
 export default {
   data() {
     return {
-      blockTop: [
-        {
-          icon: "el-icon-eleme",
-          id: 1
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 1
-        },
-        {
-          icon: "el-icon-eleme",
-          id: 2
-        }
-        // {
-        //   icon: "el-icon-eleme",
-        //   id: 2
-        // },
-        // {
-        //   icon: "el-icon-eleme",
-        //   id: 2
-        // },
-        // {
-        //   icon: "el-icon-eleme",
-        //   id: 2
-        // }
-      ],
       blockBottom: [
         {
           icon: "el-icon-eleme",
@@ -80,6 +38,11 @@ export default {
       ]
     };
   },
+  methods: {
+    toTool(modules) {
+      console.log(modules);
+    }
+  }
 };
 </script>
 

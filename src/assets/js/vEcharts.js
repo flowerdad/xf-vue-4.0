@@ -3,7 +3,6 @@ import $echarts from 'echarts';
 
 // 默认颜色组
 let colors = ['#FFBB00', '#FC1E53', '#8BDC85', '#00C6FF', '#FB7C32', '#7C838A']
-console.log(colors)
 
 /**
  * 参数格式化
