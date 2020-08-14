@@ -1,15 +1,21 @@
 <template>
   <div id="app" class="app" :class="'theme-' + themeType">
-    <toolsCommon class="toolsCommon" v-if="$route.meta.keepAlive" />
+    <!-- 地图 -->
+    <mainMap type="main" v-if="$route.meta.keepAlive" />
+    <!-- main -->
     <router-view class="router" />
+    <!-- 工具库 -->
+    <toolsCommon class="toolsCommon" v-if="$route.meta.keepAlive" />
   </div>
 </template>
 <script>
 import toolsCommon from "@/components/common/toolsCommon.vue";
+import mainMap from "@/components/map/map";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    toolsCommon
+    toolsCommon,
+    mainMap
   },
   data() {
     return {
@@ -35,8 +41,9 @@ export default {
 }
 .toolsCommon {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
+  /* pointer-events: none; */
 }
 </style>
 

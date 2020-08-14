@@ -5,6 +5,9 @@ import router from "../router/index";
 import api from "../request/api";
 Vue.use(Vuex);
 
+// 分类store
+
+
 const store = new Vuex.Store({
   state: {
     // token
