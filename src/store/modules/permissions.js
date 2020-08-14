@@ -19,7 +19,7 @@ const getters = {}
 
 // mutations
 const mutations = {
-  LOGIN_IN(state, login) {
+  login_in(state, login) {
     state.isLogin = true;
     state.token = login.token;
     state.config = login.config;
@@ -28,7 +28,7 @@ const mutations = {
     localStorage.config = login.config;
     localStorage.theme = login.theme;
   },
-  LOGIN_OUT(state) {
+  login_out(state) {
     state.isLogin = false;
     localStorage.removeItem("token");
     localStorage.removeItem("config");

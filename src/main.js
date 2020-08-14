@@ -40,7 +40,7 @@ Vue.prototype.vEcharts = vEcharts;
 
 // 判断是否有token，是否重组路由
 if (localStorage.getItem("token") != undefined) {
-  store.commit("LOGIN_IN", {
+  store.commit("login_in", {
     token: localStorage.getItem("token"),
     config: localStorage.getItem("config"),
     theme: localStorage.getItem("theme")

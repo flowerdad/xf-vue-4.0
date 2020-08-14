@@ -25,7 +25,7 @@ export default {
           // 初始化路由
           this.initRouter(res.data.projectConfig);
           // 初始全局配置
-          this.$store.commit("LOGIN_IN", {
+          this.$store.commit("login_in", {
             token: res.data.token,
             config: JSON.stringify(res.data),
             theme: res.data.theme
@@ -35,7 +35,7 @@ export default {
       });
     },
     loginOut() {
-      this.$store.commit("LOGIN_OUT");
+      this.$store.commit("login_out");
     }
   }
 };
