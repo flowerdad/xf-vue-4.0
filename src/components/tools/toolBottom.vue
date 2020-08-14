@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      nav: this.$store.state.menuList
+      nav: this.$store.state.permissions.menuList
     };
   },
   methods: {

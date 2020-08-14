@@ -15,7 +15,7 @@ export default {
   computed: {
     ...mapGetters(["cardPackZoom"]),
     cardPackZoom() {
-      return this.$store.state.cardPackZoom;
+      return this.$store.state.notice.cardPackZoom;
     }
   }
 };

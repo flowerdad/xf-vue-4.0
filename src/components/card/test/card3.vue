@@ -300,7 +300,7 @@ export default {
   },
   computed: {
     map() {
-      return this.$store.state.maps["main"];
+      return this.$store.state.map.maps["main"];
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from "../store";
+import store from "../store/index.js";
 Vue.use(VueRouter);
 
 // 静态路由
@@ -40,7 +40,7 @@ export default router;
 
 // 路由守卫，是否登录
 router.beforeEach((to, from, next) => {
-  if (store.state.isLogin && store.state.token != null) {
+  if (store.state.permissions.isLogin && store.state.permissions.token != null) {
     next();
   } else {
     console.log(to.path);

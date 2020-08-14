@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     defaultTheme() {
-      return this.$store.state.settings.theme;
+      return this.$store.state.permissions.settings.theme;
     }
   },
   watch: {

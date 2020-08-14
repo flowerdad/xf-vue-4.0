@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     isdraggableEnd() {
-      return this.$store.state.isdraggableEnd;
+      return this.$store.state.notice.isdraggableEnd;
     }
   },
   props: {

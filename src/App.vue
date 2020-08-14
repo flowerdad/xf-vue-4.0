@@ -25,7 +25,7 @@ export default {
   computed: {
     ...mapGetters(["theme"]),
     theme() {
-      return this.$store.state.theme;
+      return this.$store.state.permissions.theme;
     }
   },
   watch: {
