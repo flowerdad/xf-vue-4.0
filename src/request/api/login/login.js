@@ -8,14 +8,11 @@ const login = {
   },
   loginPromise(data) {
     return new Promise((resolve, reject) => {
-      axios
-        .get("/simulation/login.json", { params: data })
-        .then(res => {
-          resolve(res);
-        })
-        .catch(err => {
-          reject(err);
-        });
+      axios.get("/simulation/login.json", { params: data }).then(res => {
+        resolve(res);
+      }).catch(err => {
+        reject(err);
+      });
     });
   }
 };

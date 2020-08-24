@@ -12,6 +12,7 @@ const state = {
   theme: window.localStorage.getItem("theme"),
   // 动态渲染的按钮
   menuList: [],
+  toolsConfig: []
 }
 
 // getters
@@ -53,9 +54,12 @@ const actions = {
         nav: false
       }
     ];
+    console.log(val)
     let arr = api.router.getRouter(val);
     state.menuList = arr.concat(noeFound);
     router.addRoutes(state.menuList);
+    // state.toolsConfig=
+
   }
 }
 

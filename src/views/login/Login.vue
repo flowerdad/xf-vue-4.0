@@ -23,14 +23,17 @@ export default {
       this.$api.login.login().then(res => {
         if (res.status == 200) {
           // 初始化路由
-          this.initRouter(res.data.projectConfig);
-          // 初始全局配置
-          this.$store.commit("login_in", {
-            token: res.data.token,
-            config: JSON.stringify(res.data),
-            theme: res.data.theme
-          });
-          this.$router.push("/home");
+          res = JSON.stringify(res.data)
+          res = JSON.parse(res.data)
+          console.log(res)
+          // this.initRouter(res.data.projectConfig);
+          // // 初始全局配置
+          // this.$store.commit("login_in", {
+          //   token: res.data.token,
+          //   config: JSON.stringify(res.data),
+          //   theme: res.data.theme
+          // });
+          // this.$router.push("/home");
         }
       });
     },

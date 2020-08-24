@@ -2,6 +2,7 @@ const router = {
   getRouter(res) {
     return init(res, []);
     function init(data, arr) {
+      console.log(data)
       data.forEach((datas, index) => {
         arr.push({
           path: datas.path,
