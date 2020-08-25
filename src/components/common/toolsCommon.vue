@@ -1,36 +1,64 @@
 <template>
   <div class="home">
-    <!-- <mainMap type="main" /> -->
+    <!-- <toolPack class="toolPackLeft" modules="" :class="toolPackLeft ? 'toolPackLeftZoom' : ''" /> -->
+    <toolPack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
     <toolLeft class="toolLeft" />
     <toolRight class="toolRight" />
-    <toolBottom class="toolBottom" />
-    <toolMap class="toolMap" :class="cardPackZoom ? 'toolMapZoom' : ''" />
+    <toolNavBar class="toolNavBar" />
+    <toolMap class="toolMap" :class="mapPack ? 'toolMapZoom' : ''" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-// import mainMap from "@/components/map/map";
+import { mapState } from 'vuex'
 import toolLeft from "@/components/tools/toolLeft";
 import toolRight from "@/components/tools/toolRight";
-import toolBottom from "@/components/tools/toolBottom";
+import toolNavBar from "@/components/tools/toolNavbar";
 import toolMap from "@/components/tools/toolMap";
+import toolPack from "@/components/tools/toolPack";
 export default {
   name: "home",
   components: {
-    // mainMap,
     toolLeft,
     toolRight,
-    toolBottom,
-    toolMap
+    toolNavBar,
+    toolMap,
+    toolPack
   },
   data() {
-    return {};
+    return {
+      toolRightModuleList: []
+    };
   },
   computed: {
-    ...mapGetters(["cardPackZoom"]),
-    cardPackZoom() {
-      return this.$store.state.notice.cardPackZoom;
+    ...mapState([]),
+    ...mapGetters(["mapPack", "toolPackLeft", "toolPackRight", "toolLeftModule", "toolRightModule"]),
+    mapPack() {
+      return this.$store.state.notice.mapPack;
+    },
+    toolPackLeft() {
+      return this.$store.state.notice.toolPackLeft;
+    },
+    toolPackRight() {
+      console.log(this.$store.state.notice.toolPackRight)
+      return this.$store.state.notice.toolPackRight;
+    },
+    toolLeftModule() {
+      return this.$store.state.notice.toolLeftModule;
+    },
+    toolRightModule() {
+      return this.$store.state.notice.toolRightModule;
+    }
+  },
+  watch: {
+    // toolLeftModule() { },
+    toolRightModule() {
+      this.toolRightModuleList = [];
+      this.toolRightModule.forEach(element => {
+        this.toolRightModuleList.push(element.type)
+      });
+      console.log(this.toolRightModuleList)
     }
   }
 };
@@ -47,7 +75,7 @@ export default {
   right: 0px;
   top: 0px;
 }
-.toolBottom {
+.toolNavBar {
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -60,5 +88,21 @@ export default {
 }
 .toolMapZoom {
   right: 96px;
+}
+.toolPackLeft {
+  position: fixed;
+  left: -320px;
+  transition: all 0.5s;
+}
+.toolPackRight {
+  position: fixed;
+  right: -320px;
+  transition: all 0.5s;
+}
+.toolPackLeftZoom {
+  left: 64px;
+}
+.toolPackRightZoom {
+  right: 64px;
 }
 </style>

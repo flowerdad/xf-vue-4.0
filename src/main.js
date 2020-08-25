@@ -45,7 +45,7 @@ if (localStorage.getItem("token") != undefined) {
     config: localStorage.getItem("config"),
     theme: localStorage.getItem("theme")
   });
-  store.dispatch("initRouter", JSON.parse(localStorage.getItem("config")).projectConfig);
+  store.dispatch("initRouter", JSON.parse(localStorage.getItem("config")));
 }
 
 new Vue({

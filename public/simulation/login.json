@@ -3,174 +3,174 @@
   "ticket": "66666666",
   "theme": "324467",
   "projectId": "1",
-  "projectName": "智慧消防4.0"
-  // "projectConfig": [
-  //   {
-  //     "path": "/home",
-  //     "name": "home",
-  //     "nav": true,
-  //     "icon": "el-icon-eleme",
-  //     "meta": {
-  //       "keepAlive": true
-  //     },
-  //     "modules": [
-  //       {
-  //         "left": [
-  //           "card3"
-  //         ]
-  //       },
-  //       {
-  //         "right": [
-  //           "card2"
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     "path": "/test1",
-  //     "name": "test1",
-  //     "nav": true,
-  //     "icon": "el-icon-eleme",
-  //     "meta": {
-  //       "keepAlive": true
-  //     },
-  //     "modules": [
-  //       {
-  //         "left": [
-  //           "card2"
-  //         ]
-  //       },
-  //       {
-  //         "right": [
-  //           "card4"
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     "path": "/test2",
-  //     "name": "test2",
-  //     "nav": true,
-  //     "icon": "el-icon-eleme",
-  //     "meta": {
-  //       "keepAlive": true
-  //     },
-  //     "modules": [
-  //       {
-  //         "left": [
-  //           "card3"
-  //         ]
-  //       },
-  //       {
-  //         "right": [
-  //           "card1"
-  //         ]
-  //       }
-  //     ]
-  //   }
-  // ],
-  // "toolsConfig": [
-  //   {
-  //     type: 'left',
-  //     tool: [
-  //       {
-  //         id: 1,
-  //         type: 'tool1',
-  //         name: 'tool1',
-  //         introduce: 'tool1简介',
-  //         icon: 'el-icon-eleme',
-  //         module: [
-  //           {
-  //             id: 17,
-  //             icon: "el-icon-eleme",
-  //             type: "card17",
-  //             title: "测试模块17",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           },
-  //           {
-  //             id: 18,
-  //             icon: "el-icon-eleme",
-  //             type: "card18",
-  //             title: "测试模块18",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           }
-  //         ]
-  //       },
-  //       {
-  //         id: 2,
-  //         type: 'tool2',
-  //         name: 'tool2',
-  //         introduce: 'tool2简介',
-  //         icon: 'el-icon-eleme',
-  //         module: [
-  //           {
-  //             id: 1,
-  //             icon: "el-icon-eleme",
-  //             type: "card1",
-  //             title: "测试模块1",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           },
-  //           {
-  //             id: 2,
-  //             icon: "el-icon-eleme",
-  //             type: "card2",
-  //             title: "测试模块2",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     type: 'right',
-  //     tool: [
-  //       {
-  //         id: 1,
-  //         type: 'tool1',
-  //         name: 'tool1',
-  //         introduce: 'tool1简介',
-  //         icon: 'el-icon-eleme',
-  //         module: [
-  //           {
-  //             id: 10,
-  //             icon: "el-icon-eleme",
-  //             type: "card10",
-  //             title: "测试模块10",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           },
-  //           {
-  //             id: 11,
-  //             icon: "el-icon-eleme",
-  //             type: "card11",
-  //             title: "测试模块11",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           }
-  //         ]
-  //       },
-  //       {
-  //         id: 2,
-  //         type: 'tool2',
-  //         name: 'tool2',
-  //         introduce: 'tool2简介',
-  //         icon: 'el-icon-eleme',
-  //         module: [
-  //           {
-  //             id: 5,
-  //             icon: "el-icon-eleme",
-  //             type: "card5",
-  //             title: "测试模块5",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           },
-  //           {
-  //             id: 6,
-  //             icon: "el-icon-eleme",
-  //             type: "card6",
-  //             title: "测试模块6",
-  //             describe: "我是一个优秀的模块，哦也，奥利给。"
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  // ]
+  "projectName": "智慧消防4.0",
+  "projectConfig": [
+    {
+      "path": "/home",
+      "name": "home",
+      "nav": true,
+      "icon": "el-icon-eleme",
+      "meta": {
+        "keepAlive": true
+      },
+      "modules": [
+        {
+          "left": [
+            "card3"
+          ]
+        },
+        {
+          "right": [
+            "card2"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/test1",
+      "name": "test1",
+      "nav": true,
+      "icon": "el-icon-eleme",
+      "meta": {
+        "keepAlive": true
+      },
+      "modules": [
+        {
+          "left": [
+            "card2"
+          ]
+        },
+        {
+          "right": [
+            "card4"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/test2",
+      "name": "test2",
+      "nav": true,
+      "icon": "el-icon-eleme",
+      "meta": {
+        "keepAlive": true
+      },
+      "modules": [
+        {
+          "left": [
+            "card3"
+          ]
+        },
+        {
+          "right": [
+            "card1"
+          ]
+        }
+      ]
+    }
+  ],
+  "toolsConfig": [
+    {
+      "type": "left",
+      "tool": [
+        {
+          "id": 1,
+          "type": "tool1",
+          "name": "tool1",
+          "introduce": "tool1简介",
+          "icon": "el-icon-eleme",
+          "module": [
+            {
+              "id": 17,
+              "icon": "el-icon-eleme",
+              "type": "card17",
+              "title": "测试模块17",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            },
+            {
+              "id": 18,
+              "icon": "el-icon-eleme",
+              "type": "card18",
+              "title": "测试模块18",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "tool2",
+          "name": "tool2",
+          "introduce": "tool2简介",
+          "icon": "el-icon-eleme",
+          "module": [
+            {
+              "id": 1,
+              "icon": "el-icon-eleme",
+              "type": "card1",
+              "title": "测试模块1",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            },
+            {
+              "id": 2,
+              "icon": "el-icon-eleme",
+              "type": "card2",
+              "title": "测试模块2",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "right",
+      "tool": [
+        {
+          "id": 1,
+          "type": "tool1",
+          "name": "tool1",
+          "introduce": "tool1简介",
+          "icon": "el-icon-eleme",
+          "module": [
+            {
+              "id": 10,
+              "icon": "el-icon-eleme",
+              "type": "card10",
+              "title": "测试模块10",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            },
+            {
+              "id": 11,
+              "icon": "el-icon-eleme",
+              "type": "card11",
+              "title": "测试模块11",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "tool2",
+          "name": "tool2",
+          "introduce": "tool2简介",
+          "icon": "el-icon-eleme",
+          "module": [
+            {
+              "id": 5,
+              "icon": "el-icon-eleme",
+              "type": "card5",
+              "title": "测试模块5",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            },
+            {
+              "id": 6,
+              "icon": "el-icon-eleme",
+              "type": "card6",
+              "title": "测试模块6",
+              "describe": "我是一个优秀的模块，哦也，奥利给。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

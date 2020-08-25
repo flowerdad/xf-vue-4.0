@@ -18,7 +18,7 @@ import modulesDialog from "@/components/dialog/modulesDialog.vue/";
 export default {
   data() {
     return {
-      cardPackZoom: false,
+      zoom: false,
       settingModulesShow: false,
       packMap: [
         {
@@ -37,7 +37,7 @@ export default {
         {
           icon: "el-icon-full-screen",
           id: 4,
-          methods: "cardPackZoomMethod"
+          methods: "zoomMethod"
         }
       ]
     };
@@ -49,9 +49,21 @@ export default {
     toolsClick(methodsWords) {
       this[methodsWords]();
     },
-    cardPackZoomMethod() {
-      this.cardPackZoom = !this.cardPackZoom;
-      this.$store.commit("cardPackZoom", this.cardPackZoom);
+    zoomMethod() {
+      this.zoom = !this.zoom;
+      if (this.zoom) {
+        this.$store.commit("cardPackLeft", true);
+        this.$store.commit("cardPackRight", true);
+        this.$store.commit("mapPack", true);
+        this.$store.commit("toolPackLeft", false);
+        this.$store.commit("toolPackRight", false);
+      } else {
+        this.$store.commit("cardPackLeft", false);
+        this.$store.commit("cardPackRight", false);
+        this.$store.commit("mapPack", false);
+        this.$store.commit("toolPackLeft", false);
+        this.$store.commit("toolPackRight", false);
+      }
     },
     settingModules() {
       this.settingModulesShow = true;

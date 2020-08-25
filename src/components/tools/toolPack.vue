@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      modules: [],
+      // modules: [],
       dragOptions: {
         animation: 300,
         group: "description",
@@ -32,7 +32,8 @@ export default {
     }
   },
   props: {
-    type: String
+    type: String,
+    modules: Array
   },
   methods: {
     initModules() {
@@ -88,6 +89,11 @@ export default {
       this.updateModules(evt);
     }
   },
+  watch: {
+    modules() {
+      console.log(this.modules)
+    }
+  },
   mounted() {
     this.initModules();
   }
@@ -99,7 +105,7 @@ export default {
   width: 320px;
   height: calc(100vh - 64px);
   background: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  /* position: absolute; */
 }
 .draggable > span {
   display: inline-block;

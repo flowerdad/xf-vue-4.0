@@ -2,7 +2,10 @@
   <div class="tools">
     <div class="tool-block tool-top">
       <ul>
-        <li v-for="(item, index) in vConfig.tools[1].tool" :key="index" @click="toTool(item.module)">
+        <li @click="backCard">
+          <span class="size-22 font-color"><i class="el-icon-star-on"></i></span>
+        </li>
+        <li v-for="(item, index) in toolList" :key="index" @click="toTool(item.module,index)">
           <span class="size-22 font-color"><i :class="item.icon"></i></span>
         </li>
       </ul>
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+// import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -35,12 +39,24 @@ export default {
           icon: "el-icon-eleme",
           id: 2
         }
-      ]
+      ],
+      toolList: this.$store.state.permissions.toolsConfig[1].tool
     };
   },
   methods: {
+    backCard() {
+      this.$store.commit("mapPack", false);
+      this.$store.commit("toolPackRight", false);
+      this.$store.commit("cardPackRight", false);
+    },
     toTool(modules) {
-      console.log(modules);
+      this.$store.commit("mapPack", false);
+      this.$store.commit("cardPackRight", true);
+      this.$store.commit("toolPackRight", false);
+      setTimeout(() => {
+        this.$store.commit("toolPackRight", true);
+        this.$store.commit("toolRightModule", modules);
+      }, 300);
     }
   }
 };

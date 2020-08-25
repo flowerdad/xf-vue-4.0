@@ -12,6 +12,7 @@ const state = {
   theme: window.localStorage.getItem("theme"),
   // 动态渲染的按钮
   menuList: [],
+  // 工具栏配置
   toolsConfig: []
 }
 
@@ -55,11 +56,10 @@ const actions = {
       }
     ];
     console.log(val)
-    let arr = api.router.getRouter(val);
+    let arr = api.router.getRouter(val.projectConfig);
     state.menuList = arr.concat(noeFound);
     router.addRoutes(state.menuList);
-    // state.toolsConfig=
-
+    state.toolsConfig = val.toolsConfig;
   }
 }
 
