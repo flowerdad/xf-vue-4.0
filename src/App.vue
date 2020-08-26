@@ -5,16 +5,16 @@
     <!-- main -->
     <router-view class="router" />
     <!-- 工具库 -->
-    <toolsCommon class="toolsCommon" v-if="$route.meta.keepAlive" />
+    <tools class="tools" v-if="$route.meta.keepAlive" />
   </div>
 </template>
 <script>
-import toolsCommon from "@/components/common/toolsCommon.vue";
+import tools from "@/components/tools/tools.vue";
 import mainMap from "@/components/map/map";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    toolsCommon,
+    tools,
     mainMap
   },
   data() {
@@ -39,7 +39,7 @@ export default {
 .router {
   position: absolute;
 }
-.toolsCommon {
+.tools {
   position: absolute;
   /* width: 100%;
   height: 100%; */

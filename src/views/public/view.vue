@@ -1,13 +1,13 @@
 <template>
-  <cardCommon :key="$route.fullPath" />
+  <cards :key="$route.fullPath" />
 </template>
 
 <script>
-import cardCommon from "@/components/common/cardCommon.vue";
+import cards from "@/components/card/cards";
 export default {
   name: "home",
   components: {
-    cardCommon
+    cards
   }
 };
 </script>

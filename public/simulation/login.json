@@ -9,7 +9,7 @@
       "path": "/home",
       "name": "home",
       "nav": true,
-      "icon": "el-icon-eleme",
+      "icon": "el-icon-umbrella",
       "meta": {
         "keepAlive": true
       },
@@ -30,7 +30,7 @@
       "path": "/test1",
       "name": "test1",
       "nav": true,
-      "icon": "el-icon-eleme",
+      "icon": "el-icon-headset",
       "meta": {
         "keepAlive": true
       },
@@ -51,7 +51,7 @@
       "path": "/test2",
       "name": "test2",
       "nav": true,
-      "icon": "el-icon-eleme",
+      "icon": "el-icon-coordinate",
       "meta": {
         "keepAlive": true
       },
@@ -129,7 +129,7 @@
           "type": "tool1",
           "name": "tool1",
           "introduce": "tool1简介",
-          "icon": "el-icon-eleme",
+          "icon": "el-icon-s-custom",
           "module": [
             {
               "id": 10,
@@ -152,7 +152,7 @@
           "type": "tool2",
           "name": "tool2",
           "introduce": "tool2简介",
-          "icon": "el-icon-eleme",
+          "icon": "el-icon-s-opportunity",
           "module": [
             {
               "id": 5,

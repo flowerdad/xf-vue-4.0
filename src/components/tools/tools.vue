@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <!-- <toolPack class="toolPackLeft" modules="" :class="toolPackLeft ? 'toolPackLeftZoom' : ''" /> -->
-    <toolPack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
-    <toolLeft class="toolLeft" />
-    <toolRight class="toolRight" />
-    <toolNavBar class="toolNavBar" />
+    <contentPack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
+    <left class="toolLeft" />
+    <right class="toolRight" />
+    <navbar class="toolNavBar" />
     <toolMap class="toolMap" :class="mapPack ? 'toolMapZoom' : ''" />
   </div>
 </template>
@@ -12,19 +12,19 @@
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from 'vuex'
-import toolLeft from "@/components/tools/toolLeft";
-import toolRight from "@/components/tools/toolRight";
-import toolNavBar from "@/components/tools/toolNavbar";
-import toolMap from "@/components/tools/toolMap";
-import toolPack from "@/components/tools/toolPack";
+import left from "./left/left";
+import right from "./right/right";
+import navbar from "./navbar/navbar";
+import toolMap from "./map/toolMap";
+import contentPack from "./common/contentPack";
 export default {
   name: "home",
   components: {
-    toolLeft,
-    toolRight,
-    toolNavBar,
+    left,
+    right,
+    navbar,
     toolMap,
-    toolPack
+    contentPack
   },
   data() {
     return {

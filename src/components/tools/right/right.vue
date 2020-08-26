@@ -8,6 +8,9 @@
         <li v-for="(item, index) in toolList" :key="index" @click="toTool(item.module,index)">
           <span class="size-22 font-color"><i :class="item.icon"></i></span>
         </li>
+        <li @click="toolAdd">
+          <span class="size-22 font-color"><i class="el-icon-circle-plus"></i></span>
+        </li>
       </ul>
     </div>
 
@@ -57,7 +60,8 @@ export default {
         this.$store.commit("toolPackRight", true);
         this.$store.commit("toolRightModule", modules);
       }, 300);
-    }
+    },
+    toolAdd() { }
   }
 };
 </script>
