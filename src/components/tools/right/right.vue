@@ -5,7 +5,7 @@
         <li @click="backCard">
           <span class="size-22 font-color"><i class="el-icon-star-on"></i></span>
         </li>
-        <li v-for="(item, index) in toolList" :key="index" @click="toTool(item.module,index)">
+        <li class="" :class="toolActive == index ? 'tool-active': ''" v-for="(item, index) in toolList" :key="index" @click="toTool(item.module,index)">
           <span class="size-22 font-color"><i :class="item.icon"></i></span>
         </li>
         <li @click="toolAdd">
@@ -29,6 +29,7 @@
 export default {
   data() {
     return {
+      toolActive: -1,
       blockBottom: [
         {
           icon: "el-icon-eleme",
@@ -48,11 +49,13 @@ export default {
   },
   methods: {
     backCard() {
+      this.toolActive = -1;
       this.$store.commit("mapPack", false);
       this.$store.commit("toolPackRight", false);
       this.$store.commit("cardPackRight", false);
     },
-    toTool(modules) {
+    toTool(modules, index) {
+      this.toolActive = index;
       this.$store.commit("mapPack", false);
       this.$store.commit("cardPackRight", true);
       this.$store.commit("toolPackRight", false);
@@ -61,7 +64,9 @@ export default {
         this.$store.commit("toolRightModule", modules);
       }, 300);
     },
-    toolAdd() { }
+    toolAdd() {
+      this.toolActive = -1;
+    }
   }
 };
 </script>
@@ -74,6 +79,12 @@ export default {
   height: calc(100vh - 64px);
   @include themify($themes) {
     background: themed("tools-back");
+  }
+}
+
+.tool-active {
+  @include themify($themes) {
+    background: themed("cardPack-back");
   }
 }
 

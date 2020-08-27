@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- <toolPack class="toolPackLeft" modules="" :class="toolPackLeft ? 'toolPackLeftZoom' : ''" /> -->
-    <contentPack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
+    <pack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
     <left class="toolLeft" />
     <right class="toolRight" />
     <navbar class="toolNavBar" />
@@ -16,7 +16,7 @@ import left from "./left/left";
 import right from "./right/right";
 import navbar from "./navbar/navbar";
 import toolMap from "./map/toolMap";
-import contentPack from "./common/contentPack";
+import pack from "./common/pack";
 export default {
   name: "home",
   components: {
@@ -24,7 +24,7 @@ export default {
     right,
     navbar,
     toolMap,
-    contentPack
+    pack
   },
   data() {
     return {

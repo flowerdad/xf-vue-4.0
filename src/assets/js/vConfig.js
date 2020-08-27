@@ -206,6 +206,8 @@ let tools = [
         name: 'tool1',
         introduce: 'tool1简介',
         icon: 'el-icon-eleme',
+        edit: false,
+        power: true,
         module: [
           {
             id: 10,
@@ -229,6 +231,33 @@ let tools = [
         name: 'tool2',
         introduce: 'tool2简介',
         icon: 'el-icon-eleme',
+        edit: true,
+        power: true,
+        module: [
+          {
+            id: 5,
+            icon: "el-icon-eleme",
+            type: "card5",
+            title: "测试模块5",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          },
+          {
+            id: 6,
+            icon: "el-icon-eleme",
+            type: "card6",
+            title: "测试模块6",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          }
+        ]
+      },
+      {
+        id: 3,
+        type: 'tool3',
+        name: 'tool3',
+        introduce: 'tool3简介',
+        icon: 'el-icon-eleme',
+        edit: true,
+        power: true,
         module: [
           {
             id: 5,

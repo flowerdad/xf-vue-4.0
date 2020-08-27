@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import cardPack from "@/components/card/cardCarrier/cardPack.vue";
+import cardPack from "@/components/card/common/cardPack.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
