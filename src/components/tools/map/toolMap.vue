@@ -52,14 +52,15 @@ export default {
     zoomMethod() {
       this.zoom = !this.zoom;
       if (this.zoom) {
-        this.$store.commit("cardPackLeft", true);
-        this.$store.commit("cardPackRight", true);
+        this.$store.commit("cardPackLeft", false);
+        this.$store.commit("cardPackRight", false);
         this.$store.commit("mapPack", true);
         this.$store.commit("toolPackLeft", false);
         this.$store.commit("toolPackRight", false);
+        this.$store.commit("toolEdit", false);
       } else {
-        this.$store.commit("cardPackLeft", false);
-        this.$store.commit("cardPackRight", false);
+        this.$store.commit("cardPackLeft", true);
+        this.$store.commit("cardPackRight", true);
         this.$store.commit("mapPack", false);
         this.$store.commit("toolPackLeft", false);
         this.$store.commit("toolPackRight", false);

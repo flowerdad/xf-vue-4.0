@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <!-- <toolPack class="toolPackLeft" modules="" :class="toolPackLeft ? 'toolPackLeftZoom' : ''" /> -->
+
     <pack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
+    <edit class="toolEdit" :class="toolEdit ? 'toolEditZoom' : ''" />
     <left class="toolLeft" />
     <right class="toolRight" />
     <navbar class="toolNavBar" />
@@ -17,6 +19,7 @@ import right from "./right/right";
 import navbar from "./navbar/navbar";
 import toolMap from "./map/toolMap";
 import pack from "./common/pack";
+import edit from "./common/edit";
 export default {
   name: "home",
   components: {
@@ -24,7 +27,8 @@ export default {
     right,
     navbar,
     toolMap,
-    pack
+    pack,
+    edit
   },
   data() {
     return {
@@ -33,7 +37,7 @@ export default {
   },
   computed: {
     ...mapState([]),
-    ...mapGetters(["mapPack", "toolPackLeft", "toolPackRight", "toolLeftModule", "toolRightModule"]),
+    ...mapGetters(["mapPack", "toolPackLeft", "toolPackRight", "toolLeftModule", "toolRightModule", "toolEdit"]),
     mapPack() {
       return this.$store.state.notice.mapPack;
     },
@@ -41,7 +45,6 @@ export default {
       return this.$store.state.notice.toolPackLeft;
     },
     toolPackRight() {
-      console.log(this.$store.state.notice.toolPackRight)
       return this.$store.state.notice.toolPackRight;
     },
     toolLeftModule() {
@@ -49,6 +52,9 @@ export default {
     },
     toolRightModule() {
       return this.$store.state.notice.toolRightModule;
+    },
+    toolEdit() {
+      return this.$store.state.notice.toolEdit;
     }
   },
   watch: {
@@ -94,7 +100,8 @@ export default {
   left: -320px;
   transition: all 0.5s;
 }
-.toolPackRight {
+.toolPackRight,
+.toolEdit {
   position: fixed;
   right: -320px;
   transition: all 0.5s;
@@ -102,7 +109,8 @@ export default {
 .toolPackLeftZoom {
   left: 64px;
 }
-.toolPackRightZoom {
+.toolPackRightZoom,
+.toolEditZoom {
   right: 64px;
 }
 </style>

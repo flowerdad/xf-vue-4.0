@@ -1,7 +1,7 @@
 <template>
   <div class="view-body">
-    <cardPack type="left" key="left" class="cardLeft" :class="cardPackLeft ? 'cardLeftZoom' : ''" />
-    <cardPack type="right" key="right" class="cardRight" :class="cardPackRight ? 'cardRightZoom' : ''" />
+    <cardPack type="left" key="left" class="cardLeft" :class="cardPackLeft ? '' : 'cardLeftZoom'" />
+    <cardPack type="right" key="right" class="cardRight" :class="cardPackRight ? '' : 'cardRightZoom'" />
   </div>
 </template>
 

@@ -14,6 +14,29 @@ $theme-324467 : (
   color: #ffffff80,
   // 字体主色调下的级别颜色
   color-level1: #AAB7BF,
+
+  normal:#324467,
+  darken:#283653,
+  light:#3C517C,
+  linear:linear-gradient(180deg, #26334D 0%, #2D3B59 100%),
+
+  primary:#1A8CFF,
+  primary-linear:linear-gradient(180deg, #1A8CFF 0%, #00AAFF 100%),
+
+  danger:#FD4E64,
+  danger-linear:llinear-gradient(180deg, #FD4E64 0%, #FF6679 100%),
+
+  warning:#FFB210,
+  warning-linear:linear-gradient(180deg, #FFB210 0%, #FFCF10 100%)
+
+  success:#41E280,
+  success-linear:linear-gradient(180deg, #41E29C 0%, #29CCA0 0.01%, #41E280 100%)
+
+  white:#FFFFFF,
+  white-linear:linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%)
+
+  black:#000000,
+  black-linear:llinear-gradient(180deg, #000000 0%, #404040 100%)
 );
 
 

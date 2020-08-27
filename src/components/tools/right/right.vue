@@ -52,12 +52,16 @@ export default {
       this.toolActive = -1;
       this.$store.commit("mapPack", false);
       this.$store.commit("toolPackRight", false);
-      this.$store.commit("cardPackRight", false);
+      this.$store.commit("toolEdit", false);
+      setTimeout(() => {
+        this.$store.commit("cardPackRight", true);
+      }, 300);
     },
     toTool(modules, index) {
       this.toolActive = index;
       this.$store.commit("mapPack", false);
-      this.$store.commit("cardPackRight", true);
+      this.$store.commit("toolEdit", false);
+      this.$store.commit("cardPackRight", false);
       this.$store.commit("toolPackRight", false);
       setTimeout(() => {
         this.$store.commit("toolPackRight", true);
@@ -66,6 +70,12 @@ export default {
     },
     toolAdd() {
       this.toolActive = -1;
+      this.$store.commit("toolPackRight", false);
+      this.$store.commit("cardPackRight", false);
+      this.$store.commit("mapPack", false);
+      setTimeout(() => {
+        this.$store.commit("toolEdit", true);
+      }, 300);
     }
   }
 };

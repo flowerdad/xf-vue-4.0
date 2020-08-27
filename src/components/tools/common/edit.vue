@@ -1,10 +1,27 @@
 <template>
   <div class="cardPack">
-    <draggable v-bind="dragOptions" @end="draggableEnd" @add="draggableAdd" @update="draggableUpdate" class="draggable">
-      <transition-group>
-        <component :type='item' v-bind:is="item" v-for="item in modules" :key="item"></component>
-      </transition-group>
-    </draggable>
+    <div>
+      <p class="edit-title">自定义边栏</p>
+      <draggable v-bind="dragOptions" @end="draggableEnd" @add="draggableAdd" @update="draggableUpdate" class="draggable">
+        <transition-group>
+          <el-row v-for="item in editList" :key="item.type" class='edit-item'>
+            <el-col :span="18">
+              <div>
+                <span class="size-32 font-color"><i class="el-icon-eleme"></i></span>
+                <span>名称</span>
+                <span>介绍</span>
+              </div>
+            </el-col>
+            <el-col :span="6">
+              <div>
+                <span class="size-32 font-color"><i class="el-icon-eleme"></i></span>
+                <span>名称</span>
+              </div>
+            </el-col>
+          </el-row>
+        </transition-group>
+      </draggable>
+    </div>
   </div>
 </template>
 
@@ -23,7 +40,8 @@ export default {
         ghostClass: "ghost",
         disabled: false
       },
-      isDraggableUpdate: false
+      isDraggableUpdate: false,
+      editList: this.vConfig.tools[0].tool
     };
   },
   computed: {
@@ -46,11 +64,18 @@ export default {
 </script>
 
 <style scoped>
+.edit-item {
+  height: 80px;
+}
 .cardPack {
   width: 320px;
   height: calc(100vh - 64px);
   background: rgba(0, 0, 0, 0.5);
   /* position: absolute; */
+  /* padding: 12px; */
+}
+.cardPack > div {
+  margin: 12px;
 }
 .draggable > span {
   display: inline-block;
@@ -69,6 +94,16 @@ export default {
 .cardPack {
   @include themify($themes) {
     background: themed("cardPack-back");
+  }
+}
+.edit-item {
+  @include themify($themes) {
+    background: themed("back");
+  }
+}
+.edit-title {
+  @include themify($themes) {
+    color: themed("color");
   }
 }
 </style>
