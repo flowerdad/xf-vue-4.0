@@ -1,9 +1,9 @@
 // initial state
 const state = {
   // 左侧内容载体显示隐藏
-  cardPackLeft: false,
+  cardPackLeft: true,
   // 右侧内容载体显示隐藏
-  cardPackRight: false,
+  cardPackRight: true,
   // 地图工具箱显示隐藏
   mapPack: false,
   // 左侧工具箱显示隐藏

@@ -88,13 +88,13 @@ export default {
   transition: all 0.5s;
   height: calc(100vh - 64px);
   @include themify($themes) {
-    background: themed("tools-back");
+    background: themed("normal");
   }
 }
 
 .tool-active {
   @include themify($themes) {
-    background: themed("cardPack-back");
+    background: themed("darken");
   }
 }
 

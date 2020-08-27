@@ -24,14 +24,14 @@ export default {
   position: relative;
   margin: 12px;
   @include themify($themes) {
-    background: themed("back-level1");
+    background: themed("normal");
   }
   border-radius: 12px;
   transition: background 0.3s;
 }
 .cardBlock:hover {
   @include themify($themes) {
-    background: themed("cardPack-back-highlight");
+    background: themed("light");
   }
 }
 .card-tittle {

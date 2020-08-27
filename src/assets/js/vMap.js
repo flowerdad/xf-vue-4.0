@@ -26,7 +26,7 @@ let buildingLayer = "";
 
 // 公共参数
 let markerBackColor = "font-color-level1";
-let markerIconColor = "back-color";
+let markerIconColor = "normal-color";
 
 /**
  * marker 初始化icon

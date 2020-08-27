@@ -38,7 +38,7 @@ export default {
   text-align: center;
   transition: all 0.5s;
   @include themify($themes) {
-    background: themed("tools-back");
+    background: themed("normal");
   }
 }
 .tool-nav {

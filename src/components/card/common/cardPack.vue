@@ -117,7 +117,7 @@ export default {
 @import "@/assets/styles/theme";
 .cardPack {
   @include themify($themes) {
-    background: themed("cardPack-back");
+    background: themed("darken");
   }
 }
 </style>

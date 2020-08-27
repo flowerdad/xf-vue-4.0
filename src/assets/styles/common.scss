@@ -17,9 +17,9 @@ body{
 */
 
 // 背景主色系
-.back-color{
+.normal-color{
   @include themify($themes) {
-    color: themed("back");
+    color: themed("normal");
   }
 }
 

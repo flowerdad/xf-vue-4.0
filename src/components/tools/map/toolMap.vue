@@ -97,7 +97,7 @@ export default {
       border-radius: 3px;
       margin-top: 16px;
       @include themify($themes) {
-        background: themed("tools-back");
+        background: themed("normal");
       }
       span {
         display: table-cell;

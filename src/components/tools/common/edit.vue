@@ -93,12 +93,12 @@ export default {
 @import "@/assets/styles/theme";
 .cardPack {
   @include themify($themes) {
-    background: themed("cardPack-back");
+    background: themed("darken");
   }
 }
 .edit-item {
   @include themify($themes) {
-    background: themed("back");
+    background: themed("normal");
   }
 }
 .edit-title {
