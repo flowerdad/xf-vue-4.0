@@ -1,10 +1,10 @@
 <template>
   <div class="cardPack">
-    <div>
+    <div class="margin-12">
       <p class="edit-title">自定义边栏</p>
       <draggable v-bind="dragOptions" @end="draggableEnd" @add="draggableAdd" @update="draggableUpdate" class="draggable">
         <transition-group>
-          <el-row v-for="item in editList" :key="item.type" class='edit-item'>
+          <el-row v-for="item in editList" :key="item.type" class='edit-item radius-12 margin-middle-12 normal-back-100 primary-color-50'>
             <el-col :span="18">
               <div>
                 <span class="size-32 font-color"><i class="el-icon-eleme"></i></span>
@@ -74,9 +74,9 @@ export default {
   /* position: absolute; */
   /* padding: 12px; */
 }
-.cardPack > div {
+/* .cardPack > div {
   margin: 12px;
-}
+} */
 .draggable > span {
   display: inline-block;
   height: calc(100vh - 64px);
@@ -90,20 +90,20 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/theme";
+@import "@/assets/styles/theme/theme";
 .cardPack {
   @include themify($themes) {
     background: themed("darken");
   }
 }
-.edit-item {
-  @include themify($themes) {
-    background: themed("normal");
-  }
-}
+// .edit-item {
+//   @include themify($themes) {
+//     background: themed("normal");
+//   }
+// }
 .edit-title {
   @include themify($themes) {
-    color: themed("color");
+    color: themed("whites");
   }
 }
 </style>

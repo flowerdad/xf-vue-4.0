@@ -1,13 +1,9 @@
-@import "@/assets/styles/theme";
-@import "@/assets/styles/tools/tools.scss";
-@import "@/assets/styles/card/card.scss";
-@import "@/assets/styles/map/map.scss";
-@import "@/assets/styles/map/marker.scss";
 *{
   margin: 0px;
   padding: 0px;
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
+
 body{
   overflow: hidden;
 }
@@ -16,27 +12,17 @@ body{
 背景颜色
 */
 
-// 背景主色系
-.normal-color{
-  @include themify($themes) {
-    color: themed("normal");
-  }
-}
-
-/**
-字体颜色
-*/
 
 // 字体主色系
 .font-color{
   @include themify($themes) {
-    color: themed("color");
+    color: rgba($color: themed("whites"), $alpha: 0.5);
   }
 }
 // 字体主色系下级别颜色
 .font-color-level1{
   @include themify($themes) {
-    color: themed("color-level1");
+    color: rgba($color: themed("whites"), $alpha: 0.75);
   }
 }
 
@@ -65,14 +51,3 @@ body{
 ::-webkit-scrollbar-thumb:horizontal:hover {
   background: #ccc
 }
-
-/** 
-字体大小 12~100
-*/
-@for $i from 12 through 100
-  {
-   .size-#{$i}
-      {
-        font-size:(0px + $i);
-      }
-  }

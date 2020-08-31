@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/theme";
+@import "@/assets/styles/theme/theme";
 .tools {
   width: 64px;
   transition: all 0.5s;

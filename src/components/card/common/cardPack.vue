@@ -114,7 +114,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/theme";
+@import "@/assets/styles/theme/theme";
 .cardPack {
   @include themify($themes) {
     background: themed("darken");

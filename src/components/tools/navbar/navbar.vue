@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/theme";
+@import "@/assets/styles/theme/theme";
 .tools {
   width: 100%;
   height: 64px;

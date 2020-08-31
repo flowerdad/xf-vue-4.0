@@ -19,7 +19,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/styles/theme";
+@import "@/assets/styles/theme/theme";
 .cardBlock {
   position: relative;
   margin: 12px;
@@ -40,7 +40,7 @@ export default {
     float: right;
   }
   @include themify($themes) {
-    color: themed("color");
+    color: themed("whites");
   }
 }
 .card-body {

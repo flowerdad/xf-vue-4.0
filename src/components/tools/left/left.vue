@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/theme";
+@import "@/assets/styles/theme/theme";
 .tools {
   width: 64px;
   height: calc(100vh - 64px);

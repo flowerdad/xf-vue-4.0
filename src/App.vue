@@ -48,7 +48,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import "./assets/styles/theme";
+@import "./assets/styles/theme/theme";
 * {
   @include themify($themes) {
     color: themed("font-color");
