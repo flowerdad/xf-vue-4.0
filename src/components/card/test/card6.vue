@@ -2,8 +2,8 @@
   <div>
     <cardBlock tittle="测试模块6">
       <div slot="body">
-        <p class="font-color size-12">测试模块6</p>
-        <p class="font-color size-12">测试模块6</p>
+        <p class="whites-color-50 size-12">测试模块6</p>
+        <p class="whites-color-50 size-12">测试模块6</p>
       </div>
     </cardBlock>
   </div>

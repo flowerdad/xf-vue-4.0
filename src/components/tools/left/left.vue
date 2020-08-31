@@ -2,11 +2,11 @@
   <div class="tools">
     <div class="tool-block tool-top">
       <div class="logo">
-        <span class="size-32 font-color"><i class="el-icon-eleme"></i></span>
+        <span class="size-32 whites-color-50"><i class="el-icon-eleme"></i></span>
       </div>
       <ul>
         <li v-for="(item, index) in blockTop" :key="index">
-          <span class="size-22 font-color"><i :class="item.icon"></i></span>
+          <span class="size-22 whites-color-50"><i :class="item.icon"></i></span>
         </li>
       </ul>
     </div>
@@ -15,7 +15,7 @@
       <ul>
         <template v-for="(item, index) in blockBottom">
           <li @click="toolsClick(item.methods)" :key="index">
-            <span class="size-22 font-color"><i :class="item.icon"></i></span>
+            <span class="size-22 whites-color-50"><i :class="item.icon"></i></span>
           </li>
         </template>
       </ul>

@@ -2,12 +2,12 @@
   <div>
     <cardBlock tittle="测试模块3">
       <div slot="body">
-        <p class="font-color size-12">基础marker点</p>
+        <p class="whites-color-50 size-12">基础marker点</p>
         <el-button style="margin-top:10px" type="primary" @click="addMarker(vMap.markerType.default)" size="mini">marker类型1</el-button>
         <el-button type="primary" @click="addMarker(vMap.markerType.device)" size="mini">marker类型2</el-button>
         <el-button type="danger" @click="delMarkerByAll" size="mini">删除</el-button>
 
-        <div class="font-color size-12">
+        <div class="whites-color-50 size-12">
           <p v-for="marker in markerList" :key="marker.id" class="markerItem">
             marker{{ marker.id }}
             <el-tag size="mini" type="danger" class="tag" @click="delMarker(marker.id)">删除</el-tag>
@@ -21,7 +21,7 @@
           </p>
         </div>
         <el-divider></el-divider>
-        <p class="font-color size-12">单位编辑</p>
+        <p class="whites-color-50 size-12">单位编辑</p>
         <el-row :gutter="5" style="margin:10px 0px">
           <el-col :span="9">
             <div class="grid-content bg-purple"></div>
@@ -39,7 +39,7 @@
         </el-row>
         <el-divider></el-divider>
         <el-button type="primary" @click="getUnit()" size="mini">加载已有单位</el-button>
-        <div class="font-color size-12" v-if="unitShow">
+        <div class="whites-color-50 size-12" v-if="unitShow">
           <p v-for="unit in unitList" :key="unit.id" class="markerItem">
             unit{{ unit.id }}
             <el-tag size="mini" class="tag" @click="selMarker(unit.id)">定位</el-tag>

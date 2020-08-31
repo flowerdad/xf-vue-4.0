@@ -3,13 +3,13 @@
     <div class="tool-block tool-top">
       <ul>
         <li @click="backCard">
-          <span class="size-22 font-color"><i class="el-icon-star-on"></i></span>
+          <span class="size-22 whites-color-50"><i class="el-icon-star-on"></i></span>
         </li>
         <li class="" :class="toolActive == index ? 'tool-active': ''" v-for="(item, index) in toolList" :key="index" @click="toTool(item.module,index)">
-          <span class="size-22 font-color"><i :class="item.icon"></i></span>
+          <span class="size-22 whites-color-50"><i :class="item.icon"></i></span>
         </li>
         <li @click="toolAdd">
-          <span class="size-22 font-color"><i class="el-icon-circle-plus"></i></span>
+          <span class="size-22 whites-color-50"><i class="el-icon-circle-plus"></i></span>
         </li>
       </ul>
     </div>
@@ -17,7 +17,7 @@
     <div class="tool-block tool-bottom">
       <ul>
         <li v-for="(item, index) in blockBottom" :key="index">
-          <span class="size-22 font-color"><i :class="item.icon"></i></span>
+          <span class="size-22 whites-color-50"><i :class="item.icon"></i></span>
         </li>
       </ul>
     </div>

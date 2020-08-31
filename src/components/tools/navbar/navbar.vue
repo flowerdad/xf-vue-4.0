@@ -4,7 +4,7 @@
       <ul>
         <template v-for="(item, index) in nav">
           <li :key="index" v-if="item.nav" @click="toPath(item)">
-            <span class="size-22 font-color"><i :class="item.icon"></i></span>
+            <span class="size-22 whites-color-50"><i :class="item.icon"></i></span>
           </li>
         </template>
       </ul>

@@ -25,7 +25,7 @@ let mapConfig = {
 let buildingLayer = "";
 
 // 公共参数
-let markerBackColor = "font-color-level1";
+let markerBackColor = "whites-color-50-level1";
 let markerIconColor = "normal-color";
 
 /**

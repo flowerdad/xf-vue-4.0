@@ -7,14 +7,14 @@
           <el-row v-for="item in editList" :key="item.type" class='edit-item radius-12 margin-middle-12 normal-back-100 primary-color-50'>
             <el-col :span="18">
               <div>
-                <span class="size-32 font-color"><i class="el-icon-eleme"></i></span>
+                <span class="size-32 whites-color-50"><i class="el-icon-eleme"></i></span>
                 <span>名称</span>
                 <span>介绍</span>
               </div>
             </el-col>
             <el-col :span="6">
               <div>
-                <span class="size-32 font-color"><i class="el-icon-eleme"></i></span>
+                <span class="size-32 whites-color-50"><i class="el-icon-eleme"></i></span>
                 <span>名称</span>
               </div>
             </el-col>
@@ -71,12 +71,7 @@ export default {
   width: 320px;
   height: calc(100vh - 64px);
   background: rgba(0, 0, 0, 0.5);
-  /* position: absolute; */
-  /* padding: 12px; */
 }
-/* .cardPack > div {
-  margin: 12px;
-} */
 .draggable > span {
   display: inline-block;
   height: calc(100vh - 64px);
@@ -96,11 +91,6 @@ export default {
     background: themed("darken");
   }
 }
-// .edit-item {
-//   @include themify($themes) {
-//     background: themed("normal");
-//   }
-// }
 .edit-title {
   @include themify($themes) {
     color: themed("whites");

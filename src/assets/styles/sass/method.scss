@@ -110,7 +110,6 @@
   */
   .normal-color-#{$i}{
     @include themify($themes) {
-      // color: themed("normal");
       color: rgba($color: themed("normal"), $alpha: $i/100);
     }
   }

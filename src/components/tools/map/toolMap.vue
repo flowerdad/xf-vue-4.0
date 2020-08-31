@@ -4,7 +4,7 @@
       <ul>
         <template v-for="(item, index) in packMap">
           <li @click="toolsClick(item.methods)" :key="index">
-            <span class="size-16 font-color"><i :class="item.icon"></i></span>
+            <span class="size-16 whites-color-50"><i :class="item.icon"></i></span>
           </li>
         </template>
       </ul>

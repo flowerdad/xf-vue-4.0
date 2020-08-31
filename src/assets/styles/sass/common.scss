@@ -8,24 +8,6 @@ body{
   overflow: hidden;
 }
 
-/**
-背景颜色
-*/
-
-
-// 字体主色系
-.font-color{
-  @include themify($themes) {
-    color: rgba($color: themed("whites"), $alpha: 0.5);
-  }
-}
-// 字体主色系下级别颜色
-.font-color-level1{
-  @include themify($themes) {
-    color: rgba($color: themed("whites"), $alpha: 0.75);
-  }
-}
-
 ::-webkit-scrollbar {
   width: 2px;
   height: 2px;
@@ -51,3 +33,5 @@ body{
 ::-webkit-scrollbar-thumb:horizontal:hover {
   background: #ccc
 }
+
+

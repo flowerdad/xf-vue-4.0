@@ -51,7 +51,7 @@ export default {
 @import "./assets/styles/theme/theme";
 * {
   @include themify($themes) {
-    color: themed("font-color");
+    color: themed("whites-color-50");
   }
 }
 </style>
