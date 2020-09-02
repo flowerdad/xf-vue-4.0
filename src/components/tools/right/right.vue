@@ -26,6 +26,7 @@
 
 <script>
 // import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -44,10 +45,33 @@ export default {
           id: 2
         }
       ],
-      toolList: this.$store.state.permissions.toolsConfig[1].tool
+      toolList: []
     };
   },
+  computed: {
+    ...mapGetters(["toolsConfig"]),
+    toolsConfig() {
+      return this.$store.state.permissions.toolsConfig
+    }
+  },
+  watch: {
+    toolsConfig() {
+      this.init();
+    }
+  },
   methods: {
+    init() {
+      this.toolList = [];
+      this.toolsConfig[1].tool.forEach(lt => {
+        this.vConfig.tools[1].tool.forEach(pt => {
+          if (lt.type == pt.type) {
+            if (lt.display) {
+              this.toolList.push(pt)
+            }
+          }
+        });
+      });
+    },
     backCard() {
       this.toolActive = -1;
       this.$store.commit("mapPack", false);
@@ -77,6 +101,9 @@ export default {
         this.$store.commit("toolEdit", true);
       }, 300);
     }
+  },
+  mounted() {
+    this.init();
   }
 };
 </script>

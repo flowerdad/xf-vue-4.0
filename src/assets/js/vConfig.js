@@ -205,9 +205,8 @@ let tools = [
         type: 'tool1',
         name: 'tool1',
         introduce: 'tool1简介',
-        icon: 'el-icon-eleme',
-        edit: false,
-        power: true,
+        icon: 'el-icon-s-goods',
+        draggable: false,
         module: [
           {
             id: 10,
@@ -230,9 +229,8 @@ let tools = [
         type: 'tool2',
         name: 'tool2',
         introduce: 'tool2简介',
-        icon: 'el-icon-eleme',
-        edit: true,
-        power: true,
+        icon: 'el-icon-camera-solid',
+        draggable: false,
         module: [
           {
             id: 5,
@@ -255,9 +253,8 @@ let tools = [
         type: 'tool3',
         name: 'tool3',
         introduce: 'tool3简介',
-        icon: 'el-icon-eleme',
-        edit: true,
-        power: true,
+        icon: 'el-icon-video-camera-solid',
+        draggable: false,
         module: [
           {
             id: 5,
@@ -271,6 +268,78 @@ let tools = [
             icon: "el-icon-eleme",
             type: "card6",
             title: "测试模块6",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          }
+        ]
+      },
+      {
+        id: 4,
+        type: 'tool4',
+        name: 'tool4',
+        introduce: 'tool4简介',
+        icon: 'el-icon-upload',
+        draggable: false,
+        module: [
+          {
+            id: 10,
+            icon: "el-icon-eleme",
+            type: "card10",
+            title: "测试模块10",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          },
+          {
+            id: 11,
+            icon: "el-icon-eleme",
+            type: "card11",
+            title: "测试模块11",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          }
+        ]
+      },
+      {
+        id: 5,
+        type: 'tool5',
+        name: 'tool5',
+        introduce: 'tool5简介',
+        icon: 'el-icon-s-shop',
+        draggable: true,
+        module: [
+          {
+            id: 5,
+            icon: "el-icon-eleme",
+            type: "card5",
+            title: "测试模块5",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          },
+          {
+            id: 8,
+            icon: "el-icon-eleme",
+            type: "card8",
+            title: "测试模块8",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          }
+        ]
+      },
+      {
+        id: 6,
+        type: 'tool6',
+        name: 'tool6',
+        introduce: 'tool6简介',
+        icon: 'el-icon-s-open',
+        draggable: true,
+        module: [
+          {
+            id: 12,
+            icon: "el-icon-eleme",
+            type: "card12",
+            title: "测试模块12",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          },
+          {
+            id: 13,
+            icon: "el-icon-eleme",
+            type: "card13",
+            title: "测试模块13",
             describe: "我是一个优秀的模块，哦也，奥利给。"
           }
         ]

@@ -42,6 +42,9 @@ const mutations = {
     state.theme = theme;
     localStorage.theme = theme;
   },
+  toolsConfig(state, data) {
+    state.toolsConfig = data;
+  }
 }
 
 // actions

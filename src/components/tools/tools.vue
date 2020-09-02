@@ -1,13 +1,14 @@
 <template>
   <div class="home">
-    <!-- <toolPack class="toolPackLeft" modules="" :class="toolPackLeft ? 'toolPackLeftZoom' : ''" /> -->
-
-    <pack class="toolPackRight" :modules="toolRightModuleList" :class="toolPackRight ? 'toolPackRightZoom' : ''" />
-    <edit class="toolEdit" :class="toolEdit ? 'toolEditZoom' : ''" />
-    <left class="toolLeft" />
-    <right class="toolRight" />
-    <navbar class="toolNavBar" />
-    <toolMap class="toolMap" :class="mapPack ? 'toolMapZoom' : ''" />
+    <transition name="fade">
+      <div v-show="maskDisplay" class="mask z-index-1"></div>
+    </transition>
+    <pack class="toolPackRight" :modules="toolRightModuleList" :class="[toolPackRight ? 'toolPackRightZoom' : '' , draggPack ? 'z-index-2' : 'z-index-0']" />
+    <edit class="toolEdit" :class="[toolEdit ? 'toolEditZoom' : '' , draggEdit ? 'z-index-2':'z-index-0']" />
+    <left class="toolLeft" :class="draggLeft ? 'z-index-2' : 'z-index-0'" />
+    <right class="toolRight" :class="draggRight ? 'z-index-2' : 'z-index-0'" />
+    <navbar class="toolNavBar " :class="draggNavBar ? 'z-index-2' : 'z-index-0'" />
+    <toolMap class="toolMap " :class="[mapPack ? 'toolMapZoom' : '' , draggMap ? 'z-index-2' : 'z-index-0']" />
   </div>
 </template>
 
@@ -32,12 +33,19 @@ export default {
   },
   data() {
     return {
-      toolRightModuleList: []
+      toolRightModuleList: [],
+      draggPack: false,
+      draggEdit: false,
+      draggLeft: false,
+      draggRight: false,
+      draggNavBar: false,
+      draggMap: false,
+      maskDisplay: false
     };
   },
   computed: {
     ...mapState([]),
-    ...mapGetters(["mapPack", "toolPackLeft", "toolPackRight", "toolLeftModule", "toolRightModule", "toolEdit"]),
+    ...mapGetters(["mapPack", "toolPackLeft", "toolPackRight", "toolLeftModule", "toolRightModule", "toolEdit", "mask"]),
     mapPack() {
       return this.$store.state.notice.mapPack;
     },
@@ -55,6 +63,9 @@ export default {
     },
     toolEdit() {
       return this.$store.state.notice.toolEdit;
+    },
+    mask() {
+      return this.$store.state.notice.mask;
     }
   },
   watch: {
@@ -65,12 +76,29 @@ export default {
         this.toolRightModuleList.push(element.type)
       });
       console.log(this.toolRightModuleList)
+    },
+    mask() {
+      let mask = this.mask;
+      if (mask == 'draggEdit') {
+        this.maskDisplay = true;
+        this.draggEdit = true
+      } else {
+        this.maskDisplay = false
+        this.draggEdit = false
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 .toolLeft {
   position: fixed;
   left: 0px;
@@ -112,5 +140,12 @@ export default {
 .toolPackRightZoom,
 .toolEditZoom {
   right: 64px;
+}
+.mask {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
 }
 </style>

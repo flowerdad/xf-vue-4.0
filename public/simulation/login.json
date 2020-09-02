@@ -76,48 +76,12 @@
         {
           "id": 1,
           "type": "tool1",
-          "name": "tool1",
-          "introduce": "tool1简介",
-          "icon": "el-icon-eleme",
-          "module": [
-            {
-              "id": 17,
-              "icon": "el-icon-eleme",
-              "type": "card17",
-              "title": "测试模块17",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            },
-            {
-              "id": 18,
-              "icon": "el-icon-eleme",
-              "type": "card18",
-              "title": "测试模块18",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            }
-          ]
+          "display": true
         },
         {
           "id": 2,
           "type": "tool2",
-          "name": "tool2",
-          "introduce": "tool2简介",
-          "icon": "el-icon-eleme",
-          "module": [
-            {
-              "id": 1,
-              "icon": "el-icon-eleme",
-              "type": "card1",
-              "title": "测试模块1",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            },
-            {
-              "id": 2,
-              "icon": "el-icon-eleme",
-              "type": "card2",
-              "title": "测试模块2",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            }
-          ]
+          "display": false
         }
       ]
     },
@@ -127,48 +91,32 @@
         {
           "id": 1,
           "type": "tool1",
-          "name": "tool1",
-          "introduce": "tool1简介",
-          "icon": "el-icon-s-custom",
-          "module": [
-            {
-              "id": 10,
-              "icon": "el-icon-eleme",
-              "type": "card10",
-              "title": "测试模块10",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            },
-            {
-              "id": 11,
-              "icon": "el-icon-eleme",
-              "type": "card11",
-              "title": "测试模块11",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            }
-          ]
+          "display": true
         },
         {
           "id": 2,
           "type": "tool2",
-          "name": "tool2",
-          "introduce": "tool2简介",
-          "icon": "el-icon-s-opportunity",
-          "module": [
-            {
-              "id": 5,
-              "icon": "el-icon-eleme",
-              "type": "card5",
-              "title": "测试模块5",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            },
-            {
-              "id": 6,
-              "icon": "el-icon-eleme",
-              "type": "card6",
-              "title": "测试模块6",
-              "describe": "我是一个优秀的模块，哦也，奥利给。"
-            }
-          ]
+          "display": true
+        },
+        {
+          "id": 3,
+          "type": "tool3",
+          "display": false
+        },
+        {
+          "id": 4,
+          "type": "tool4",
+          "display": true
+        },
+        {
+          "id": 5,
+          "type": "tool5",
+          "display": true
+        },
+        {
+          "id": 6,
+          "type": "tool6",
+          "display": false
         }
       ]
     }

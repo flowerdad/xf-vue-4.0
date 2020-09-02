@@ -4,9 +4,50 @@
     font-size:0px + $i;
   }
 
-  // 圆角
+  .z-index-#{$i}{
+    z-index: $i;
+  }
+
+  /**
+  * 宽高集合
+  */
+  .width-#{$i} {
+    width: 0px + $i;
+  }
+
+  .height-#{$i} {
+    height: 0px + $i;
+  }
+
+  .width\%-#{$i} {
+    width: 0% + $i;
+  }
+
+  .height\%-#{$i} {
+    height: 0% + $i;
+  }
+
+  /**
+  * 圆角集合
+  */
   .radius-#{$i} {
     border-radius: 0px + $i;
+  }
+
+  .border-top-left-radius-#{$i} {
+    border-top-left-radius:0px + $i;
+  }
+
+  .border-top-right-radius-#{$i} {
+    border-top-right-radius:0px + $i;
+  }
+
+  .border-bottom-left-radius-#{$i} {
+    border-bottom-left-radius:0px + $i;
+  }
+
+  .border-bottom-right-radius-#{$i} {
+    border-bottom-right-radius:0px + $i;
   }
 
   .radius\%-#{$i} {

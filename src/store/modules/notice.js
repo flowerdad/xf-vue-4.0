@@ -17,7 +17,9 @@ const state = {
   // 右边工具箱module
   toolRightModule: [],
   // 处理拖拽模块丢失的bug
-  isdraggableEnd: false
+  isdraggableEnd: false,
+  // 拖拽遮罩层显示隐藏
+  mask: ''
 }
 
 // getters
@@ -51,6 +53,9 @@ const mutations = {
   },
   isdraggableEnd(state, data) {
     state.isdraggableEnd = data;
+  },
+  mask(state, data) {
+    state.mask = data;
   }
 }
 
