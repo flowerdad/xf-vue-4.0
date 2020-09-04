@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock tittle="测试模块2">
+    <cardBlock>
       <div slot="body">
         <div class="block">
           <span class="demonstration">默认</span>

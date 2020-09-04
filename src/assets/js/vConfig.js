@@ -257,17 +257,17 @@ let tools = [
         draggable: false,
         module: [
           {
-            id: 5,
-            icon: "el-icon-eleme",
-            type: "card5",
-            title: "测试模块5",
-            describe: "我是一个优秀的模块，哦也，奥利给。"
-          },
-          {
             id: 6,
             icon: "el-icon-eleme",
             type: "card6",
             title: "测试模块6",
+            describe: "我是一个优秀的模块，哦也，奥利给。"
+          },
+          {
+            id: 7,
+            icon: "el-icon-eleme",
+            type: "card7",
+            title: "测试模块7",
             describe: "我是一个优秀的模块，哦也，奥利给。"
           }
         ]

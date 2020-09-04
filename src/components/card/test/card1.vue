@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock tittle="echarts 测试模块">
+    <cardBlock title="echarts 测试模块">
       <div slot="body">
         <div>
           <div class="v-echart v-echart-50" ref="singlePie"></div>

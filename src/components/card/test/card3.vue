@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock tittle="测试模块3">
+    <cardBlock title="测试模块3">
       <div slot="body">
         <p class="whites-color-50 size-12">基础marker点</p>
         <el-button style="margin-top:10px" type="primary" @click="addMarker(vMap.markerType.default)" size="mini">marker类型1</el-button>

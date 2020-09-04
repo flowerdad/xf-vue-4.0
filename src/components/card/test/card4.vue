@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock tittle="测试模块4">
+    <cardBlock title="测试模块4">
       <div slot="body">
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="date" label="日期" width="180">

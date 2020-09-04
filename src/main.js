@@ -23,8 +23,8 @@ import vConfig from "@/assets/js/vConfig";
 Vue.prototype.vConfig = vConfig;
 
 // 全局组件
-import vModules from "@/assets/js/vModules";
-Vue.use(vModules.plugin);
+import cards from "@/components/card/cards.js";
+Vue.use(cards.plugin);
 
 // 地图
 import vMap from "@/assets/js/vMap";

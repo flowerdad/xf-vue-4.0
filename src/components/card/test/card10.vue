@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cardBlock tittle="测试模块10">
+    <cardBlock title="测试模块10">
       <div slot="body">
         <p class="whites-color-50 size-12">测试模块10</p>
         <p class="whites-color-50 size-12">测试模块10</p>

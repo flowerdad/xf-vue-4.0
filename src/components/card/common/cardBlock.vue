@@ -1,10 +1,10 @@
 <template>
   <div class="cardBlock">
-    <div class="card-tittle">
-      <span class="size-12">{{ tittle }}</span>
+    <div v-if="title != undefined" class="card-title">
+      <span class="size-12">{{ title }}</span>
       <span class="card-tool"><i class="el-icon-more"></i></span>
     </div>
-    <div class="card-body">
+    <div class="padding-12">
       <slot name="body"></slot>
     </div>
   </div>
@@ -13,7 +13,7 @@
 <script>
 export default {
   props: {
-    tittle: String
+    title: String,
   },
   methods: {}
 };
@@ -34,7 +34,7 @@ export default {
     background: themed("light");
   }
 }
-.card-tittle {
+.card-title {
   padding: 17px;
   .card-tool {
     float: right;
@@ -42,8 +42,5 @@ export default {
   @include themify($themes) {
     color: themed("whites");
   }
-}
-.card-body {
-  padding: 0px 17px 17px 17px;
 }
 </style>
