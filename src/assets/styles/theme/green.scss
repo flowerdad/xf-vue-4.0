@@ -1,18 +1,33 @@
-$theme-green : (
-  // 背景主色调
-  normal: #28b646,
-  // 模块承载体背景颜色。
-  darken: #3b9c50,
-  // 左右下工具条背景颜色。
-  // normal: #28b646,
-  // // 主色调下的级别颜色
-  // normal:#218f39,
+@import "./common";
 
-  // 字体主色调
-  color: rgb(210, 210, 211),
-  // 字体主色调下的级别颜色
-  color-level1: rgb(236, 236, 236),
+$theme-green : (
+  normal:#67c23a,
+  darken:#5daf34,
+  
+  light:#6de034,
+  linear:linear-gradient(180deg, #26334D 0%, #2D3B59 100%),
+
+  primary:$primary,
+  primary-linear:$primary-linear,
+
+  danger:$danger,
+  danger-linear:$danger-linear,
+
+  warning:$warning,
+  warning-linear:$warning-linear,
+
+  success:$success,
+  success-linear:$success-linear,
+
+  whites:$whites,
+  whites-linear:$whites-linear,
+
+  blacks:$blacks,
+  blacks-linear:$blacks-linear
 );
+
+
+
 
 
 

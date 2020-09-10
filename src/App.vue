@@ -6,20 +6,23 @@
     <router-view class="router" />
     <!-- 工具库 -->
     <tools class="tools" v-if="$route.meta.keepAlive" />
+    <speechTotext />
   </div>
 </template>
 <script>
 import tools from "@/components/tools/tools.vue";
 import mainMap from "@/components/map/map";
+import speechTotext from "@/components/speech/speechTotext";
 import { mapGetters } from "vuex";
 export default {
   components: {
     tools,
-    mainMap
+    mainMap,
+    speechTotext
   },
   data() {
     return {
-      themeType: localStorage.theme ? localStorage.theme : "defalut"
+      themeType: localStorage.theme != 'null' ? localStorage.theme : "defalut"
     };
   },
   computed: {

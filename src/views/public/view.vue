@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import cards from "@/components/card/cards";
+import cards from "@/components/card/cards.vue";
 export default {
   name: "home",
   components: {

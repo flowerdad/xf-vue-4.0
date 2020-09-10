@@ -1,5 +1,5 @@
 <template>
-  <el-drawer :visible.sync="visible" direction="ltr" @close="$emit('update:show', false)">
+  <el-drawer :visible.sync="visible" direction="ltr" @close="$emit('update:show', false)" :modal='false'>
     <div>
       <template v-for="(item, index) in styles">
         <button :key="index" class="style-button" :class="item.class" @click="styleSwitch(item.type)"></button>

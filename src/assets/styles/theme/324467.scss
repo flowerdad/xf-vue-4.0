@@ -1,3 +1,5 @@
+@import "./common";
+
 $theme-324467 : (
   normal:#324467,
   darken:#283653,
@@ -5,23 +7,23 @@ $theme-324467 : (
   light:#3C517C,
   linear:linear-gradient(180deg, #26334D 0%, #2D3B59 100%),
 
-  primary:#1A8CFF,
-  primary1-linear:linear-gradient(180deg, #1A8CFF 0%, #00AAFF 100%),
+  primary:$primary,
+  primary-linear:$primary-linear,
 
-  danger:#FD4E64,
-  danger-linear:llinear-gradient(180deg, #FD4E64 0%, #FF6679 100%),
+  danger:$danger,
+  danger-linear:$danger-linear,
 
-  warning:#FFB210,
-  warning-linear:linear-gradient(180deg, #FFB210 0%, #FFCF10 100%),
+  warning:$warning,
+  warning-linear:$warning-linear,
 
-  success:#41E280,
-  success-linear:linear-gradient(180deg, #41E29C 0%, #29CCA0 0.01%, #41E280 100%),
+  success:$success,
+  success-linear:$success-linear,
 
-  whites:#ffffff,
-  whites-linear:linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%),
+  whites:$whites,
+  whites-linear:$whites-linear,
 
-  blacks:#000000,
-  blacks-linear:llinear-gradient(180deg, #000000 0%, #404040 100%)
+  blacks:$blacks,
+  blacks-linear:$blacks-linear
 );
 
 
