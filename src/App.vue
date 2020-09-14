@@ -6,19 +6,19 @@
     <router-view class="router" />
     <!-- 工具库 -->
     <tools class="tools" v-if="$route.meta.keepAlive" />
-    <speechTotext />
+    <voiceControl class="voiceControl" />
   </div>
 </template>
 <script>
 import tools from "@/components/tools/tools.vue";
 import mainMap from "@/components/map/map";
-import speechTotext from "@/components/speech/speechTotext";
+import voiceControl from "@/components/speech/voiceControl";
 import { mapGetters } from "vuex";
 export default {
   components: {
     tools,
     mainMap,
-    speechTotext
+    voiceControl
   },
   data() {
     return {
@@ -34,6 +34,7 @@ export default {
   watch: {
     theme() {
       this.themeType = this.theme;
+      console.log('主题切换成功！')
     }
   }
 };
@@ -44,9 +45,13 @@ export default {
 }
 .tools {
   position: absolute;
-  /* width: 100%;
-  height: 100%; */
-  /* pointer-events: none; */
+}
+.voiceControl {
+  position: absolute;
+  width: 320px;
+  height: 100px;
+  background: red;
+  right: 400px;
 }
 </style>
 

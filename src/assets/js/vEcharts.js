@@ -138,6 +138,7 @@ let echarts = {
         }],
       }],
     };
+    data.dom.removeAttribute('_echarts_instance_');
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
   },
@@ -266,6 +267,7 @@ let echarts = {
       index--;
     });
 
+    data.dom.removeAttribute('_echarts_instance_');
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
   },
@@ -336,6 +338,7 @@ let echarts = {
         data: seriesData
       }]
     };
+    data.dom.removeAttribute('_echarts_instance_');
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
   },
@@ -504,6 +507,7 @@ let echarts = {
       series: series
     };
 
+    data.dom.removeAttribute('_echarts_instance_');
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
   },
@@ -540,9 +544,14 @@ let echarts = {
         symbol: 'circle',
         showSymbol: false,
         data: formatParam(e, ['data'], []),
-        lineStyle: {
-          width: formatParam(e, ['lineStyle', 'width'], 2),
-          color: formatParam(e, ['lineStyle', 'color'], colors[Math.floor(Math.random() * 5)]),
+        itemStyle: {
+          normal: {
+            color: formatParam(e, ['itemStyle', 'normal', 'color'], colors[Math.floor(Math.random() * 5)]),
+            lineStyle: {
+              width: formatParam(e, ['itemStyle', 'normal', 'lineStyle', 'width'], 2),
+              color: formatParam(e, ['itemStyle', 'normal', 'lineStyle', 'color'], colors[Math.floor(Math.random() * 5)]),
+            },
+          }
         },
       })
     })
@@ -553,8 +562,11 @@ let echarts = {
         trigger: formatParam(data, ['tooltip', 'trigger'], 'axis'),
         formatter: formatParam(data, ['tooltip', 'formatter'], null)
       },
+      legend: {
+        data: formatParam(data, ['legend', 'data'], null)
+      },
       grid: {
-        top: formatParam(data, ['grid', 'top'], 10),
+        top: formatParam(data, ['grid', 'top'], 20),
         left: formatParam(data, ['grid', 'left'], 0),
         bottom: formatParam(data, ['grid', 'bottom'], 0),
         right: formatParam(data, ['grid', 'right'], 10),
@@ -592,6 +604,7 @@ let echarts = {
       }],
       yAxis: [{
         type: 'value',
+        minInterval: formatParam(data, ['yAxis', 'minInterval'], 1),
         axisTick: {
           inside: formatParam(data, ['yAxis', 'axisTick', 'inside'], true),
           lineStyle: {
@@ -617,6 +630,7 @@ let echarts = {
       series: series
     };
 
+    data.dom.removeAttribute('_echarts_instance_');
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
   }
