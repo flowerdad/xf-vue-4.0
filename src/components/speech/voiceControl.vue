@@ -16,23 +16,23 @@ export default {
         console.log(annyang)
         var themeBlue = {
           "主题 (恢复) 默认": () => {
-            this.$store.commit("themeBlue", true);
+            // this.$store.commit("themeBlue", true);
             this.$store.commit("theme", 'defalut');
           },
           "主题 (切换) 蓝色": () => {
-            this.$store.commit("themeBlue", true);
+            // this.$store.commit("themeBlue", true);
             this.$store.commit("theme", 'blue');
           }
         }
         var themeRed = {
           "主题 (切换) 红色": () => {
-            this.$store.commit("themeRed", true);
+            // this.$store.commit("themeRed", true);
             this.$store.commit("theme", 'red');
           }
         }
         var themeGreen = {
           "主题 (切换) 绿色": () => {
-            this.$store.commit("themeGreen", true);
+            // this.$store.commit("themeGreen", true);
             this.$store.commit("theme", 'green');
           }
         }
@@ -106,7 +106,7 @@ export default {
           canvasCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
           canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
           canvasCtx.lineWidth = 1;
-          console.log(1)
+          // console.log(1)
           var gradient = canvasCtx.createLinearGradient(0, 0, 320, 0);
           gradient.addColorStop("0", "red");
           gradient.addColorStop("0.5", "yellow");
