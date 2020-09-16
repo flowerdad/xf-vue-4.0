@@ -1,6 +1,19 @@
 let modules = [
   {
     id: "1",
+    type: "报警类",
+    module: [
+      {
+        id: 1,
+        icon: "el-icon-eleme",
+        type: "fireStatistics",
+        title: "报警统计模块",
+        describe: "报警统计模块"
+      }
+    ]
+  },
+  {
+    id: "100",
     type: "类型1",
     module: [
       {
@@ -34,7 +47,7 @@ let modules = [
     ]
   },
   {
-    id: "2",
+    id: "200",
     type: "类型2",
     module: [
       {
@@ -75,7 +88,7 @@ let modules = [
     ]
   },
   {
-    id: "3",
+    id: "300",
     type: "类型3",
     module: [
       {

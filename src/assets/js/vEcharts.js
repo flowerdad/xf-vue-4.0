@@ -61,7 +61,7 @@ let echarts = {
    *  // radius: 线圈宽度 --- 默认['68%', '100%']
    *  },
    *  series: {
-   *    // backgroundStyle: 线圈背景色 --- 默认#333846
+   *    // backgroundStyle: 线圈背景色 --- 默认#3c4e6f
    *    value: 50, 线圈value
    *    // color: '#00ff00' 线圈颜色 --- 默认#FFBB00
    *  }
@@ -128,7 +128,7 @@ let echarts = {
         showBackground: true,
         coordinateSystem: 'polar',
         backgroundStyle: {
-          color: formatParam(data, ['series', 'backgroundStyle'], "#333846")
+          color: formatParam(data, ['series', 'backgroundStyle'], "#3c4e6f")
         },
         data: [{
           value: formatParam(data, ['series', 'value'], 30),
@@ -166,7 +166,7 @@ let echarts = {
    *  // radius: 线圈宽度 --- 默认['68%', '100%']
    *  },
    *  series: {
-   *    backgroundStyle: 线圈背景色 --- 默认#333846
+   *    backgroundStyle: 线圈背景色 --- 默认#3c4e6f
    *    data: [{
    *      value: 线圈value
    *      color: '#00ff00' 线圈颜色
@@ -183,7 +183,7 @@ let echarts = {
         text: '50.2%',
       },
       series: {
-        backgroundStyle: '#333846',
+        backgroundStyle: '#3c4e6f',
         data: [{
           value: 30,
           color: '#FFBB00'
@@ -241,7 +241,7 @@ let echarts = {
         roundCap: true,
         z: 0,
         backgroundStyle: {
-          color: formatParam(data, ['series', 'backgroundStyle'], '#333846')
+          color: formatParam(data, ['series', 'backgroundStyle'], '#3c4e6f')
         },
         data: [{
           value: 0
@@ -331,7 +331,7 @@ let echarts = {
         },
         showBackground: formatParam(data, ['series', 'showBackground'], true),
         backgroundStyle: {
-          color: formatParam(data, ['series', 'backgroundStyle', 'color'], '#333846'),
+          color: formatParam(data, ['series', 'backgroundStyle', 'color'], '#3c4e6f'),
           barBorderRadius: formatParam(data, ['series', 'backgroundStyle', 'barBorderRadius'], 100)
         },
         barWidth: formatParam(data, ['series', 'barWidth'], 15),
@@ -376,7 +376,7 @@ let echarts = {
       },
       // showBackground: true, 是否填充背景色
       backgroundStyle: { 
-        // color: '#333846', 立柱背景颜色
+        // color: '#3c4e6f', 立柱背景颜色
         // barBorderRadius: 100 立柱背景圆角
       },
       // barWidth: 20, 立柱宽度
@@ -436,7 +436,7 @@ let echarts = {
         },
         showBackground: formatParam(e, ['showBackground'], true),
         backgroundStyle: {
-          color: formatParam(e, ['backgroundStyle', 'color'], '#333846'),
+          color: formatParam(e, ['backgroundStyle', 'color'], '#3c4e6f'),
           barBorderRadius: formatParam(e, ['backgroundStyle', 'barBorderRadius'], 100)
         },
         barWidth: formatParam(e, ['barWidth'], 15),
@@ -469,7 +469,7 @@ let echarts = {
         z: 1,
         lineStyle: {
           width: 2,
-          color: '#333846'
+          color: '#3c4e6f'
         }
       }
     }]
@@ -585,7 +585,7 @@ let echarts = {
         axisLine: {
           lineStyle: {
             width: formatParam(data, ['xAxis', 'axisLine', 'lineStyle', 'width'], 2),
-            color: formatParam(data, ['xAxis', 'axisLine', 'lineStyle', 'color'], '#333846')
+            color: formatParam(data, ['xAxis', 'axisLine', 'lineStyle', 'color'], '#3c4e6f')
           }
         },
         axisLabel: {
@@ -598,7 +598,7 @@ let echarts = {
           z: formatParam(data, ['xAxis', 'axisPointer', 'z'], 1),
           lineStyle: {
             width: formatParam(data, ['xAxis', 'axisPointer', 'lineStyle', 'width'], 2),
-            color: formatParam(data, ['xAxis', 'axisPointer', 'lineStyle', 'color'], '#333846')
+            color: formatParam(data, ['xAxis', 'axisPointer', 'lineStyle', 'color'], '#3c4e6f')
           }
         }
       }],
@@ -614,7 +614,7 @@ let echarts = {
         axisLine: {
           lineStyle: {
             width: formatParam(data, ['yAxis', 'axisLine', 'lineStyle', 'width'], 2),
-            color: formatParam(data, ['yAxis', 'axisLine', 'lineStyle', 'color'], '#333846')
+            color: formatParam(data, ['yAxis', 'axisLine', 'lineStyle', 'color'], '#3c4e6f')
           }
         },
         axisLabel: {
@@ -633,7 +633,8 @@ let echarts = {
     data.dom.removeAttribute('_echarts_instance_');
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
-  }
+  },
+  transverseLine() { }
 };
 
 export default {

@@ -22,7 +22,7 @@ export default {
 @import "@/assets/styles/theme/theme";
 .cardBlock {
   position: relative;
-  margin: 12px;
+  margin: 0px 12px 12px 12px;
   @include themify($themes) {
     background: themed("normal");
   }

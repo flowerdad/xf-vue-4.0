@@ -12,10 +12,10 @@
             <el-col :class="item.undraggable?'undraggable':''" :type='item.type' :xs="24" :sm="24" :md="12" :lg="12" :xl="6" v-for="item in modules" :key="item.id">
               <el-card class="box-card modules-card" :id="item.type">
                 <div>
-                  <i class="size-32 whites-color-50" :class="item.icon"></i>
+                  <i class="size-32 blacks-color-50" :class="item.icon"></i>
                 </div>
-                <div class="size-16 whites-color-50">{{ item.title }}</div>
-                <div class="size-12 whites-color-50">{{ item.describe }}</div>
+                <div class="size-16 blacks-color-50">{{ item.title }}</div>
+                <div class="size-12 blacks-color-50">{{ item.describe }}</div>
               </el-card>
             </el-col>
           </transition-group>
