@@ -5,6 +5,9 @@ import store from "./store";
 import axios from "axios";
 import api from "./request/api";
 
+// iconfont
+import "./assets/iconfont/font_2070323_d6e3a8dxukb/iconfont.css";
+
 // element
 import ElementUI from "element-ui";
 // import "element-ui/lib/theme-chalk/index.css";
