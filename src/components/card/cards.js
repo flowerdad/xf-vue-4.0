@@ -17,8 +17,9 @@ import card16 from "@/components/card/test/card16.vue";
 import card17 from "@/components/card/test/card17.vue";
 import card18 from "@/components/card/test/card18.vue";
 
-// 警报类
-import fireStatistics from "@/components/card/fire/fireStatistics.vue";
+// 实时数据类
+import realtimeStatistics from "@/components/card/realtime/realtimeStatistics.vue";
+import realtimeList from "@/components/card/realtime/realtimeList/realtimeList.vue";
 
 function plugin(Vue) {
   if (plugin.installed) {
@@ -42,7 +43,10 @@ function plugin(Vue) {
   Vue.component("card16", card16);
   Vue.component("card17", card17);
   Vue.component("card18", card18);
-  Vue.component("fireStatistics", fireStatistics);
+
+  // 警报类
+  Vue.component("realtimeStatistics", realtimeStatistics);
+  Vue.component("realtimeList", realtimeList);
 }
 
 

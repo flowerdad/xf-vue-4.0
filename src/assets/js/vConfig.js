@@ -6,10 +6,17 @@ let modules = [
       {
         id: 1,
         icon: "el-icon-eleme",
-        type: "fireStatistics",
+        type: "realtimeStatistics",
         title: "报警统计模块",
         describe: "报警统计模块"
-      }
+      },
+      {
+        id: 2,
+        icon: "el-icon-eleme",
+        type: "realtimeList",
+        title: "统计列表",
+        describe: "统计列表"
+      },
     ]
   },
   {

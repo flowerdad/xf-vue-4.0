@@ -1,5 +1,5 @@
 <template>
-  <div class="cardBlock">
+  <div class="cardBlock radius-12 relative cursor-default" :class="back ? back:'normal-back-100'">
     <div v-if="title != undefined" class="card-title">
       <span class="size-12">{{ title }}</span>
       <span class="card-tool"><i class="el-icon-more"></i></span>
@@ -14,6 +14,7 @@
 export default {
   props: {
     title: String,
+    back: String
   },
   methods: {}
 };
@@ -21,12 +22,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/theme/theme";
 .cardBlock {
-  position: relative;
   margin: 0px 12px 12px 12px;
-  @include themify($themes) {
-    background: themed("normal");
-  }
-  border-radius: 12px;
   transition: background 0.3s;
 }
 .cardBlock:hover {

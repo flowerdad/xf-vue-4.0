@@ -2,7 +2,7 @@
 import $echarts from 'echarts';
 
 // 默认颜色组
-let colors = ['#FFBB00', '#FC1E53', '#8BDC85', '#00C6FF', '#FB7C32', '#7C838A']
+let colors = ['#1A8CFF', '#FD4E64', '#FFB210', '#41E280', '#ffffff', '#000000']
 
 /**
  * 参数格式化
@@ -513,12 +513,12 @@ let echarts = {
   },
 
   /**
-   * createrLine 折线图
+   * line 折线图
    * @param {*} data 参数太多,不想努力了,参考上面的注释，自行脑补。
    * *
   * 若不改变任何样式，基础参数即可实现
   * @param {
-      dom: this.$refs.createrLine,
+      dom: this.$refs.line,
       seriesName: ['周一', '周二', '周三', '周四', '周五', '周六', '日'],
       series: [{
         name: '火情',
@@ -532,29 +532,31 @@ let echarts = {
       }]
     } data
    */
-  createrLine(data) {
+  line(data) {
     // 组装series
     let series = [];
-    data.series.forEach(e => {
-      series.push({
-        name: formatParam(e, ['name'], '-'),
-        type: 'line',
-        smooth: true,
-        symbolSize: formatParam(e, ['symbolSize'], 1),
-        symbol: 'circle',
-        showSymbol: false,
-        data: formatParam(e, ['data'], []),
-        itemStyle: {
-          normal: {
-            color: formatParam(e, ['itemStyle', 'normal', 'color'], colors[Math.floor(Math.random() * 5)]),
-            lineStyle: {
-              width: formatParam(e, ['itemStyle', 'normal', 'lineStyle', 'width'], 2),
-              color: formatParam(e, ['itemStyle', 'normal', 'lineStyle', 'color'], colors[Math.floor(Math.random() * 5)]),
-            },
-          }
-        },
+    if (data.series) {
+      data.series.forEach(e => {
+        series.push({
+          name: formatParam(e, ['name'], '-'),
+          type: 'line',
+          smooth: true,
+          symbolSize: formatParam(e, ['symbolSize'], 1),
+          symbol: 'circle',
+          showSymbol: false,
+          data: formatParam(e, ['data'], []),
+          itemStyle: {
+            normal: {
+              color: formatParam(e, ['itemStyle', 'normal', 'color'], colors[Math.floor(Math.random() * 5)]),
+              lineStyle: {
+                width: formatParam(e, ['itemStyle', 'normal', 'lineStyle', 'width'], 2),
+                color: formatParam(e, ['itemStyle', 'normal', 'lineStyle', 'color'], colors[Math.floor(Math.random() * 5)]),
+              },
+            }
+          },
+        })
       })
-    })
+    }
 
     let option = {
       backgroundColor: formatParam(data, ['backgroundColor'], ''),
@@ -634,7 +636,70 @@ let echarts = {
     let chart = $echarts.init(data.dom);
     chart.setOption(option);
   },
-  transverseLine() { }
+
+  /**
+   * 横向条bar
+   * @param {*} data 
+   */
+  transverseBar(data) {
+    // 组装series
+    let series = [];
+    if (data.series) {
+      data.series.forEach(e => {
+        series.push({
+          name: formatParam(e, ['name'], '-'),
+          type: 'bar',
+          stack: '1',
+          data: formatParam(e, ['data'], [10]),
+          itemStyle: {
+            normal: {
+              color: formatParam(e, ['itemStyle', 'normal', 'color'], colors[Math.floor(Math.random() * 5)])
+            }
+          },
+          showBackground: true,
+          backgroundStyle: {
+            color: formatParam(e, ['backgroundStyle', 'color'], '#3c4e6f')
+          },
+        })
+      })
+    }
+
+    let option = {
+      legend: {
+        show: formatParam(data, ['legend', 'show'], true),
+        data: formatParam(data, ['legend', 'data'], ['-']),
+        itemGap: formatParam(data, ['legend', 'itemGap'], 11),
+        itemWidth: formatParam(data, ['legend', 'itemWidth'], 8),
+        itemHeight: formatParam(data, ['legend', 'itemHeight'], 8),
+        bottom: formatParam(data, ['legend', 'bottom'], 0),
+        padding: formatParam(data, ['legend', 'padding'], [14, 0, 0, 0]),
+        textStyle: {
+          color: formatParam(data, ['textStyle', 'color'], 'rgba(255, 255, 255, 0.25)'),
+          fontSize: formatParam(data, ['textStyle', 'fontSize'], 12),
+          padding: formatParam(data, ['textStyle', 'padding'], [3, 0, 0, 0]),
+        }
+      },
+      grid: {
+        top: formatParam(data, ['grid', 'top'], '0px'),
+        left: formatParam(data, ['grid', 'left'], '0px'),
+        right: formatParam(data, ['grid', 'right'], '0px'),
+        bottom: formatParam(data, ['grid', 'bottom'], '20px'),
+      },
+      xAxis: {
+        type: 'value',
+        show: false,
+      },
+      yAxis: {
+        type: 'category',
+        data: ['横向'],
+        show: false,
+      },
+      series: series
+    };
+    data.dom.removeAttribute('_echarts_instance_');
+    let chart = $echarts.init(data.dom);
+    chart.setOption(option);
+  }
 };
 
 export default {

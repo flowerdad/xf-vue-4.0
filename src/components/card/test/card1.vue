@@ -9,7 +9,7 @@
           <div class="v-echart" ref="createrBarY"></div>
           <div class="v-echart" ref="createrBarXmax"></div>
           <div class="v-echart" ref="createrBarYmax"></div>
-          <div class="v-echart" ref="createrLine"></div>
+          <div class="v-echart" ref="line"></div>
         </div>
       </div>
     </cardBlock>
@@ -281,8 +281,8 @@ export default {
     };
     this.vEcharts.echarts.createrBar(createrBarYmax);
 
-    let createrLine = {
-      dom: this.$refs.createrLine,
+    let line = {
+      dom: this.$refs.line,
       seriesName: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
       series: [{
         name: '火情',
@@ -295,7 +295,7 @@ export default {
         data: [18, 3, 5, 17, 5, 13, 2]
       }]
     }
-    this.vEcharts.echarts.createrLine(createrLine);
+    this.vEcharts.echarts.line(line);
   }
 };
 </script>

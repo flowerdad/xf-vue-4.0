@@ -54,6 +54,12 @@
     border-radius: 0% + $i;
   }
 
+  .border-#{$i} {
+    border: 0px + $i solid;
+  }
+
+
+
   /**
   * 间距集合
   */
@@ -161,6 +167,12 @@
     }
   }
 
+  .normal-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("normal"), $alpha: $i/100);
+    }
+  }
+
   .darken-color-#{$i}{
     @include themify($themes) {
       color: rgba($color: themed("darken"), $alpha: $i/100);
@@ -170,6 +182,12 @@
   .darken-back-#{$i}{
     @include themify($themes) {
       background-color: rgba($color: themed("darken"), $alpha: $i/100);
+    }
+  }
+
+  .darken-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("darken"), $alpha: $i/100);
     }
   }
 
@@ -185,6 +203,12 @@
     }
   }
 
+  .light-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("light"), $alpha: $i/100);
+    }
+  }
+
   .primary-color-#{$i} {
     @include themify($themes) {
       color: rgba($color: themed("primary"), $alpha: $i/100);
@@ -194,6 +218,12 @@
   .primary-back-#{$i} {
     @include themify($themes) {
       background-color: rgba($color: themed("primary"), $alpha: $i/100);
+    }
+  }
+
+  .primary-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("primary"), $alpha: $i/100);
     }
   }
 
@@ -209,6 +239,12 @@
     }
   }
 
+  .danger-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("danger"), $alpha: $i/100);
+    }
+  }
+
   .warning-color-#{$i} {
     @include themify($themes) {
       color: rgba($color: themed("warning"), $alpha: $i/100);
@@ -218,6 +254,12 @@
   .warning-back-#{$i} {
     @include themify($themes) {
       background-color: rgba($color: themed("warning"), $alpha: $i/100);
+    }
+  }
+
+  .warning-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("warning"), $alpha: $i/100);
     }
   }
 
@@ -233,6 +275,12 @@
     }
   }
 
+  .success-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("success"), $alpha: $i/100);
+    }
+  }
+
   .whites-color-#{$i} {
     @include themify($themes) {
       color: rgba($color: themed("whites"), $alpha: $i/100);
@@ -245,6 +293,12 @@
     }
   }
 
+  .whites-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("whites"), $alpha: $i/100);
+    }
+  }
+
   .blacks-color-#{$i} {
     @include themify($themes) {
       color: rgba($color: themed("blacks"), $alpha: $i/100);
@@ -254,6 +308,12 @@
   .blacks-back-#{$i} {
     @include themify($themes) {
       background-color: rgba($color: themed("blacks"), $alpha: $i/100);
+    }
+  }
+
+  .blacks-border-#{$i}{
+    @include themify($themes) {
+      border-color: rgba($color: themed("blacks"), $alpha: $i/100);
     }
   }
 }
