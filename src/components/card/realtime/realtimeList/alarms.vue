@@ -3,10 +3,10 @@
     <div slot="body">
       <div>
         <div class="inline-block border-2 danger-border-75 danger-back-100 padding-3 padding-center-5 border-top-left-radius-8 border-bottom-left-radius-8 center">
-          <span class="size-12 blacks-color-100 bold"><i class="el-icon-platform-eleme"></i> 16</span>
+          <p class="size-12 blacks-color-100 bold"><i class="el-icon-platform-eleme"></i> 16</p>
         </div>
         <div class="inline-block border-2 danger-border-100 danger-back-25 padding-3 padding-center-5 border-top-right-radius-8 border-bottom-right-radius-8 center">
-          <span class="size-12 danger-color-100 bold">警报</span>
+          <p class="size-12 danger-color-100 bold">警报</p>
         </div>
         <div class="inline-block float-right">
           <p class="size-12 whites-color-75 margin-top-8 bold"><i class="el-icon-platform-eleme danger-color-100"></i> 00:12:45</p>

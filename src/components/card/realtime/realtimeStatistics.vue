@@ -4,7 +4,7 @@
       <div slot="body">
         <div>
           <div class="inline-block">
-            <p class="size-40 danger-color-100 margin-top-8"><i class="iconfont iconApp_Arlam_Line"></i> 43</p>
+            <p class="en-size-40 danger-color-100 margin-top-8"><i class="iconfont iconApp_Arlam_Line"></i> 43</p>
             <p class="size-13 whites-color-50 margin-top-6">实时报警数量 <i class="el-icon-refresh-right primary-color-100 pointer"></i></p>
           </div>
           <div class="inline-block float-right">

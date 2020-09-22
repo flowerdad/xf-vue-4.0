@@ -3,10 +3,10 @@
     <div slot="body">
       <div>
         <div class="inline-block border-2 whites-border-75 whites-back-100 padding-3 padding-center-5 border-top-left-radius-8 border-bottom-left-radius-8 center">
-          <span class="size-12 blacks-color-100 bold"><i class="el-icon-platform-eleme"></i> 16</span>
+          <p class="size-12 blacks-color-100 bold"><i class="el-icon-platform-eleme"></i> 16</p>
         </div>
         <div class="inline-block border-2 whites-border-100 whites-back-25 padding-3 padding-center-5 border-top-right-radius-8 border-bottom-right-radius-8 center">
-          <span class="size-12 whites-color-100 bold">危险品</span>
+          <p class="size-12 whites-color-100 bold">危险品</p>
         </div>
         <div class="inline-block float-right">
           <p class="size-12 whites-color-75 margin-top-8 bold"><i class="el-icon-platform-eleme whites-color-100"></i> 00:12:45</p>
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="inline-block float-right">
-          <div class="inline-block whites-border-75 blacks-back-10 padding-5 padding-center-12 radius-8 center">
+          <div class="inline-block whites-border-75 blacks-back-10 padding-5 padding-center-6 radius-8 center">
             <p class="size-18 whites-color-100"><i class="el-icon-platform-eleme"></i></p>
             <p class="size-12 whites-color-100 bold">危险品</p>
           </div>

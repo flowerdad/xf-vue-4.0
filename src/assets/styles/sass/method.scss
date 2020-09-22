@@ -2,6 +2,15 @@
   // 字体大小
   .size-#{$i} {
     font-size:0px + $i;
+    line-height: 0px + $i*1.5;
+    font-family: 'Microsoft YaHei',"微软雅黑","PingFang SC";
+    font-weight: bold;
+  }
+
+  .en-size-#{$i} {
+    font-size:0px + $i;
+    line-height: 0px + $i*1.5;
+    font-family: Arial,sans-serif;
   }
 
   .z-index-#{$i}{
