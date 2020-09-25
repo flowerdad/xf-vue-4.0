@@ -8,8 +8,34 @@ import store from "@/store/index.js";
  * device:设备
  */
 let markerType = {
-  default: "default",
-  device: "device"
+  fire: {
+    type: 'fire',
+    back: 'danger-color-100',
+    color: 'blacks-color-100',
+    size: 'width-24 height-24 size-24',
+    zIndex: 1
+  },
+  alarm: {
+    type: 'alarm',
+    back: 'primary-color-100',
+    color: 'blacks-color-100',
+    size: 'width-30 height-30 size-30',
+    zIndex: 2
+  },
+  device: {
+    type: 'device',
+    back: 'warning-color-100',
+    color: 'whites-color-75',
+    size: 'width-40 height-40 size-40',
+    zIndex: 3
+  },
+  danger: {
+    type: 'danger',
+    back: 'success-color-100',
+    color: 'whites-color-100',
+    size: 'width-50 height-50 size-50',
+    zIndex: 4
+  },
 };
 
 // map对象参数
@@ -24,30 +50,20 @@ let mapConfig = {
 // 单位图层
 let buildingLayer = "";
 
-// 公共参数
-let markerBackColor = "whites-color-50-level1";
-let markerIconColor = "normal-color";
-
 /**
  * marker 初始化icon
  * @param {icon图标} icon
  */
-function initMarkerIcon(icon) {
-  var con =
-    `
-  <div class="custom-content-marker">
-      <i class="iconfont map-marker-shuidi ` +
-    markerBackColor +
-    ` icon-shuidi-">
-        <i class="` +
-    icon +
-    ` ` +
-    markerIconColor +
-    `"></i>
+function initMarkerIcon(obj) {
+  let back = markerType[obj.type].back
+  let color = markerType[obj.type].color
+  let size = markerType[obj.type].size
+  let dom = `<div class="custom-marker ` + size + `">
+      <i class="iconfont iconTag_Bubble_Bg ` + back + ` icon-shuidi-">
+       <i class="` + obj.icon + ` ` + color + `"></i>
       </i>
-  </div>
-  `;
-  return con;
+    </div>`;
+  return dom;
 }
 
 /**
@@ -66,60 +82,60 @@ function initMarkerIcon(icon) {
  * DrivingResult对象结构参考文档 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DriveRoute
  * @param {*} route
  */
-function parseRouteToPath(route) {
-  var path = [];
+// function parseRouteToPath(route) {
+//   let path = [];
 
-  for (var i = 0, l = route.steps.length; i < l; i++) {
-    var step = route.steps[i];
+//   for (let i = 0, l = route.steps.length; i < l; i++) {
+//     let step = route.steps[i];
 
-    for (var j = 0, n = step.path.length; j < n; j++) {
-      path.push(step.path[j]);
-    }
-  }
-  return path;
-}
+//     for (let j = 0, n = step.path.length; j < n; j++) {
+//       path.push(step.path[j]);
+//     }
+//   }
+//   return path;
+// }
 
 /**
  * 画路线
  * @param {*} route
  */
-function drawRoute(map, route, strokeColor = "#0091ff") {
-  var path = parseRouteToPath(route);
+// function drawRoute(map, route, strokeColor = "#0091ff") {
+//   let path = parseRouteToPath(route);
+//   console.log(path)
+//   let startMarker = new AMap.Marker({
+//     position: path[0],
+//     icon: "https://webapi.amap.com/theme/v1.3/markers/n/start.png",
+//     map: map
+//   });
 
-  var startMarker = new AMap.Marker({
-    position: path[0],
-    icon: "https://webapi.amap.com/theme/v1.3/markers/n/start.png",
-    map: map
-  });
+//   let endMarker = new AMap.Marker({
+//     position: path[path.length - 1],
+//     icon: "https://webapi.amap.com/theme/v1.3/markers/n/end.png",
+//     map: map
+//   });
 
-  var endMarker = new AMap.Marker({
-    position: path[path.length - 1],
-    icon: "https://webapi.amap.com/theme/v1.3/markers/n/end.png",
-    map: map
-  });
+//   let routeLine = new AMap.Polyline({
+//     path: path,
+//     isOutline: true,
+//     outlineColor: "#525252",
+//     borderWeight: 1,
+//     strokeWeight: 5,
+//     strokeColor: strokeColor,
+//     lineJoin: "round"
+//   });
+//   map.add(routeLine)
+//   // routeLine.setMap(map);
 
-  var routeLine = new AMap.Polyline({
-    path: path,
-    isOutline: true,
-    outlineColor: "#525252",
-    borderWeight: 1,
-    strokeWeight: 5,
-    strokeColor: strokeColor,
-    lineJoin: "round"
-  });
-
-  routeLine.setMap(map);
-
-  // 调整视野达到最佳显示区域
-  map.setFitView([startMarker, endMarker, routeLine]);
-  return path;
-}
+//   // 调整视野达到最佳显示区域
+//   map.setFitView([startMarker, endMarker, routeLine]);
+//   return path;
+// }
 
 // 全局map函数
 let map = {
   // 初始化map地图
   initMap(type) {
-    var map = new AMap.Map("map", {
+    let map = new AMap.Map("map", {
       resizeEnable: true,
       showLabel: false,
       zoom: mapConfig.zoom,
@@ -145,15 +161,15 @@ let map = {
    */
   calculateCenter(lnglatarr) {
     console.log(lnglatarr);
-    var total = lnglatarr.length;
+    let total = lnglatarr.length;
     let X = 0,
       Y = 0,
       Z = 0;
 
     lnglatarr.forEach(element => {
-      var lng = (element.lng * Math.PI) / 180;
-      var lat = (element.lat * Math.PI) / 180;
-      var x, y, z;
+      let lng = (element.lng * Math.PI) / 180;
+      let lat = (element.lat * Math.PI) / 180;
+      let x, y, z;
       x = Math.cos(lat) * Math.cos(lng);
       y = Math.cos(lat) * Math.sin(lng);
       z = Math.sin(lat);
@@ -166,11 +182,30 @@ let map = {
     Y = Y / total;
     Z = Z / total;
 
-    var Lng = Math.atan2(Y, X);
-    var Hyp = Math.sqrt(X * X + Y * Y);
-    var Lat = Math.atan2(Z, Hyp);
+    let Lng = Math.atan2(Y, X);
+    let Hyp = Math.sqrt(X * X + Y * Y);
+    let Lat = Math.atan2(Z, Hyp);
 
     return new AMap.LngLat((Lng * 180) / Math.PI, (Lat * 180) / Math.PI);
+  },
+
+  // 组合唯一id
+  getType(obj) {
+    return obj.type + '_' + obj.id
+  },
+
+  getMarkerById(map, id) {
+    return map.getAllOverlays().find(t => t.getExtData().id == id)
+  },
+
+  getMarkerByType(map, type) {
+    let array = []
+    map.getAllOverlays().forEach(element => {
+      if (element.getExtData().type == type) {
+        array.push(element)
+      }
+    });
+    return array;
   },
 
   /**
@@ -178,6 +213,7 @@ let map = {
     * @param {*} map 
     * @param {
     *   type: type,
+    *   filter:是否去重
         id: type + "_" + id,
         x: x,
         y: y,
@@ -185,16 +221,21 @@ let map = {
       } obj
     */
   addMarker(map, obj) {
-    var marker = new AMap.Marker({
+    let id = this.getType(obj);
+    // 是否去重
+    if (obj.filter) if (this.getMarkerById(map, id) != undefined) return
+
+    let marker = new AMap.Marker({
       position: new AMap.LngLat(obj.x, obj.y),
       // title: "我是一点marker",
-      content: initMarkerIcon(obj.icon),
+      content: initMarkerIcon(obj),
       anchor: "bottom-center",
-      // animation: "AMAP_ANIMATION_BOUNCE",
       offset: new AMap.Pixel(0, 0),
+      zIndex: markerType[obj.type].zIndex,
+      topWhenClick: true,
       extData: {
         type: obj.type,
-        id: obj.id
+        id: id
       }
     });
     marker.on("mouseover", () => {
@@ -210,9 +251,6 @@ let map = {
       });
     });
 
-    // 添加前先过滤掉重复点，若有重复点则直接删除。
-    this.deleteMarker(map, obj.id);
-
     //将marker添加至map。
     map.add(marker);
     return marker;
@@ -220,15 +258,15 @@ let map = {
 
   addCustomMarker(map, obj) {
     // 点标记显示内容，HTML要素字符串
-    var markerContent = `
-    <div class="custom-content-marker">
+    let markerContent = `
+    <div class="unit-marker">
       <span class="content-marker-name">`+ obj.name + `</span>
       <span class="content-marker-tips" style="background: `+ obj.tipBase + `">` + obj.tip + `</span>
       <span class="content-marker-line"></span>
     </div>
     `
 
-    var marker = new AMap.Marker({
+    let marker = new AMap.Marker({
       position: new AMap.LngLat(obj.x, obj.y),
       // title: "我是一点marker",
       content: markerContent,
@@ -250,14 +288,9 @@ let map = {
    * @param {*} type 点类型
    * @param {*} id 点id
    */
-  deleteMarker(map, id) {
-    // for循环找到即break，效率高一点
-    for (let i = 0; i < map.getAllOverlays().length; i++) {
-      if (map.getAllOverlays()[i].getExtData().id == id) {
-        map.remove(map.getAllOverlays()[i]);
-        break;
-      }
-    }
+  deleteMarker(map, obj) {
+    let id = this.getType(obj);
+    map.remove(this.getMarkerById(map, id));
   },
 
   /**
@@ -265,18 +298,7 @@ let map = {
    * @param {*} type 删除的点类型
    */
   deleteMarkerBytype(map, type) {
-    map.getAllOverlays().forEach(element => {
-      if (type == element.getExtData().type) {
-        map.remove(element);
-      }
-    });
-  },
-
-  /**
-   * deleteMarkerByAll 删除全部marker点
-   */
-  deleteMarkerByAll(map) {
-    map.getAllOverlays("marker").forEach(element => {
+    this.getMarkerByType(map, type).forEach(element => {
       map.remove(element);
     });
   },
@@ -286,14 +308,9 @@ let map = {
    * @param {*} type 类型
    * @param {*} id id
    */
-  hideMarker(map, id) {
-    // for循环找到即break，效率高一点
-    for (let i = 0; i < map.getAllOverlays().length; i++) {
-      if (map.getAllOverlays()[i].getExtData().id == id) {
-        map.getAllOverlays()[i].hide();
-        break;
-      }
-    }
+  hideMarker(map, obj) {
+    let id = this.getType(obj);
+    this.getMarkerById(map, id).hide();
   },
 
   /**
@@ -301,14 +318,9 @@ let map = {
    * @param {*} type 类型
    * @param {*} id id
    */
-  showMarker(map, id) {
-    // for循环找到即break，效率高一点
-    for (let i = 0; i < map.getAllOverlays().length; i++) {
-      if (map.getAllOverlays()[i].getExtData().id == id) {
-        map.getAllOverlays()[i].show();
-        break;
-      }
-    }
+  showMarker(map, obj) {
+    let id = this.getType(obj);
+    this.getMarkerById(map, id).show();
   },
 
   /**
@@ -316,10 +328,8 @@ let map = {
    * @param {*} type 类型
    */
   hideMarkerByType(map, type) {
-    map.getAllOverlays().forEach(element => {
-      if (type == element.getExtData().type) {
-        element.hide();
-      }
+    this.getMarkerByType(map, type).forEach(element => {
+      element.hide();
     });
   },
 
@@ -328,15 +338,13 @@ let map = {
    * @param {*} type 类型
    */
   showMarkerByType(map, type) {
-    map.getAllOverlays().forEach(element => {
-      if (type == element.getExtData().type) {
-        element.show();
-      }
+    this.getMarkerByType(map, type).forEach(element => {
+      element.show();
     });
   },
 
   /**
-   * selectMarker 定位单个marker点
+   * lockingMarker 定位单个marker点
    * @param {*} map
    * @param {*} id 查找的id
    * @param {*} obj ={ 若不传obj对象，则默认状态。若自定义，则每一个属性都要赋值，否则会报错
@@ -344,22 +352,23 @@ let map = {
    *         position: map是否跟随
    *        }
    */
-  selectMarker(map, id, obj = { animation: true, position: true }) {
-    for (let i = 0; i < map.getAllOverlays().length; i++) {
-      if (map.getAllOverlays()[i].getExtData().id == id) {
-        let marker = map.getAllOverlays()[i];
-        // 是否开启动画
-        if (obj.animation) marker.setAnimation("AMAP_ANIMATION_BOUNCE");
-        let pos = marker.getPosition();
-        // map是否跟随
-        if (obj.position) map.panTo([pos.lng, pos.lat]);
-        break;
-      }
-    }
+  lockingMarker(map, obj) {
+    let id = this.getType(obj);
+    let marker = this.getMarkerById(map, id)
+    let pos = marker.getPosition();
+    map.panTo([pos.lng, pos.lat])
+    map.setFitView(marker);
+  },
+
+
+  markMarker(map, obj) {
+    let id = this.getType(obj);
+    let marker = this.getMarkerById(map, id)
+    console.log(marker.getContent)
   },
 
   /**
-   * selectMarkerOtherCancel 定位当前marker点，其他marker取消定位
+   * lockingMarkerOtherCancel 定位当前marker点，其他marker取消定位
    * @param {*} type 查找的类型
    * @param {*} id 查找的id
    * @param {*} obj ={ 若不传obj对象，则默认状态。若自定义，则每一个属性都要赋值，否则会报错
@@ -367,11 +376,14 @@ let map = {
    *         position: map是否跟随
    *        }
    */
-  selectMarkerOtherCancel(map, id, obj = { animation: true, position: true }) {
-    map.getAllOverlays().forEach(element => {
-      element.setAnimation("AMAP_ANIMATION_NONE");
-    });
-    this.selectMarker(map, id, obj);
+  lockingMarkerOtherCancel(map, obj) {
+    // map.getAllOverlays().forEach(element => {
+    //   element.setAnimation("AMAP_ANIMATION_NONE");
+    // });
+    // this.lockingMarker(map, obj);
+
+    let id = this.getType(obj);
+    this.getMarkerById(map, id).hide();
   },
 
   /**
@@ -407,7 +419,7 @@ let map = {
     // 缩放地图到合适的视野级别
     map.setFitView([polygon]);
     // 创建多边形编辑工具，并启动编辑。
-    var polyEditor = new AMap.PolyEditor(map, polygon);
+    let polyEditor = new AMap.PolyEditor(map, polygon);
     polyEditor.open();
     // 返回矢量图形，及编辑工具obj。
     return polyEditor;
@@ -421,8 +433,7 @@ let map = {
     buildingLayer = new AMap.Buildings({
       zIndex: 130,
       merge: false,
-      sort: false,
-      zooms: [0, 20]
+      sort: false
     });
     let options = {
       // 是否隐藏设定区域外的楼块
@@ -433,7 +444,7 @@ let map = {
     console.log(options);
     //此配色优先级高于自定义mapStyle
     buildingLayer.setStyle(options);
-    map.setLayers([new AMap.TileLayer(), buildingLayer]);
+    map.setLayers([AMap.createDefaultLayer(), buildingLayer]);
 
     // 画范围及标识
     let polygons = [];
@@ -451,7 +462,7 @@ let map = {
       polygons.push(polygon)
 
       console.log(element)
-      var obj = {
+      let obj = {
         type: element.type,
         id: element.id,
         x: element.center.lng,
@@ -472,27 +483,33 @@ let map = {
    * @param {结束坐标} end
    */
   drivingPolicy(map, opt, callback) {
-    var drivingOption = {
-      policy: AMap.DrivingPolicy.LEAST_TIME // 其它policy参数请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingPolicy
-    };
-    // 构造路线导航类
-    var driving = new AMap.Driving(drivingOption);
-    // 根据起终点经纬度规划驾车导航路线
-    driving.search(
-      new AMap.LngLat(opt.star.lng, opt.star.lat),
-      new AMap.LngLat(opt.end.lng, opt.end.lat),
-      (status, result) => {
-        // result即是对应的驾车导航信息，相关数据结构文档请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
-        if (status === "complete") {
-          if (result.routes && result.routes.length) {
-            // 绘制第一条路线，也可以按需求绘制其它几条路线
-            callback(drawRoute(map, result.routes[0], opt.color));
+
+
+    map.plugin(["AMap.Driving"], () => { //加载驾车服务插件
+      // 构造路线导航类
+      let driving = new AMap.Driving({
+        policy: AMap.DrivingPolicy.LEAST_TIME, // 其它policy参数请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingPolicy
+        map: map
+      });
+      // 根据起终点经纬度规划驾车导航路线
+      driving.search(
+        new AMap.LngLat(opt.star.lng, opt.star.lat),
+        new AMap.LngLat(opt.end.lng, opt.end.lat),
+        (status, result) => {
+          // result即是对应的驾车导航信息，相关数据结构文档请参考 https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+          if (status === "complete") {
+            if (result.routes && result.routes.length) {
+              console.log(result)
+              callback();
+              // 绘制第一条路线，也可以按需求绘制其它几条路线
+              // callback(drawRoute(map, result.routes[0], opt.color));
+            }
+          } else {
+            console.log("获取驾车数据失败：" + result);
           }
-        } else {
-          console.log("获取驾车数据失败：" + result);
         }
-      }
-    );
+      );
+    });
   },
 
   /**
@@ -511,7 +528,7 @@ let map = {
       angle: -90
     });
     // 绘制轨迹
-    var passedPolyline = new AMap.Polyline({
+    let passedPolyline = new AMap.Polyline({
       map: map,
       strokeColor: "#AF5", //线颜色
       strokeWeight: 6 //线宽

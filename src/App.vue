@@ -6,19 +6,19 @@
     <router-view class="router" />
     <!-- 工具库 -->
     <tools class="tools" v-if="$route.meta.keepAlive" />
-    <voiceControl class="voiceControl" />
+    <!-- <voiceControl class="voiceControl" /> -->
   </div>
 </template>
 <script>
 import tools from "@/components/tools/tools.vue";
 import mainMap from "@/components/map/map";
-import voiceControl from "@/components/speech/voiceControl";
+// import voiceControl from "@/components/speech/voiceControl";
 import { mapGetters } from "vuex";
 export default {
   components: {
     tools,
     mainMap,
-    voiceControl
+    // voiceControl
   },
   data() {
     return {

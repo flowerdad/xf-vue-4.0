@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "17359148",
+      "name": "Tag_Bubble_Bg",
+      "font_class": "Tag_Bubble_Bg",
+      "unicode": "e229",
+      "unicode_decimal": 57897
+    },
+    {
+      "icon_id": "17329513",
+      "name": "Item_Nfc",
+      "font_class": "Item_Nfc",
+      "unicode": "e228",
+      "unicode_decimal": 57896
+    },
+    {
       "icon_id": "17235864",
       "name": "Common_Close_Cover",
       "font_class": "Common_Close_Cover",

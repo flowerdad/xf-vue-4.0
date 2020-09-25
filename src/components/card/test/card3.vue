@@ -3,21 +3,23 @@
     <cardBlock title="测试模块3">
       <div slot="body">
         <p class="whites-color-50 size-12">基础marker点</p>
-        <el-button style="margin-top:10px" type="primary" @click="addMarker(vMap.markerType.default)" size="mini">marker类型1</el-button>
-        <el-button type="primary" @click="addMarker(vMap.markerType.device)" size="mini">marker类型2</el-button>
-        <el-button type="danger" @click="delMarkerByAll" size="mini">删除</el-button>
+        <el-button style="margin-top:10px" type="primary" @click="addMarker(vMap.markerType.fire.type)" size="mini">m1</el-button>
+        <el-button type="primary" @click="addMarker(vMap.markerType.alarm.type)" size="mini">m2</el-button>
+        <el-button type="primary" @click="addMarker(vMap.markerType.device.type)" size="mini">m3</el-button>
+        <el-button type="primary" @click="addMarker(vMap.markerType.danger.type)" size="mini">m4</el-button>
 
         <div class="whites-color-50 size-12">
           <p v-for="marker in markerList" :key="marker.id" class="markerItem">
             marker{{ marker.id }}
-            <el-tag size="mini" type="danger" class="tag" @click="delMarker(marker.id)">删除</el-tag>
+            <el-tag size="mini" type="danger" class="tag" @click="delMarker(marker)">删除</el-tag>
             <el-tag size="mini" type="danger" class="tag" @click="delMarkerByType(marker.type)">删除同类</el-tag>
-            <el-tag size="mini" type="warning" class="tag" @click="hideMarker(marker.id)">隐藏</el-tag>
-            <el-tag size="mini" type="warning" class="tag" @click="showMarker(marker.id)">显示</el-tag>
+            <el-tag size="mini" type="warning" class="tag" @click="hideMarker(marker)">隐藏</el-tag>
+            <el-tag size="mini" type="warning" class="tag" @click="showMarker(marker)">显示</el-tag>
             <el-tag size="mini" type="warning" class="tag" @click="hideMarkerByType(marker.type)">隐藏同类</el-tag>
             <el-tag size="mini" type="warning" class="tag" @click="showMarkerByType(marker.type)">显示同类</el-tag>
-            <el-tag size="mini" class="tag" @click="selMarker(marker.id)">定位</el-tag>
-            <el-tag size="mini" class="tag" @click="seltMarkerOtherCancel(marker.id)">定位当前其他取消</el-tag>
+            <el-tag size="mini" class="tag" @click="lockingMarker(marker)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="markMarker(marker)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="lockingtMarkerOtherCancel(marker)">定位当前其他取消</el-tag>
           </p>
         </div>
         <el-divider></el-divider>
@@ -42,7 +44,7 @@
         <div class="whites-color-50 size-12" v-if="unitShow">
           <p v-for="unit in unitList" :key="unit.id" class="markerItem">
             unit{{ unit.id }}
-            <el-tag size="mini" class="tag" @click="selMarker(unit.id)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="lockingMarker(unit)">定位</el-tag>
             <el-tag size="mini" class="tag" @click="drivingPolicy(unit)">路线规划</el-tag>
             <el-tag size="mini" class="tag" @click="drivTrajectory(unit)">轨迹</el-tag>
           </p>
@@ -310,7 +312,8 @@ export default {
       if (type == "device") icon = "el-icon-user";
       var obj = {
         type: type,
-        id: type + "_" + 0 + this.markerIndex,
+        id: this.markerIndex,
+        filter: true,
         x: 112.939363 + this.markerIndex / 1000,
         y: 28.128974,
         icon: icon
@@ -319,25 +322,23 @@ export default {
       this.markerIndex++;
       this.vMap.map.addMarker(this.map, obj);
     },
-    delMarker(id) {
-      this.vMap.map.deleteMarker(this.map, id);
+    delMarker(marker) {
+      this.vMap.map.deleteMarker(this.map, marker);
       for (var i = 0; i < this.markerList.length; i++) {
-        if (this.markerList[i].id == id) {
+        if (this.markerList[i].id == marker.id) {
           this.markerList.splice(i, 1);
+          break;
         }
       }
     },
     delMarkerByType(type) {
       this.vMap.map.deleteMarkerBytype(this.map, type);
     },
-    delMarkerByAll() {
-      this.vMap.map.deleteMarkerByAll(this.map);
+    hideMarker(marker) {
+      this.vMap.map.hideMarker(this.map, marker);
     },
-    hideMarker(id) {
-      this.vMap.map.hideMarker(this.map, id);
-    },
-    showMarker(id) {
-      this.vMap.map.showMarker(this.map, id);
+    showMarker(marker) {
+      this.vMap.map.showMarker(this.map, marker);
     },
     hideMarkerByType(type) {
       this.vMap.map.hideMarkerByType(this.map, type);
@@ -345,11 +346,14 @@ export default {
     showMarkerByType(type) {
       this.vMap.map.showMarkerByType(this.map, type);
     },
-    selMarker(id) {
-      this.vMap.map.selectMarker(this.map, id);
+    lockingMarker(marker) {
+      this.vMap.map.lockingMarker(this.map, marker);
     },
-    seltMarkerOtherCancel(id) {
-      this.vMap.map.selectMarkerOtherCancel(this.map, id);
+    markMarker(marker) {
+      this.vMap.map.markMarker(this.map, marker);
+    },
+    lockingtMarkerOtherCancel(marker) {
+      this.vMap.map.lockingMarkerOtherCancel(this.map, marker);
     },
     polyEditor(obj) {
       // unitArea详细信息，请看polyEditor注释。
@@ -422,7 +426,7 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.map);
+
   }
 };
 </script>
