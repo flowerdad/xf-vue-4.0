@@ -47,3 +47,28 @@
   border-radius: 4px !important;
   background: rgba(255,255,255,.5) ;
 }
+
+// marker动画类-弹跳
+.AMAP_ANIMATION_BOUNCE{
+  animation: AMAP_ANIMATION_BOUNCE 0.5s ease-out infinite alternate;
+}
+
+@keyframes AMAP_ANIMATION_BOUNCE{
+from {transform:translateY(0px)}
+to {transform:translateY(-30px)}
+}
+
+// marker动画类-放大
+.AMAP_ANIMATION_SCALE{
+  transform-origin:center bottom;
+  animation: AMAP_ANIMATION_SCALE 0.5s ease-out infinite alternate;
+}
+
+@keyframes AMAP_ANIMATION_SCALE{
+from {transform:scale(1,1)}
+to {transform:scale(1.5,1.5)}
+}
+
+.AMAP_ANIMATION_NONE{
+  animation: none;
+}

@@ -13,28 +13,32 @@ let markerType = {
     back: 'danger-color-100',
     color: 'blacks-color-100',
     size: 'width-24 height-24 size-24',
-    zIndex: 1
+    zIndex: 1,
+    animation: 'AMAP_ANIMATION_SCALE'
   },
   alarm: {
     type: 'alarm',
     back: 'primary-color-100',
     color: 'blacks-color-100',
     size: 'width-30 height-30 size-30',
-    zIndex: 2
+    zIndex: 2,
+    animation: 'AMAP_ANIMATION_BOUNCE'
   },
   device: {
     type: 'device',
     back: 'warning-color-100',
     color: 'whites-color-75',
     size: 'width-40 height-40 size-40',
-    zIndex: 3
+    zIndex: 3,
+    animation: 'AMAP_ANIMATION_SCALE'
   },
   danger: {
     type: 'danger',
     back: 'success-color-100',
     color: 'whites-color-100',
     size: 'width-50 height-50 size-50',
-    zIndex: 4
+    zIndex: 4,
+    animation: 'AMAP_ANIMATION_BOUNCE'
   },
 };
 
@@ -48,17 +52,17 @@ let mapConfig = {
 };
 
 // 单位图层
-let buildingLayer = "";
+// let buildingLayer = "";
 
 /**
  * marker 初始化icon
  * @param {icon图标} icon
  */
-function initMarkerIcon(obj) {
+function initMarkerIcon(obj, id) {
   let back = markerType[obj.type].back
   let color = markerType[obj.type].color
   let size = markerType[obj.type].size
-  let dom = `<div class="custom-marker ` + size + `">
+  let dom = `<div class="custom-marker ` + size + `" ref="` + id + `" id="` + id + `">
       <i class="iconfont iconTag_Bubble_Bg ` + back + ` icon-shuidi-">
        <i class="` + obj.icon + ` ` + color + `"></i>
       </i>
@@ -228,7 +232,7 @@ let map = {
     let marker = new AMap.Marker({
       position: new AMap.LngLat(obj.x, obj.y),
       // title: "我是一点marker",
-      content: initMarkerIcon(obj),
+      content: initMarkerIcon(obj, id),
       anchor: "bottom-center",
       offset: new AMap.Pixel(0, 0),
       zIndex: markerType[obj.type].zIndex,
@@ -352,38 +356,19 @@ let map = {
    *         position: map是否跟随
    *        }
    */
-  lockingMarker(map, obj) {
+  lockingMarker(map, obj, param = { mark: true, other: true }) {
     let id = this.getType(obj);
     let marker = this.getMarkerById(map, id)
     let pos = marker.getPosition();
     map.panTo([pos.lng, pos.lat])
     map.setFitView(marker);
-  },
-
-
-  markMarker(map, obj) {
-    let id = this.getType(obj);
-    let marker = this.getMarkerById(map, id)
-    console.log(marker.getContent)
-  },
-
-  /**
-   * lockingMarkerOtherCancel 定位当前marker点，其他marker取消定位
-   * @param {*} type 查找的类型
-   * @param {*} id 查找的id
-   * @param {*} obj ={ 若不传obj对象，则默认状态。若自定义，则每一个属性都要赋值，否则会报错
-   *         animation: 是否开启动画
-   *         position: map是否跟随
-   *        }
-   */
-  lockingMarkerOtherCancel(map, obj) {
-    // map.getAllOverlays().forEach(element => {
-    //   element.setAnimation("AMAP_ANIMATION_NONE");
-    // });
-    // this.lockingMarker(map, obj);
-
-    let id = this.getType(obj);
-    this.getMarkerById(map, id).hide();
+    if (!param.other) {
+      map.getAllOverlays().forEach(element => {
+        new AMap.DomUtil.removeClass(element.dom.childNodes[0], 'AMAP_ANIMATION_BOUNCE')
+        new AMap.DomUtil.removeClass(element.dom.childNodes[0], 'AMAP_ANIMATION_SCALE')
+      });
+    }
+    if (param.mark) new AMap.DomUtil.addClass(marker.dom.childNodes[0], markerType[obj.type].animation)
   },
 
   /**
@@ -430,14 +415,15 @@ let map = {
    * @param {*} areas 楼块对象
    */
   createUnitArea(map, areas) {
-    buildingLayer = new AMap.Buildings({
-      zIndex: 130,
-      merge: false,
-      sort: false
+    let buildingLayer = new AMap.Buildings({
+      // zIndex: 130,
+      // zooms: [2, 20],
+      // merge: false,
+      // sort: false
     });
     let options = {
       // 是否隐藏设定区域外的楼块
-      hideWithoutStyle: false,
+      // hideWithoutStyle: false,
       // 围栏
       areas: areas
     };
@@ -447,33 +433,33 @@ let map = {
     map.setLayers([AMap.createDefaultLayer(), buildingLayer]);
 
     // 画范围及标识
-    let polygons = [];
-    areas.forEach(element => {
-      let polygon = new AMap.Polygon({
-        path: element.path,
-        strokeColor: "#000000",
-        strokeWeight: 2,
-        strokeOpacity: 0.2,
-        fillOpacity: element.hasOwnProperty('style') && element.style.hasOwnProperty('fillOpacity') ? element.style.fillOpacity : '0.5',
-        fillColor: element.color,
-        zIndex: 50
-      });
-      map.add(polygon);
-      polygons.push(polygon)
+    // let polygons = [];
+    // areas.forEach(element => {
+    //   let polygon = new AMap.Polygon({
+    //     path: element.path,
+    //     strokeColor: "#000000",
+    //     strokeWeight: 2,
+    //     strokeOpacity: 0.2,
+    //     fillOpacity: element.hasOwnProperty('style') && element.style.hasOwnProperty('fillOpacity') ? element.style.fillOpacity : '0.5',
+    //     fillColor: element.color,
+    //     zIndex: 50
+    //   });
+    //   map.add(polygon);
+    //   polygons.push(polygon)
 
-      console.log(element)
-      let obj = {
-        type: element.type,
-        id: element.id,
-        x: element.center.lng,
-        y: element.center.lat,
-        name: element.name,
-        tip: element.tip,
-        tipBase: element.color
-      };
-      this.addCustomMarker(map, obj);
-    });
-    map.setFitView(polygons);
+    //   console.log(element)
+    //   let obj = {
+    //     type: element.type,
+    //     id: element.id,
+    //     x: element.center.lng,
+    //     y: element.center.lat,
+    //     name: element.name,
+    //     tip: element.tip,
+    //     tipBase: element.color
+    //   };
+    //   this.addCustomMarker(map, obj);
+    // });
+    // map.setFitView(polygons);
   },
 
   /**

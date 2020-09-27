@@ -18,7 +18,7 @@
             <el-tag size="mini" type="warning" class="tag" @click="hideMarkerByType(marker.type)">隐藏同类</el-tag>
             <el-tag size="mini" type="warning" class="tag" @click="showMarkerByType(marker.type)">显示同类</el-tag>
             <el-tag size="mini" class="tag" @click="lockingMarker(marker)">定位</el-tag>
-            <el-tag size="mini" class="tag" @click="markMarker(marker)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="markMarker(marker)">定位高亮</el-tag>
             <el-tag size="mini" class="tag" @click="lockingtMarkerOtherCancel(marker)">定位当前其他取消</el-tag>
           </p>
         </div>
@@ -347,13 +347,13 @@ export default {
       this.vMap.map.showMarkerByType(this.map, type);
     },
     lockingMarker(marker) {
-      this.vMap.map.lockingMarker(this.map, marker);
+      this.vMap.map.lockingMarker(this.map, marker, { mark: false, other: true });
     },
     markMarker(marker) {
-      this.vMap.map.markMarker(this.map, marker);
+      this.vMap.map.lockingMarker(this.map, marker);
     },
     lockingtMarkerOtherCancel(marker) {
-      this.vMap.map.lockingMarkerOtherCancel(this.map, marker);
+      this.vMap.map.lockingMarker(this.map, marker, { other: false, mark: true });
     },
     polyEditor(obj) {
       // unitArea详细信息，请看polyEditor注释。
