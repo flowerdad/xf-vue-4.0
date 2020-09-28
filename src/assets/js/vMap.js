@@ -416,14 +416,14 @@ let map = {
    */
   createUnitArea(map, areas) {
     let buildingLayer = new AMap.Buildings({
-      // zIndex: 130,
-      // zooms: [2, 20],
-      // merge: false,
-      // sort: false
+      zIndex: 130,
+      zooms: [2, 20],
+      merge: false,
+      sort: false
     });
     let options = {
       // 是否隐藏设定区域外的楼块
-      // hideWithoutStyle: false,
+      hideWithoutStyle: false,
       // 围栏
       areas: areas
     };
@@ -433,33 +433,33 @@ let map = {
     map.setLayers([AMap.createDefaultLayer(), buildingLayer]);
 
     // 画范围及标识
-    // let polygons = [];
-    // areas.forEach(element => {
-    //   let polygon = new AMap.Polygon({
-    //     path: element.path,
-    //     strokeColor: "#000000",
-    //     strokeWeight: 2,
-    //     strokeOpacity: 0.2,
-    //     fillOpacity: element.hasOwnProperty('style') && element.style.hasOwnProperty('fillOpacity') ? element.style.fillOpacity : '0.5',
-    //     fillColor: element.color,
-    //     zIndex: 50
-    //   });
-    //   map.add(polygon);
-    //   polygons.push(polygon)
+    let polygons = [];
+    areas.forEach(element => {
+      let polygon = new AMap.Polygon({
+        path: element.path,
+        strokeColor: "#000000",
+        strokeWeight: 0,
+        strokeOpacity: 0.2,
+        fillOpacity: element.hasOwnProperty('style') && element.style.hasOwnProperty('fillOpacity') ? element.style.fillOpacity : '0.5',
+        fillColor: element.color,
+        zIndex: 50
+      });
+      map.add(polygon);
+      polygons.push(polygon)
 
-    //   console.log(element)
-    //   let obj = {
-    //     type: element.type,
-    //     id: element.id,
-    //     x: element.center.lng,
-    //     y: element.center.lat,
-    //     name: element.name,
-    //     tip: element.tip,
-    //     tipBase: element.color
-    //   };
-    //   this.addCustomMarker(map, obj);
-    // });
-    // map.setFitView(polygons);
+      console.log(element)
+      let obj = {
+        type: element.type,
+        id: element.id,
+        x: element.center.lng,
+        y: element.center.lat,
+        name: element.name,
+        tip: element.tip,
+        tipBase: element.color
+      };
+      this.addCustomMarker(map, obj);
+    });
+    map.setFitView(polygons);
   },
 
   /**
