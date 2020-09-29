@@ -8,6 +8,11 @@ import store from "@/store/index.js";
  * device:设备
  */
 let markerType = {
+  unit: {
+    type: 'unit',
+    zIndex: 10,
+    animation: 'AMAP_ANIMATION_BOUNCE'
+  },
   fire: {
     type: 'fire',
     back: 'danger-color-100',
@@ -51,24 +56,32 @@ let mapConfig = {
   center: [112.939363, 28.128974]
 };
 
-// 单位图层
-// let buildingLayer = "";
-
-/**
- * marker 初始化icon
- * @param {icon图标} icon
- */
-function initMarkerIcon(obj, id) {
+// marker统一样式
+function initMarkerDom(obj, id) {
   let back = markerType[obj.type].back
   let color = markerType[obj.type].color
   let size = markerType[obj.type].size
-  let dom = `<div class="custom-marker ` + size + `" ref="` + id + `" id="` + id + `">
+  let dom = `<div class="custom-marker-box custom-marker ` + size + `" id="` + id + `">
       <i class="iconfont iconTag_Bubble_Bg ` + back + ` icon-shuidi-">
        <i class="` + obj.icon + ` ` + color + `"></i>
       </i>
     </div>`;
   return dom;
 }
+
+// marker统一样式
+function initUnitMarkerDom(obj, id) {
+  let dom = `
+      <div class="custom-marker-box unit-marker" id="` + id + `">
+        <span class="content-marker-name">`+ obj.name + `</span>
+        <span class="content-marker-tips" style="background: `+ obj.tipBase + `">` + obj.tip + `</span>
+        <span class="content-marker-line"></span>
+      </div>
+    `
+  return dom;
+}
+
+
 
 /**
  * 判断是否是函数
@@ -232,7 +245,7 @@ let map = {
     let marker = new AMap.Marker({
       position: new AMap.LngLat(obj.x, obj.y),
       // title: "我是一点marker",
-      content: initMarkerIcon(obj, id),
+      content: initMarkerDom(obj, id),
       anchor: "bottom-center",
       offset: new AMap.Pixel(0, 0),
       zIndex: markerType[obj.type].zIndex,
@@ -260,26 +273,21 @@ let map = {
     return marker;
   },
 
-  addCustomMarker(map, obj) {
-    // 点标记显示内容，HTML要素字符串
-    let markerContent = `
-    <div class="unit-marker">
-      <span class="content-marker-name">`+ obj.name + `</span>
-      <span class="content-marker-tips" style="background: `+ obj.tipBase + `">` + obj.tip + `</span>
-      <span class="content-marker-line"></span>
-    </div>
-    `
+  addUnitMarker(map, obj) {
+    let id = this.getType(obj);
+    // 是否去重
+    if (obj.filter) if (this.getMarkerById(map, id) != undefined) return
 
     let marker = new AMap.Marker({
       position: new AMap.LngLat(obj.x, obj.y),
-      // title: "我是一点marker",
-      content: markerContent,
+      content: initUnitMarkerDom(obj, id),
       anchor: "bottom-center",
-      // animation: "AMAP_ANIMATION_BOUNCE",
       offset: new AMap.Pixel(0, 0),
+      zIndex: markerType[obj.type].zIndex,
+      topWhenClick: true,
       extData: {
         type: obj.type,
-        id: obj.id
+        id: id
       }
     });
 
@@ -363,12 +371,22 @@ let map = {
     map.panTo([pos.lng, pos.lat])
     map.setFitView(marker);
     if (!param.other) {
-      map.getAllOverlays().forEach(element => {
-        new AMap.DomUtil.removeClass(element.dom.childNodes[0], 'AMAP_ANIMATION_BOUNCE')
-        new AMap.DomUtil.removeClass(element.dom.childNodes[0], 'AMAP_ANIMATION_SCALE')
+      map.getAllOverlays('marker').forEach(element => {
+        element.dom.childNodes.forEach(item => {
+          if (item.nodeType == 1) {
+            new AMap.DomUtil.removeClass(item, 'AMAP_ANIMATION_BOUNCE')
+            new AMap.DomUtil.removeClass(item, 'AMAP_ANIMATION_SCALE')
+          }
+        });
       });
     }
-    if (param.mark) new AMap.DomUtil.addClass(marker.dom.childNodes[0], markerType[obj.type].animation)
+    if (param.mark) {
+      marker.dom.childNodes.forEach(item => {
+        if (item.nodeType == 1) {
+          new AMap.DomUtil.addClass(item, markerType[obj.type].animation)
+        }
+      });
+    }
   },
 
   /**
@@ -427,7 +445,6 @@ let map = {
       // 围栏
       areas: areas
     };
-    console.log(options);
     //此配色优先级高于自定义mapStyle
     buildingLayer.setStyle(options);
     map.setLayers([AMap.createDefaultLayer(), buildingLayer]);
@@ -447,17 +464,18 @@ let map = {
       map.add(polygon);
       polygons.push(polygon)
 
-      console.log(element)
       let obj = {
         type: element.type,
         id: element.id,
         x: element.center.lng,
         y: element.center.lat,
+        filter: true,
         name: element.name,
         tip: element.tip,
         tipBase: element.color
       };
-      this.addCustomMarker(map, obj);
+
+      this.addUnitMarker(map, obj);
     });
     map.setFitView(polygons);
   },
@@ -469,8 +487,6 @@ let map = {
    * @param {结束坐标} end
    */
   drivingPolicy(map, opt, callback) {
-
-
     map.plugin(["AMap.Driving"], () => { //加载驾车服务插件
       // 构造路线导航类
       let driving = new AMap.Driving({

@@ -44,7 +44,7 @@
         <div class="whites-color-50 size-12" v-if="unitShow">
           <p v-for="unit in unitList" :key="unit.id" class="markerItem">
             unit{{ unit.id }}
-            <el-tag size="mini" class="tag" @click="lockingMarker(unit)">定位</el-tag>
+            <el-tag size="mini" class="tag" @click="lockingtMarkerOtherCancel(unit)">定位</el-tag>
             <el-tag size="mini" class="tag" @click="drivingPolicy(unit)">路线规划</el-tag>
             <el-tag size="mini" class="tag" @click="drivTrajectory(unit)">轨迹</el-tag>
           </p>
@@ -388,7 +388,6 @@ export default {
     },
     getUnit() {
       this.unitShow = true;
-      console.log(this.unitList)
       this.vMap.map.createUnitArea(this.map, this.unitList);
     },
     endUnitArea() {
