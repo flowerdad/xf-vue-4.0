@@ -46,6 +46,7 @@
             unit{{ unit.id }}
             <el-tag size="mini" class="tag" @click="lockingtMarkerOtherCancel(unit)">定位</el-tag>
             <el-tag size="mini" class="tag" @click="drivingPolicy(unit)">路线规划</el-tag>
+            <el-tag size="mini" class="tag" @click="drawLine(unit)">轨迹记录</el-tag>
             <el-tag size="mini" class="tag" @click="drivTrajectory(unit)">轨迹</el-tag>
           </p>
         </div>
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+import AMap from "AMap";
 import cardBlock from "@/components/card/common/cardBlock.vue";
 export default {
   components: {
@@ -314,8 +316,7 @@ export default {
         type: type,
         id: this.markerIndex,
         filter: true,
-        x: 112.939363 + this.markerIndex / 1000,
-        y: 28.128974,
+        position: [112.939363 + this.markerIndex / 1000, 28.128974],
         icon: icon
       };
       this.markerList.push(obj);
@@ -396,7 +397,7 @@ export default {
       this.map.setPitch(this.vMap.mapConfig.pitch);
     },
     drivingPolicy(unit) {
-      this.vMap.map.drivingPolicy(
+      this.vMap.map.routePlanning(
         this.map,
         {
           star: unit.center,
@@ -407,21 +408,40 @@ export default {
           color: unit.color
         },
         e => {
-          this.unitList.forEach(element => {
-            if (unit.id == element.id) {
-              element.paths = e;
-            }
-          });
+          let path = this.vMap.map.parseRouteToPath(e.routes[0])
+          unit.paths = JSON.stringify(path);
         }
       );
     },
+    drawLine(unit) {
+      let path = JSON.parse(unit.paths)
+      this.vMap.map.drawLine(this.map, {
+        path: path,
+        star: path[0],
+        end: path[path.length - 1],
+        strokeColor: unit.color
+      })
+    },
     drivTrajectory(unit) {
-      console.log(this.unitList);
-      let trajectory = this.vMap.map.drivTrajectory(this.map, [
-        unit.center.lng,
-        unit.center.lat
-      ]);
-      trajectory.moveAlong(unit.paths, 200);
+      let path = JSON.parse(unit.paths)
+      console.log(path)
+      var marker = {
+        type: 'card',
+        id: 1,
+        filter: true,
+        position: [unit.center.lng, unit.center.lat],
+        icon: 'el-icon-user'
+      };
+      let card = this.vMap.map.addMarker(this.map, marker);
+      console.log(card)
+      AMap.plugin('AMap.MoveAnimation', () => {
+        card.moveAlong(path, {
+          // 每一段的时长
+          duration: 200,
+          // JSAPI2.0 是否延道路自动设置角度在 moveAlong 里设置
+          autoRotation: false,
+        });
+      });
     }
   },
   mounted() {
